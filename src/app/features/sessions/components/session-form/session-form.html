@@ -1,0 +1,55 @@
+<dialog-buttons [header]="'sessions.formTitle' | translate" 
+    [showSaveButton]="true" [showDialog]="showDialog" [width]="'30rem'"
+    [saveDisabled]="!sessionForm.valid" (onSave)="save()" (onCancel)="cancel()">
+
+    <form [formGroup]="sessionForm" (ngSubmit)="save()">
+
+        <!-- Group Selection -->
+        <div class="mb-2">
+            <label class="font-semibold w-24">
+                {{ 'groups.one' | translate }}
+            </label>
+            <input class="form-control" value="{{ session?.groupName || '' }}" disabled readonly />
+        </div>
+
+        <!-- Course Selection -->
+        <div class="mb-2">
+            <label class="font-semibold w-24">
+                {{ 'courses.one' | translate }}
+            </label>
+            <input class="form-control" value="{{ session?.courseName || '' }}" disabled readonly />
+        </div>
+
+        <!-- Room Selection -->
+        <div class="mb-2">
+            <dropdown [label]="'rooms.one' | translate" [required]="true" [options]="roomsOptions"
+                [formControl]="getFormControl('roomId')" />
+        </div>
+
+        <!-- Teacher Selection -->
+        <div class="mb-2">
+            <dropdown [label]="'teachers.one' | translate" [required]="true" [options]="teachersOptions"
+                [formControl]="getFormControl('teacherId')" />
+        </div>
+
+        <!-- Session Date -->
+        <div class="mb-2">
+            <label-date-picker [label]="'shared.labels.date' | translate" [required]="true"
+                [formControl]="getFormControl('date')" />
+        </div>
+
+        <!-- Start Time and End Time -->
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <label-time-picker [label]="'shared.labels.startTime' | translate" [required]="true"
+                    [formControl]="getFormControl('startTime')" />
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <label-time-picker [label]="'shared.labels.endTime' | translate" [required]="true"
+                    [formControl]="getFormControl('endTime')" />
+            </div>
+        </div>
+
+    </form>
+
+</dialog-buttons>

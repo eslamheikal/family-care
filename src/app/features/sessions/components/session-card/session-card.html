@@ -1,0 +1,85 @@
+<p-card class="session-card">
+  <div class="session-header">
+    <div class="session-title">
+      <h3>{{ session.courseName || 'sessions.unknown.course' | translate }}</h3>
+      <p-badge [value]="getStatusBadge().value | translate" [severity]="getStatusBadge().severity"></p-badge>
+
+      <button class="btn btn-sm btn-outline-danger" (click)="onDelete()" *ngIf="permission.canDelete">
+        <i class="fa fa-trash"></i>
+      </button>
+
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="session-content">
+
+    <div class="session-info">
+      <div class="info-row" *ngIf="session.groupName">
+        <i class="fa fa-users"></i>
+        <span>{{ session.groupName }}</span>
+      </div>
+      <div class="info-row" *ngIf="session.roomName">
+        <i class="fa fa-door-open"></i>
+        <span>{{ session.roomName }}</span>
+      </div>
+      <div class="info-row" *ngIf="session.teacherName">
+        <i class="fas fa-solid fa-chalkboard-teacher"></i>
+        <span>{{ session.teacherName }}</span>
+      </div>
+      <div class="info-row">
+        <i class="fa fa-calendar"></i>
+        <span>{{ getFormattedDate() }}</span>
+      </div>
+      <div class="info-row">
+        <i class="fa fa-clock"></i>
+        <span>{{ getFormattedTime() }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="session-actions mt-3 d-flex justify-content-end">
+    <button class="btn btn-sm btn-outline-success" (click)="onRecordAttendance()" *ngIf="permission.canRecordAttendance">
+      <i class="fa fa-check-circle"></i>
+      {{ 'sessions.actions.recordAttendance' | translate }}
+    </button>
+
+    <span *ngIf="permission.canMarkCompleted">
+      &nbsp; &nbsp;
+    </span>
+
+    <button class="btn btn-sm btn-outline-info" (click)="onMarkCompleted()" *ngIf="permission.canMarkCompleted">
+      <i class="fa fa-check"></i>
+      {{ 'sessions.actions.markCompleted' | translate }}
+    </button>
+
+    <span *ngIf="permission.canReschedule">
+      &nbsp; &nbsp;
+    </span>
+
+    <button class="btn btn-sm btn-outline-warning" (click)="onReschedule()" *ngIf="permission.canReschedule">
+      <i class="fa fa-calendar-plus"></i>
+      {{ 'sessions.actions.reschedule' | translate }}
+    </button>
+
+    <span *ngIf="permission.canUpdate">
+      &nbsp; &nbsp;
+    </span>
+
+    <button class="btn btn-sm btn-outline-primary" (click)="onUpdate()" *ngIf="permission.canUpdate">
+      <i class="fa fa-edit"></i>
+      {{ 'shared.buttons.edit' | translate }}
+    </button>
+
+    <span *ngIf="permission.canCancel">
+      &nbsp; &nbsp;
+    </span>
+
+    <button class="btn btn-sm btn-outline-danger" (click)="onCancel()" *ngIf="permission.canCancel">
+      <i class="fa fa-times"></i>
+      {{ 'shared.buttons.cancel' | translate }}
+    </button>
+
+  </div>
+</p-card>

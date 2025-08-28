@@ -1,11 +1,13 @@
-<div class="main-wrapper">
+<app-auth-layout *ngIf="!isLoggedIn()" />
+
+<div class="main-wrapper" *ngIf="isLoggedIn()">
     <app-header />
 
     <app-sidenav />
 
     <div class="page-wrapper">
 
-        <div class="content container-fluid mb-4">
+        <div class="content container-fluid mb-3">
             <router-outlet />
         </div>
 
@@ -18,3 +20,7 @@
 <div style="position: relative">
     <ngx-ui-loader></ngx-ui-loader>
 </div>
+
+<p-toast />
+
+<p-confirmdialog key="deleteConfirmDialog" />

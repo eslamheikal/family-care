@@ -1,0 +1,17 @@
+<dialog-buttons [header]="'shared.tabs.attachments' | translate" [showDialog]="showDialog" [showSaveButton]="true"
+    (onSave)="save()" (onCancel)="cancel()" width="30rem" [saveDisabled]="!userAttachmentForm.valid">
+
+    <form [formGroup]="userAttachmentForm" (ngSubmit)="save()">
+
+        <input-label [label]="'shared.labels.name' | translate" [formControl]="getFormControl('displayName')"
+            [required]="true" />
+
+        <div class="mt-3">
+            <p-fileupload mode="advanced" chooseLabel="{{ 'shared.fileUpload.chooseFile' | translate }}"
+                maxFileSize="1000000" [showUploadButton]="false" [showCancelButton]="false" class="hide-progress-bar"
+                (onSelect)="onFileSelect($event)" />
+        </div>
+
+    </form>
+
+</dialog-buttons>

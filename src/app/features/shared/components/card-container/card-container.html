@@ -1,0 +1,14 @@
+<p-card class="card-container">
+
+    <div class="d-flex justify-content-between mb-3">
+        <div class="p-card-title">
+            {{ title }}
+        </div>
+
+        <add-btn *ngIf="addBtn" (onClick)="onAddClick()"/>
+    </div>
+
+
+    <ng-content></ng-content>
+    
+</p-card>

@@ -1,0 +1,84 @@
+<label for="name" class="font-semibold w-24" *ngIf="showLabel">
+    {{label}}
+    <span *ngIf="required" class="text-danger">*</span>
+</label>
+
+<br *ngIf="showLabel" />
+
+<p-select
+    optionLabel="label" 
+    optionValue="value" 
+    [loading]="isLoading"
+    [options]="options" 
+    [filter]="allowFilter || allowCustomFilter" 
+    [placeholder]="placeholder | translate"
+    [emptyMessage]="noResultsMessage | translate"
+    [disabled]="disabled"
+    [formControl]="formControl"
+    (onChange)="onSelectOption($event.value)"
+    appendTo="body"
+    *ngIf='!multi'
+    [style]="style"
+    [ngClass]="class"
+    class="w-100"
+    >
+
+    <ng-template *ngIf="allowCustomFilter" pTemplate="filter" let-options="options">
+        <div class="p-inputgroup">
+            <input
+                [(ngModel)]="searchValue"
+                (ngModelChange)="searchChange($event)"
+                class="form-control dropdown-input-search-radius"
+                type="text"
+                pInputText
+                placeholder="{{ 'shared.dropdown.typeHere' | translate }}"
+            />
+
+            <button class="p-inputgroup-addon dropdown-icon-search-radius" (click)="onLoad()">
+                <i class="pi pi-search"></i>
+            </button>
+        </div>
+    </ng-template>
+
+</p-select>
+
+<p-multiSelect
+    optionLabel="label" 
+    optionValue="value" 
+    [options]="options" 
+    [filter]="allowFilter"
+    [placeholder]="placeholder | translate"
+    [emptyMessage]="noResultsMessage | translate"
+    [showHeader]="options.length > 1"
+    [disabled]="disabled"
+    [formControl]="formControl"
+    (onChange)="onSelectOption($event.value)"
+    appendTo="body"
+    *ngIf='multi'
+    [style]="style"
+    (onPanelShow)="onOverlayShow()"
+    class="w-100"
+    >
+
+    <ng-template let-selectedItems pTemplate="selectedItems">
+        {{ getDisplayValue() }}
+    </ng-template>
+
+    <ng-template *ngIf="allowCustomFilter" pTemplate="filter" let-options="options">
+        <div class="p-inputgroup">
+            <input
+                [(ngModel)]="searchValue"
+                class="form-control dropdown-input-search-radius"
+                type="text"
+                pInputText
+                placeholder="{{ 'shared.dropdown.typeHere' | translate }}"
+            />
+
+            <button class="p-inputgroup-addon dropdown-icon-search-radius" (click)="onLoad()">
+                <i class="pi pi-search"></i>
+            </button>
+        </div>
+    </ng-template>
+</p-multiSelect>
+
+<!-- <form-error *ngIf="required" [isValid]="formControl.valid ? true : formControl.touched" [message]="getErrorMessage()" /> -->

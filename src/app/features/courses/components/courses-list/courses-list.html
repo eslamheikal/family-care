@@ -1,0 +1,13 @@
+<card-container [title]="'courses.all' | translate" [addBtn]="permissionAccess.canAdd.course" (onAdd)="showDialog = true">
+    <grid [pagedRows]="courses" (onLazyLoad)="loadCourses($event)" [columns]="columns" [pageSize]="10"
+        [paginator]="true" [showFilters]="true" 
+        [allowDelete]="permissionAccess.canDelete.course" (onDelete)="onDelete($event)" 
+        [allowActivate]="permissionAccess.canActivate.course" (onActivate)="onActivate($event)" 
+        [allowDeactivate]="permissionAccess.canDeactivate.course" (onDeactivate)="onDeactivate($event)" 
+        [allowView]="permissionAccess.canView.courseProfile" (onView)="onView($event)"
+        [hasIsActive]="true" />
+</card-container>
+
+
+<app-course-form [showDialog]="showDialog" [course]="course" (onSave)="loadCourses(queryParams)"
+    (onCancel)="showDialog = false" *ngIf="permissionAccess.canAdd.course || permissionAccess.canEdit.course"/>

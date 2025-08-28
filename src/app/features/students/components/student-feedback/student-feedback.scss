@@ -1,0 +1,53 @@
+.tab-section-container {
+  overflow: auto;
+  max-height: 40rem;
+  padding: .5rem;
+
+  // Custom scrollbar styling
+  &::-webkit-scrollbar {
+    height: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+
+  // Show scrollbar on hover
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 123, 255, 0.3);
+    }
+  }
+
+  // Firefox scrollbar styling
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+
+  &:hover {
+    scrollbar-color: #8a8888 transparent;
+  }
+
+}
+
+.feedback-list {
+
+  .no-feedback {
+    .p-card {
+      border: 1px solid var(--surface-border);
+      background-color: var(--surface-card);
+
+      .text-muted {
+        color: var(--text-color-secondary) !important;
+      }
+    }
+  }
+
+}

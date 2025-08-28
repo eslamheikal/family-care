@@ -1,0 +1,29 @@
+<div class="monthly-schedule-pdf-template" #pdfContent>
+
+  <pdf-template-header
+    [title]="title || ('schedules.monthlySchedule' | translate) + ' - ' + getMonthName() + ' ' + year" />
+
+  <!-- Schedule Tables -->
+  <div class="schedule-tables-pdf" *ngIf="hasSchedules()">
+    <div class="day-schedule" *ngFor="let day of getUniqueDays()">
+      <h3 class="day-title">{{ getDayName(day) }}</h3>
+
+      <div class="print-table"> 
+        <app-table [columns]="monthlyTableColumns" [rows]="getSchedulesByDay(day)"
+        *ngIf="getSchedulesByDay(day).length > 0" />
+      </div>
+
+      <no-data *ngIf="getSchedulesByDay(day).length === 0" [icon]="'fas fa-calendar-alt'"
+        [text]="'shared.noData.noDailySchedule' | translate" />
+
+    </div>
+  </div>
+
+  <!-- No Schedule Message -->
+   <no-data *ngIf="!hasSchedules()" [icon]="'fas fa-calendar-alt'" [text]="'schedules.noSchedules' | translate" />
+
+   <br />
+
+  <!-- Footer -->
+  <pdf-template-footer />
+</div>

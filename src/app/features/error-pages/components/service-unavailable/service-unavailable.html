@@ -1,0 +1,21 @@
+<div class="error-page">
+    <div class="error-container">
+        <div class="error-icon">
+            <i class="pi pi-exclamation-triangle"></i>
+        </div>
+
+        <div class="error-content">
+            <h1 class="error-code">503</h1>
+            <h2 class="error-title">{{ 'errorPages.serviceUnavailable.title' | translate }}</h2>
+            <p class="error-message">{{ 'errorPages.serviceUnavailable.message' | translate }}</p>
+
+            <div class="error-actions">
+
+                <button pButton type="button" [label]="'errorPages.notFound.goHome' | translate" icon="fas fa-home"
+                    class="p-button-primary" (click)="goHome()">
+                </button>
+                
+            </div>
+        </div>
+    </div>
+</div>

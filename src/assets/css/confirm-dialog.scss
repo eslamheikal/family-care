@@ -1,0 +1,76 @@
+// Confirmation Dialog Styles - Override PrimeNG defaults
+.p-confirmdialog {
+
+    .p-dialog-content {
+        flex-direction: column;
+        padding: 31px 60px;
+        border-radius: 5px;
+        text-align: center;
+        gap: 4.5rem !important;
+    }
+
+    .p-dialog-header {
+        display: none;
+    }
+
+    .p-dialog-content .pi {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+        font-size: 5rem;
+        color: wheat;
+        margin-right: 45px;
+    }
+
+    .p-confirmdialog-message {
+        margin-top: 0;
+        margin-bottom: .5rem;
+        font-weight: 500;
+        line-height: 1.2;
+        color: var(--bs-heading-color);
+        font-size: 1.25rem;
+    }
+
+    .p-dialog-footer {
+        justify-content: center;
+        padding-bottom: 28px;
+        direction: ltr;
+        align-items: center;
+    }
+    
+    // Override PrimeNG button styles to use only Bootstrap classes
+    .p-confirmdialog-accept-button,
+    .p-confirmdialog-reject-button {
+        border: none !important;
+        border-radius: 4px !important;
+        font-weight: 500 !important;
+        transition: all 0.2s ease !important;
+        font-size: 1rem !important;
+        
+        &:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+    }
+    
+    .p-confirmdialog-accept-button {
+        background-color: #dc3545 !important;
+        color: white !important;
+        padding: 0.5rem 1.75rem !important;
+        
+        &:hover {
+            background-color: #c82333 !important;
+        }
+    }
+    
+    .p-confirmdialog-reject-button {
+        background-color: #6c757d !important;
+        color: white !important;
+        padding: .375rem .75rem;
+        padding-right: 1rem !important;
+        padding-left: 1rem !important;
+
+        &:hover {
+            background-color: #5a6268 !important;
+        }
+    }
+} 

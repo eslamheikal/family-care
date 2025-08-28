@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "learning_center": {
+    "tahil": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -35,13 +35,13 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/primeicons/primeicons.css",
               "src/assets/css/styles.scss",
-              "src/assets/css/styles-ar.scss",
-              "src/assets/css/theme.scss"
+              "src/assets/css/theme.scss",
+              "src/assets/css/custom-style.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "src/assets/scripts/navbar.js"
+              "src/assets/scripts/main.js"
             ]
           },
           "configurations": {
@@ -72,10 +72,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "learning_center:build:production"
+              "buildTarget": "tahil:build:production"
             },
             "development": {
-              "buildTarget": "learning_center:build:development"
+              "buildTarget": "tahil:build:development"
             }
           },
           "defaultConfiguration": "development"

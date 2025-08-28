@@ -1,180 +1,110 @@
-# Angular Admin Template
+# Tahil - Learning Center Management System
 
-A modern, feature-rich Angular 20 admin dashboard template built with PrimeNG components and Bootstrap 5. This template provides a solid foundation for building enterprise-level admin applications with a clean, responsive design and comprehensive UI components.
+A modern Angular-based learning center management application built with Angular, featuring a comprehensive UI component library and Arabic language support.
 
-![Alt Text](src/assets/images/home-template.png)
+## 🚀 Core Functionality
+- **UI Controls Module**: Comprehensive component showcase and testing
+- **Responsive Layout**: Header, sidebar navigation, and footer components
+- **Arabic Language Support**: RTL layout and Arabic text support
+- **Loading Management**: Custom loader service with configurable states
+- **Notification System**: Integrated notification component
 
-## 🚀 Features
-
-- **Modern Angular 20** - Built with the latest Angular framework
-- **PrimeNG Integration** - Rich UI components library
-- **Bootstrap 5** - Responsive CSS framework
-- **RTL Support** - Arabic language support with RTL layout
-- **Modular Architecture** - Well-organized component structure
-- **Reusable Components** - Grid, Cards, Buttons, Dropdowns, and more
-- **Loading States** - Integrated loading service with ngx-ui-loader
-- **Responsive Design** - Mobile-first approach
-- **FontAwesome Icons** - Comprehensive icon library
+## 🛠️ Technology Stack
+- **Framework**: Angular 20.1.1
+- **UI Library**: PrimeNG 20.0.0
+- **CSS Framework**: Bootstrap 5.1.3
+- **Icons**: FontAwesome 5.15.1, PrimeIcons 7.0.0
+- **Loading**: ngx-ui-loader 13.0.0
+- **Language**: TypeScript 5.8.2
+- **Styling**: SCSS
+- **Utilities**: jQuery 3.6.0, RxJS 7.8.0
 
 ## 📁 Project Structure
 
 ```
 src/
 ├── app/
-│   ├── layout/                 # Layout components
-│   │   ├── header/            # Top navigation bar
-│   │   ├── sidenav/           # Side navigation menu
-│   │   ├── footer/            # Footer component
-│   │   ├── notification/      # Notification system
-│   │   └── select-language/   # Language selector
-│   ├── modules/
-│   │   ├── dashboard/         # Dashboard module
-│   │   ├── ui-controls/       # UI Components showcase
-│   │   ├── administration/    # Admin features
-│   │   └── shared/           # Shared components & services
-│   │       ├── components/   # Reusable UI components
-│   │       ├── buttons/      # Button components
-│   │       ├── services/     # Shared services
-│   │       ├── models/       # Data models
-│   │       ├── enums/        # TypeScript enums
-│   │       └── props/        # Component props interfaces
-│   └── assets/
-│       ├── css/              # Global styles
-│       ├── fonts/            # Custom fonts
-│       ├── icons/            # Icon assets
-│       └── images/           # Image assets
+│   ├── layout/                # Layout components
+│   ├── modules/               
+│   │   ├── dashboard/         # Dashboard functionality
+│   │   ├── course/            # Courses feature
+│   │   ├── ui-controls/       # UI component showcase & testing
+│   │   └── shared/            
+│   │       ├── components/    # Reusable UI components
+│   │       ├── buttons/       # Action button components
+│   │       ├── services/      # Shared services
+│   │       ├── models/        # Data models & interfaces
+│   │       ├── enums/         # Shared Component enums
+│   │       └── props/         # Shared Component properties
+│   ├── app.config.ts          # Application configuration
+│   ├── app.routes.ts          # Routing configuration
+│   └── app.ts                 # Root application component
+├── assets/
+│   ├── css/                   # Global styles
+│   │   ├── styles.scss        # Main styles
+│   │   ├── styles-ar.scss     # Arabic RTL styles
+│   │   └── theme.scss         # Theme configuration
+│   ├── fonts/                 # Custom fonts
+│   ├── icons/                 # Application icons
+│   ├── images/                # Static images & logos
+│   └── scripts/               # Custom JavaScript
 ```
-
-## 🛠️ Prerequisites
-
-Before running this project, make sure you have the following installed:
-
-- **Node.js** (version 18 or higher)
-- **npm** or **yarn** package manager
-- **Angular CLI** (version 20.1.1 or higher)
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
+### Prerequisites
+- Node.js (version 18 or higher)
+- npm or yarn package manager
+- Angular CLI 20.1.1
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd tahil
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm start
+   # or
+   ng serve
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:4200/` to view the application.
+
+## 🏗️ Development
+
+### Available Scripts
 
 ```bash
-git clone <repository-url>
-cd angular-template
-```
-
-### 2. Install Dependencies
-
-```bash
-npm install
-```
-
-### 3. Start Development Server
-
-```bash
+# Development server
+npm start
 ng serve
-```
 
-Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Build for production
+npm run build
+ng build
 
-## 📦 Available Scripts
+# Build with watch mode
+npm run watch
+ng build --watch --configuration development
 
-- `npm start` - Start the development server
-- `npm run build` - Build the project for production
-- `npm run watch` - Build the project in watch mode
-- `npm test` - Run unit tests
-- `ng generate component component-name` - Generate a new component
-
-## 🎨 UI Components
-
-The template includes a comprehensive set of reusable components:
-
-### Core Components
-- **Grid** - Advanced data table with sorting, filtering, and pagination
-- **Card Container** - Flexible card layout component
-- **Progress Bar** - Customizable progress indicators
-- **Switch** - Toggle switch component
-- **Dropdown** - Enhanced dropdown with search and filtering
-
-### Button Components
-- **Add Button** - Primary action button
-- **Save Button** - Form submission button
-- **Cancel Button** - Secondary action button
-
-### Layout Components
-- **Header** - Top navigation with notifications and language selector
-- **Sidebar** - Collapsible navigation menu
-- **Footer** - Application footer
-- **Delete Confirmation** - Modal confirmation dialog
-
-## 🔧 Configuration
-
-### Angular Configuration
-The project uses Angular 20 with the following key configurations:
-- Standalone components architecture
-- Modern routing system
-- SCSS for styling
-- TypeScript strict mode
-
-### Dependencies
-- **@angular/common**: ^20.1.0
-- **@angular/core**: ^20.1.0
-- **@angular/forms**: ^20.1.0
-- **@angular/router**: ^20.1.0
-- **primeng**: ^20.0.0
-- **bootstrap**: ^5.1.3
-- **ngx-ui-loader**: ^13.0.0
-
-## 🎯 Key Features
-
-### Grid System
-The template includes a powerful grid component with:
-- Server-side pagination
-- Column sorting
-- Advanced filtering
-- Row actions (view, edit, delete)
-- Custom column types (text, image, etc.)
-- Responsive design
-
-### Layout System
-- Responsive sidebar navigation
-- Header with notifications
-- Footer component
-- Language selection support
-- RTL layout support for Arabic
-
-### Services
-- **ProductService** - Sample data service
-- **LoaderService** - Global loading state management
-
-## 🧪 Testing
-
-Run the unit tests:
-
-```bash
+# Run unit tests
+npm test
 ng test
 ```
 
-## 📦 Building for Production
+### Code Scaffolding
 
-To build the project for production:
-
-```bash
-ng build
-```
-
-The build artifacts will be stored in the `dist/` directory.
-
-## 🌐 Browser Support
-
-This template supports all modern browsers:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## 📝 Code Scaffolding
-
-Angular CLI provides powerful code generation tools:
+Generate new components, services, or other Angular artifacts:
 
 ```bash
 # Generate a new component
@@ -190,30 +120,51 @@ ng generate module module-name
 ng generate --help
 ```
 
-## 🤝 Contributing
+## 🎨 Shared UI Components
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+### Data Grid
+- Sortable columns with multiple data types
+- Text filtering capabilities
+- Pagination support with configurable page sizes
+- Action buttons (View, Edit, Delete) per row
+- Customizable column configurations
+- Color-coded status indicators
+
+### Form Controls
+- **Dropdown**: Configurable select component with search
+- **Switch**: Toggle component with custom styling
+- **Progress Bar**: Loading and progress indicators
+
+### Action Buttons
+- **Add Button**: Primary action button with icon support
+- **Save Button**: Form submission with loading states
+- **Cancel Button**: Secondary action with confirmation
+
+### Layout Components
+- **Card Container**: Content wrapper with header/footer
+- **Delete Confirmation**: Modal dialog with customizable messages
+- **Header/Sidebar/Footer**: Responsive layout structure
+
+## 🌐 Internationalization
+
+The application supports Arabic language with:
+- **RTL (Right-to-Left) layout support**: Complete layout mirroring
+- **Arabic text and labels**: Localized content throughout
+- **Custom Arabic fonts**: DINNextLTArabic font family
+- **Language selection component**: Dynamic language switching
+- **Arabic-specific styling**: Dedicated SCSS file for RTL support
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🆘 Support
 
 For support and questions:
 - Check the [Angular documentation](https://angular.dev/)
-- Review the [PrimeNG documentation](https://primeng.org/)
+- Review [PrimeNG documentation](https://primeng.org/)
 - Open an issue in the repository
-
-## 🔄 Version History
-
-- **v1.0.0** - Initial release with Angular 20 and PrimeNG integration
-- Features: Grid system, layout components, RTL support, responsive design
 
 ---
 
-**Built with ❤️ using Angular 20 and PrimeNG**
+**Tahil** - Empowering learning centers with modern web technology.

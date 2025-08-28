@@ -1,0 +1,220 @@
+.calendar-navigation {
+  .navigation-buttons {
+    .btn {
+      min-width: 80px;
+    }
+  }
+
+  .view-switcher {
+    .btn {
+      min-width: 60px;
+    }
+  }
+}
+
+// Responsive design for mobile
+@media (max-width: 768px) {
+  .calendar-navigation {
+    .d-flex {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .navigation-buttons,
+    .view-switcher {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.calendar-views {
+  overflow-x: auto; // Enable horizontal scrolling only
+  overflow-y: hidden; // Disable vertical scrolling
+  min-width: 30rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  zoom: 0.9;
+
+
+  // Ensure calendar content has minimum width for horizontal scrolling
+  mwl-calendar-month-view,
+  mwl-calendar-week-view,
+  mwl-calendar-day-view {
+    min-width: 800px; // Minimum width to trigger horizontal scroll
+    width: 100%;
+  }
+
+  // Specific styling for month view
+  mwl-calendar-month-view {
+    .cal-month-view {
+      min-width: 800px;
+    }
+  }
+
+  // Specific styling for week view
+  mwl-calendar-week-view {
+    .cal-week-view {
+      min-width: 800px;
+    }
+  }
+
+  // Specific styling for day view
+  mwl-calendar-day-view {
+    .cal-day-view {
+      min-width: 800px;
+    }
+  }
+
+  div {
+    min-width: 800px;
+  }
+}
+
+// Responsive adjustments for calendar views
+@media (max-width: 768px) {
+  .calendar-views {
+    min-width: 100%;
+
+    mwl-calendar-month-view,
+    mwl-calendar-week-view,
+    mwl-calendar-day-view {
+      min-width: 600px; // Smaller minimum width for tablets
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .calendar-views {
+
+    mwl-calendar-month-view,
+    mwl-calendar-week-view,
+    mwl-calendar-day-view {
+      min-width: 500px; // Even smaller minimum width for mobile
+    }
+  }
+}
+
+::ng-deep .cal-day-view {
+  .cal-events-container {
+    .cal-event {
+      direction: rtl;
+    }
+  }
+
+  .cal-event-actions {
+    display: block !important;
+  }
+
+  .cal-event span {
+    color: #fff !important;
+    font-size: 16px !important;
+  }
+
+  .cal-event span:hover {
+    color: #000 !important;
+    font-weight: 600 !important;
+  }
+
+  a.cal-event-action {
+    margin-left: 10px;
+    color: #fff !important;
+  }
+
+  a.cal-event-action:hover {
+    background-color: transparent !important;
+    color: #000 !important;
+  }
+}
+
+::ng-deep .cal-week-view {
+
+  .cal-time-events {
+    height: 75vh !important;
+    overflow: auto !important;
+  }
+
+  .cal-day-headers {
+    padding-right: 18px;
+    padding-left: 70px;
+  }
+
+  .cal-day-columns:first-child {
+    padding-right: 17px;
+  }
+
+  .cal-event span {
+    color: #fff !important;
+  }
+
+  // Hide the date (month) information below day names in weekly view
+  .cal-header .cal-cell-row .cal-cell {
+    .cal-cell-inner {
+
+      // Hide any additional date information that might be displayed
+      >div:not(:first-child) {
+        display: none !important;
+      }
+    }
+  }
+
+  // Alternative approach: Hide specific date elements
+  .cal-day-headers .cal-header .cal-cell-inner {
+
+    // Keep only the first line (day name) and hide the rest
+    >*:not(:first-child) {
+      display: none !important;
+    }
+  }
+
+  .cal-ends-within-day .cal-event {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .cal-event-actions {
+    display: none;
+  }
+
+}
+
+::ng-deep .cal-month-view {
+  .cal-open-day-events {
+    div[dragactiveclass="cal-drag-active"] {
+      margin-bottom: 10px !important;
+      padding-bottom: 10px !important;
+      border-bottom: 1px solid #676666 !important;
+
+      .cal-event-title:hover {
+        text-decoration: none !important;
+        color: #000 !important;
+        font-weight: 600 !important;
+      }
+
+    }
+
+    div[dragactiveclass="cal-drag-active"]:last-child {
+      margin-bottom: 0px !important;
+      padding-bottom: 0px !important;
+      border-bottom: none !important;
+    }
+
+    .cal-event-actions {
+      float: right;
+      margin-left: 15px;
+      margin-right: 0px;
+
+      a.cal-event-action {
+        margin-left: 10px;
+        color: #fff !important;
+      }
+
+      a.cal-event-action:hover {
+        background-color: transparent !important;
+        color: #000 !important;
+      }
+    }
+  }
+}

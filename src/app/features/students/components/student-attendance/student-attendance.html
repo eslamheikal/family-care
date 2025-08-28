@@ -1,0 +1,85 @@
+<div class="student-attendance-container">
+
+    <div class="d-flex justify-content-between">
+        <h5>{{ 'shared.tabs.attendance' | translate }}</h5>
+
+        <pdf-year-month-btns [selectedYear]="selectedYear" [selectedMonth]="selectedMonth"
+            [showPdfBtn]="permissionService.canExport.exportStudentAttendancePdf"
+            [showYearSelect]="permissionService.canExport.exportStudentAttendancePdf"
+            [showMonthSelect]="permissionService.canExport.exportStudentAttendancePdf" (onExport)="exportToPdf()"
+            (onYearChanged)="onYearChange($event)" (onMonthChanged)="onMonthChange($event.month)" />
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4 mt-2 pt-2">
+        <div class="col-lg-3 col-md-4 col-6 mb-3">
+            <div class="stat-card">
+                <div class="stat-value">
+                    <h3 class="text-total">{{ total }}</h3>
+                </div>
+                <p>{{ 'shared.labels.total' | translate }}</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-6 mb-3">
+            <div class="stat-card">
+                <div class="stat-value">
+                    <h3 class="text-present">{{ present }}</h3>
+                </div>
+                <p>{{ 'attendanceStatus.present' | translate }}</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-6 mb-3">
+            <div class="stat-card">
+                <div class="stat-value">
+                    <h3 class="text-absent">{{ absent }}</h3>
+                </div>
+                <p>{{ 'attendanceStatus.absent' | translate }}</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-6 mb-3">
+            <div class="stat-card">
+                <div class="stat-value">
+                    <h3 class="text-late">{{ late }}</h3>
+                </div>
+                <p>{{ 'attendanceStatus.late' | translate }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="chart-container" *ngIf="!showDailyAttendance">
+        <line-chart [dataSet]="dataSet" [xLabel]="'shared.labels.month' | translate"
+            [yLabel]="'shared.labels.numberOfSessions' | translate" [tooltipLabel]="buildTooltipLabel"></line-chart>
+    </div>
+
+    <div *ngIf="showDailyAttendance">
+
+        <div class="tab-section-container auto-hover-scroll">
+            <div class="tab-overflow-auto" *ngIf="dailyAttendanceData.length > 0">
+                <app-table [columns]="attendaceColumns" [rows]="dailyAttendanceData" />
+            </div>
+        </div>
+
+        <no-data *ngIf="dailyAttendanceData.length === 0" [icon]="'fas fa-calendar-alt'"
+            [text]="'shared.noData.noAttendances' | translate" />
+
+    </div>
+    <!-- Hidden PDF Template -->
+    <div class="print-pdf-template-hidden">
+
+        <attendance-monthly-pdf-template [title]="getReportTitle()" [monthlyAttendanceData]="monthlyAttendanceData"
+            [selectedYear]="selectedYear" />
+
+    </div>
+
+    <div class="print-pdf-template-hidden">
+
+        <attendace-daily-pdf-template [title]="getReportTitle()" [dailyAttendanceData]="dailyAttendanceData"
+            [selectedYear]="selectedYear" [selectedMonth]="selectedMonth" />
+
+    </div>
+
+</div>

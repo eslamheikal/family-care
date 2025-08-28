@@ -1,0 +1,213 @@
+<card-container [title]="'attendance.recordAttendance' | translate">
+
+    <div class="attendance-form-content">
+
+        <div class="pdf-export-btn">
+            <pdf-icon-btn [showOutline]="true" (click)="exportToPdf()" *ngIf="canExportPdf" />
+        </div>
+
+        <div *ngIf="attendanceDisplay.courseName">
+            <div class="session-info-container">
+                <div class="session-info d-flex gap-2">
+                    <p class="text-muted">
+                        <i class="fas fa-door-open"></i> {{ attendanceDisplay.roomName || 'Sample Room' }}
+                    </p> |
+                    <p class="text-muted">
+                        <i class="fa fa-users"></i> {{ attendanceDisplay.groupName || 'Sample Group' }}
+                    </p> |
+                    <p class="text-muted">
+                        <i class="fas fa-book-reader"></i> {{attendanceDisplay.courseName || 'Sample Course' }}
+                    </p> |
+                    <p class="text-muted">
+                        <i class="fas fa-calendar-alt"></i> {{ attendanceDisplay.sessionDate}}
+                    </p> |
+                    <p class="text-muted">
+                        <i class="fa fa-clock"></i> {{ attendanceDisplay.startTime || '09:00' }} - {{
+                        attendanceDisplay.endTime || '10:00'
+                        }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="attendance-table">
+                <form [formGroup]="attendanceForm">
+
+                    <p-table stripedRows rowHover [value]="getFormControlArray().controls" [paginator]="false"
+                        [scrollable]="true" scrollHeight="400px">
+
+                        <ng-template pTemplate="header">
+                            <tr>
+
+                                <th style="min-width: 15rem;">{{ 'attendance.table.studentName' | translate }}</th>
+
+                                <th style="min-width: 15rem;">{{ 'shared.labels.notes' | translate }}</th>
+
+                                <th style="width: 10rem;">
+                                    <div class="attendance-actions">
+                                        <button class="btn btn-sm btn-success px-2 py-1" (click)="markAllPresent()"
+                                            *ngIf="canRecordAttendance">
+                                            <i class="fa fa-check"></i> {{ 'shared.labels.markAllPresent' |
+                                            translate
+                                            }}
+                                        </button>
+                                        <button class="btn btn-sm btn-warning px-2 py-1" (click)="markAllLate()"
+                                            *ngIf="canRecordAttendance">
+                                            <i class="fa fa-clock"></i> {{ 'shared.labels.markAllLate' | translate
+                                            }}
+                                        </button>
+                                        <button class="btn btn-sm btn-danger px-2 py-1" (click)="markAllAbsent()"
+                                            *ngIf="canRecordAttendance">
+                                            <i class="fa fa-times"></i> {{ 'shared.labels.markAllAbsent' |
+                                            translate }}
+                                        </button>
+                                    </div>
+                                </th>
+
+                            </tr>
+                        </ng-template>
+
+                        <ng-template pTemplate="body" let-record>
+                            <tr [formGroup]="record">
+
+                                <td>
+                                    <a [routerLink]="['/students', record.studentId]" target="_blank"
+                                        *ngIf="permissionService.canView.studentProfile">
+                                        {{ record.get('studentName')?.value }}
+                                    </a>
+
+                                    <span *ngIf="!permissionService.canView.studentProfile">
+                                        {{ record.get('studentName')?.value }}
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <input type="text" class="form-control form-control-sm" formControlName="note"
+                                        [placeholder]="'shared.labels.notesPlaceholder' | translate"
+                                        [disabled]="!canRecordAttendance" [readOnly]="!canRecordAttendance">
+                                </td>
+
+                                <td>
+                                    <div class="attendance-radio-group">
+
+                                        <div class="form-check">
+                                            <p-radioButton [value]="AttendanceStatus.Present" formControlName="status"
+                                                name="attendance_{{record.get('studentId')?.value}}"
+                                                [disabled]="!canRecordAttendance"
+                                                inputId="present-{{ record.get('studentId')?.value }}" />
+                                            <label class="form-check-label text-success"
+                                                for="present-{{ record.get('studentId')?.value }}">
+                                                {{ 'attendanceStatus.present' | translate }}
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <p-radioButton [value]="AttendanceStatus.Late" formControlName="status"
+                                                name="attendance_{{record.get('studentId')?.value}}"
+                                                [disabled]="!canRecordAttendance"
+                                                inputId="late-{{ record.get('studentId')?.value }}" />
+
+                                            <label class="form-check-label text-warning"
+                                                for="late-{{ record.get('studentId')?.value }}">
+                                                {{ 'attendanceStatus.late' | translate }}
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <p-radioButton [value]="AttendanceStatus.Absent" formControlName="status"
+                                                name="attendance_{{record.get('studentId')?.value}}"
+                                                [disabled]="!canRecordAttendance"
+                                                inputId="absent-{{ record.get('studentId')?.value }}" />
+
+                                            <label class="form-check-label text-danger"
+                                                for="absent-{{ record.get('studentId')?.value }}">
+                                                {{ 'attendanceStatus.absent' | translate }}
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </ng-template>
+
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="3" class="text-center">
+                                    {{ 'attendance.table.noStudents' | translate }}
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+
+                </form>
+            </div>
+
+            <div class="attendance-summary-container mt-3">
+                <div class="attendance-summary">
+
+                    <div class="summary-item">
+                        <span class="label">{{ 'attendance.summary.total' | translate }}:</span>
+                        <span class="value">{{ totalStudents }}</span>
+                    </div>
+
+                    <div class="summary-item">
+                        <span class="label">{{ 'attendanceStatus.present' | translate }}:</span>
+                        <span class="value text-success">{{ presentStudents }}</span>
+                    </div>
+
+                    <div class="summary-item">
+                        <span class="label">{{ 'attendanceStatus.late' | translate }}:</span>
+                        <span class="value text-warning">{{ lateStudents }}</span>
+                    </div>
+
+                    <div class="summary-item">
+                        <span class="label">{{ 'attendanceStatus.absent' | translate }}:</span>
+                        <span class="value text-danger">{{ absentStudents }}</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-actions actions-buttons-save-cancel mt-4">
+
+                <button class="btn btn-sm btn-outline-info" style="width: 8rem !important;"
+                    *ngIf="permission.canMarkCompleted" (click)="onMarkCompleted()">
+                    <i class="fa fa-check"></i>
+                    {{ 'sessions.actions.markCompleted' | translate }}
+                </button>
+
+                <span *ngIf="permission.canMarkCompleted">
+                    &nbsp;
+                </span>
+
+                <button class="btn btn-sm btn-outline-warning" style="width: 8rem !important;"
+                    *ngIf="permission.canReschedule" (click)="rescheduleSession()">
+                    <i class="fa fa-calendar-plus"></i>
+                    {{ 'sessions.actions.reschedule' | translate }}
+                </button>
+
+                <span *ngIf="permission.canReschedule">&nbsp;</span>
+
+                <save-btn type="submit" (click)="onSave()" *ngIf="canRecordAttendance" />
+                <span *ngIf="canRecordAttendance">&nbsp;</span>
+
+                <cancel-btn type="button" (click)="onCancel()" />
+            </div>
+
+        </div>
+
+        <div *ngIf="getFormControlArray().controls.length === 0" class="text-center p-4">
+            <i class="fa fa-users"></i>
+            <p>{{ 'attendance.table.noStudents' | translate }}</p>
+        </div>
+    </div>
+
+    <!-- Hidden PDF Template for Export -->
+    <div class="print-pdf-template-hidden">
+        <attendance-pdf-template [attendanceDisplay]="attendanceDisplay"
+            [attendancesArray]="attendancesArray" [totalStudents]="totalStudents" [presentStudents]="presentStudents"
+            [lateStudents]="lateStudents" [absentStudents]="absentStudents">
+        </attendance-pdf-template>
+    </div>
+
+</card-container>

@@ -1,0 +1,10 @@
+<dialog-buttons [header]="'students.all' | translate" [showDialog]="showDialog" [showSaveButton]="true"
+    (onSave)="save()" (onCancel)="cancel()" width="25rem" [saveDisabled]="!studentsForm.valid">
+
+    <form [formGroup]="studentsForm" (ngSubmit)="save()">
+
+        <dropdown [label]="'shared.labels.name' | translate" [allowFilter]="true" [multi]="true" [options]="studentsOptions" [formControl]="getFormControl('students')" />
+
+    </form>
+
+</dialog-buttons>

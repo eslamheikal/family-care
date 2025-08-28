@@ -1,0 +1,19 @@
+<div class="student-attendance-pdf-template" #pdfContent>
+    <!-- Header -->
+    <pdf-template-header [title]="title" />
+
+    <!-- Feedback Section -->
+    <div class="feedback-breakdown-pdf">
+      <h3 class="breakdown-title">{{ 'shared.tabs.teacherFeedback' | translate }}</h3>
+      
+      <div class="print-table">
+        <app-table [columns]="feedbackTableColumns" [rows]="feedbacks" *ngIf="feedbacks && feedbacks.length > 0" />
+      </div>
+
+      <no-data *ngIf="feedbacks && feedbacks.length === 0" [icon]="'fas fa-comments'" [text]="'shared.labels.noFeedbackAvailable' | translate" />
+      
+    </div>
+
+    <!-- Footer -->
+    <pdf-template-footer />
+</div>

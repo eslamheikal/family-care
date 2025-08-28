@@ -1,0 +1,50 @@
+<div class="table-container auto-hover-scroll">
+
+  <table class="app-table table-striped table-hover">
+
+    <thead>
+      <tr>
+        @for (column of columns; track column.field) {
+          @if (!column.show) {
+          <th [ngClass]="{'text-center': column.type === 'number' || column.type === 'boolean'}">{{ column.title | translate }}</th>
+          }
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (row of rows; track row.id) {
+      <tr class="class-row">
+        @for (column of columns; track column.field) {
+        @if (!column.show) {
+        <td [ngSwitch]="column.type">
+          <span *ngSwitchCase="'text'" 
+          [ngClass]="{'clickable-text': column.onClick }"
+            (click)="column.onClick ? column.onClick(row) : null" >
+            {{ row[column.field] }}
+          </span>
+          
+          <div *ngSwitchCase="'number'"  [class.clickable-text]="column.onClick"
+          (click)="column.onClick ? column.onClick(row) : null" class="text-center">{{ row[column.field] || 0}}</div>
+          
+          <div *ngSwitchCase="'time'" [class.clickable-text]="column.onClick"
+          (click)="column.onClick ? column.onClick(row) : null">{{ getTime(row) }}</div>
+
+          <div *ngSwitchCase="'date'" [class.clickable-text]="column.onClick"
+          (click)="column.onClick ? column.onClick(row) : null">{{ getDate(row[column.field]) }}</div>
+
+          <div *ngSwitchCase="'boolean'" [class.clickable-text]="column.onClick"
+          (click)="column.onClick ? column.onClick(row) : null" class="text-center">
+            <div class="td-status-checkbox" [class.checked]="row[column.field]"></div>
+          </div>
+
+        </td>
+        }
+        }
+      </tr>
+      }
+    </tbody>
+
+  </table>
+
+</div>

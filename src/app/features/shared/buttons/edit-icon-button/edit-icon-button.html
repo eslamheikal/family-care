@@ -1,0 +1,9 @@
+<button *ngIf="!showOutline" [pTooltip]="'shared.buttons.edit' | translate" tooltipPosition="top" class="btn px-1 grid-btn" [disabled]="disabled" (click)="onEditClick()" >
+    <i class="fa fa-edit text-secondary"></i>
+</button>
+
+<button *ngIf="showOutline" [pTooltip]="'shared.buttons.edit' | translate" tooltipPosition="top" 
+class="btn btn-sm btn-outline-secondary" (click)="onEditClick()">
+    <i class="fa fa-edit"></i>
+    <span class="me-1" *ngIf="showText">{{ 'shared.buttons.edit' | translate }}</span>
+</button>

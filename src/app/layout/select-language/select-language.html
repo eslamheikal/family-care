@@ -1,9 +1,9 @@
 <li class="nav-item dropdown noti-dropdown language-drop mx-1">
-    <a href="#" class="dropdown-toggle nav-link header-nav-list">
+    <a href="javascript:void(0)" class="nav-link header-nav-list" (click)="setLang('ar')" *ngIf="!langIsAr">
         <img src="assets/icons/eg.png" width="20">
     </a>
 
-    <!-- <a href="#" class="dropdown-toggle nav-link header-nav-list">
+    <a href="javascript:void(0)" class="nav-link header-nav-list" (click)="setLang('en')" *ngIf="langIsAr">
         <img src="assets/icons/us.png" width="20">
-    </a> -->
+    </a>
 </li>

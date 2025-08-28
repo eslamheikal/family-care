@@ -1,0 +1,8 @@
+::ng-deep .p-datepicker-timeonly {
+    padding: 0px !important;
+
+    button.p-datepicker-increment-button,
+    button.p-datepicker-decrement-button {
+        padding: 0px !important;
+    }
+}

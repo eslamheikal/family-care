@@ -1,0 +1,135 @@
+.student-attendance-container {
+
+  // Statistics Cards
+  .stat-card {
+    padding: .5rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    background: white;
+    border: 1px solid #e0e0e0;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat-value {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    p {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 0;
+      margin-top: 0.15rem;
+      color: #666;
+    }
+
+    // Total card
+    &:has(.text-total) {
+      border-left: 4px solid #2196F3;
+
+      h3 {
+        color: #2196F3;
+      }
+    }
+
+    // Present card
+    &:has(.text-present) {
+      border-left: 4px solid #4CAF50;
+
+      h3 {
+        color: #4CAF50;
+      }
+    }
+
+    // Absent card
+    &:has(.text-absent) {
+      border-left: 4px solid #F44336;
+
+      h3 {
+        color: #F44336;
+      }
+    }
+
+    // Late card
+    &:has(.text-late) {
+      border-left: 4px solid #FF9800;
+
+      h3 {
+        color: #FF9800;
+      }
+    }
+  }
+
+  // Chart Card
+  .chart-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    ::ng-deep .p-card-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 12px 12px 0 0;
+      padding: 1.5rem;
+
+      h5 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+    }
+
+    ::ng-deep .p-card-body {
+      padding: 2rem;
+    }
+  }
+
+  .chart-container {
+    height: 400px;
+    width: 100%;
+  }
+
+  // Responsive Design
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .stat-card {
+      padding: 0.75rem;
+
+      .stat-value {
+        gap: 0.4rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+
+    .chart-container {
+      height: 300px;
+    }
+  }
+}

@@ -1,3 +1,8 @@
+@use "./confirm-dialog.scss";
+
+// Angular Calendar CSS
+@import "../../../node_modules/angular-calendar/css/angular-calendar.css";
+
 html {
     height: 100%;
 }
@@ -1091,7 +1096,7 @@ button.bg-success:hover {
 
 .bg-info,
 .badge-info {
-    background-color: #009efb !important;
+    background-color: var(--button-outline-info-color) !important;
 }
 
 .pro-bg-info,
@@ -1161,7 +1166,7 @@ button.bg-danger:hover {
 
 .text-info,
 .dropdown-menu>li>a.text-info {
-    color: #009efb !important;
+    color: var(--button-outline-info-color) !important;
 }
 
 .text-warning,
@@ -1291,8 +1296,8 @@ button.bg-danger:hover {
 }
 
 .btn-info {
-    background-color: #009efb;
-    border: 1px solid #009efb;
+    background-color: var(--button-outline-info-color);
+    border: 1px solid var(--button-outline-info-color);
 }
 
 .btn-info:hover,
@@ -1333,8 +1338,8 @@ button.bg-danger:hover {
 
 .btn-info.disabled,
 .btn-info:disabled {
-    background-color: #009efb;
-    border-color: #009efb;
+    background-color: var(--button-outline-info-color);
+    border-color: var(--button-outline-info-color);
     color: #fff;
 }
 
@@ -1495,13 +1500,6 @@ button.bg-danger:hover {
     background-color: transparent;
 }
 
-.btn-outline-primary:not(:disabled):not(.disabled):active,
-.btn-outline-primary:not(:disabled):not(.disabled).active,
-.show>.btn-outline-primary.dropdown-toggle {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .show>.btn-outline-primary.dropdown-toggle:focus {
@@ -1529,13 +1527,6 @@ button.bg-danger:hover {
     background-color: transparent;
 }
 
-.btn-outline-success:not(:disabled):not(.disabled):active,
-.btn-outline-success:not(:disabled):not(.disabled).active,
-.show>.btn-outline-success.dropdown-toggle {
-    background-color: #7bb13c;
-    border-color: #7bb13c;
-}
-
 .btn-outline-success:not(:disabled):not(.disabled):active:focus,
 .btn-outline-success:not(:disabled):not(.disabled).active:focus,
 .show>.btn-outline-success.dropdown-toggle:focus {
@@ -1543,14 +1534,8 @@ button.bg-danger:hover {
 }
 
 .btn-outline-info {
-    color: #009efb;
-    border-color: #009efb;
-}
-
-.btn-outline-info:hover {
-    color: #fff;
-    background-color: #009efb;
-    border-color: #009efb;
+    color: var(--button-outline-info-color);
+    border-color: var(--button-outline-info-color);
 }
 
 .btn-outline-info:focus,
@@ -1561,14 +1546,7 @@ button.bg-danger:hover {
 .btn-outline-info.disabled,
 .btn-outline-info:disabled {
     background-color: transparent;
-    color: #009efb;
-}
-
-.btn-outline-info:not(:disabled):not(.disabled):active,
-.btn-outline-info:not(:disabled):not(.disabled).active,
-.show>.btn-outline-info.dropdown-toggle {
-    background-color: #009efb;
-    border-color: #009efb;
+    color: var(--button-outline-info-color);
 }
 
 .btn-outline-info:not(:disabled):not(.disabled):active:focus,
@@ -1657,6 +1635,13 @@ button.bg-danger:hover {
 .btn-outline-light:disabled {
     color: #ababab;
 }
+
+.btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
+.show>.btn-outline-secondary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
 
 .pagination>.active>a,
 .pagination>.active>a:focus,
@@ -3145,17 +3130,6 @@ footer p {
     position: relative;
 }
 
-.login-wrapper .loginbox .login-right .login-right-wrap .form-group label {
-    font-size: 13px;
-    color: #ababab;
-    font-weight: 500;
-    position: absolute;
-    top: -10px;
-    left: 10px;
-    background: #fff;
-    margin-bottom: 0;
-    padding: 0 5px;
-}
 
 .login-danger,
 .star-red {
@@ -4485,7 +4459,7 @@ table.table-inbox tbody tr.checked {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .views-personal {
@@ -4494,9 +4468,10 @@ table.table-inbox tbody tr.checked {
 
 .views-personal h5 {
     color: gray;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     margin-bottom: 0;
+    margin-top: 2px;
 }
 
 .views-personal h4 {
@@ -4691,7 +4666,7 @@ table.table-inbox tbody tr.checked {
 }
 
 .students-up-files label.file-upload {
-    position: relative;
+    // position: relative;
     overflow: hidden;
 }
 
@@ -5309,7 +5284,7 @@ table.table-inbox tbody tr.checked {
     margin-bottom: 10px;
     margin-right: 10px;
     color: #fff;
-    background: #009efb;
+    background: var(--button-outline-info-color);
 }
 
 .dash-widget1 .dash-btn .btn:last-child {
@@ -5317,18 +5292,18 @@ table.table-inbox tbody tr.checked {
 }
 
 .dash-widget1 .dash-btn .btn:hover {
-    color: #009efb;
+    color: var(--button-outline-info-color);
     background: 0 0;
 }
 
 .dash-widget1 .dash-btn .btn-border {
-    color: #009efb;
+    color: var(--button-outline-info-color);
     background: 0 0;
 }
 
 .dash-widget1 .dash-btn .btn-border:hover {
     color: #fff;
-    background: #009efb;
+    background: var(--button-outline-info-color);
 }
 
 .view-link {
@@ -10176,6 +10151,7 @@ body[data-layout-mode="dark"] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs
         -webkit-transition: all 0.4s ease;
         -moz-transition: all 0.4s ease;
         transition: all 0.4s ease;
+        margin-top: 15px;
     }
 
     .user-menu.nav>li>a {

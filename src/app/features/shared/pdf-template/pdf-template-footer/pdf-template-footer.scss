@@ -1,0 +1,32 @@
+.pdf-footer {
+
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .export-info {
+        text-align: left !important;
+    
+        .info-line {
+            width: 150px;
+            height: 1px;
+            background-color: #333;
+            margin: 0 auto 8px auto;
+        }
+    
+        .info-label {
+            font-size: 10px;
+            color: #666;
+            font-style: italic;
+        }
+
+    }
+
+    .export-by {
+        font-size: 10px;
+        color: #666;
+        text-align: center;
+        margin-top: 5px;
+    }
+}

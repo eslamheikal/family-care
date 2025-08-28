@@ -1,0 +1,335 @@
+{
+    "welcome": "Welcome to the app",
+    "appName": "Misk Care",
+    "profile": "Profile",
+    "logout": "Logout",
+    "auth": {
+        "loginTitle": "Welcome to Misk Care",
+        "login": "Login",
+        "username": "User Name",
+        "password": "Password",
+        "register": "Register",
+        "forgotPassword": "Forgot Password?",
+        "rememberMe": "Remember Me",
+        "forgetPasswordTitle": "Forgot Password",
+        "forgetPasswordbtn": "Send",
+        "backToLogin": "Back to Login",
+        "loginSuccess": "Login successful",
+        "loginError": "Login failed. Please check your credentials.",
+        "forgetPasswordSuccess": "An email has been sent to reset your password"
+    },
+    "userRole": {
+        "admin": "Admin",
+        "teacher": "Teacher",
+        "student": "Student",
+        "parent": "Parent",
+        "employee": "Employee"
+    },
+    "gender": {
+        "male": "Male",
+        "female": "Female"
+    },
+    "days": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
+    },
+    "months": {
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
+    },
+    "performance": {
+        "excellent": "Excellent",
+        "good": "Good",
+        "average": "Average",
+        "belowAverage": "Below Average",
+        "poor": "Poor"
+    },
+    "toast": {
+        "success": "Success",
+        "info": "Info",
+        "warning": "Warning",
+        "error": "Error",
+        "generalError": "Something went wrong"
+    },
+    "sidebar": {
+        "mainMenu": "Main Menu",
+        "dashboard": "Dashboard",
+        "attendance": "Attendance",
+        "settings": "Settings"
+    },
+    "shared": {
+        "grid": {
+            "searchBy": "Search by",
+            "clearFilter": "Clear Filter",
+            "noData": "No data available",
+            "delete": "Delete",
+            "edit": "Edit",
+            "view": "View"
+        },
+        "buttons": {
+            "save": "Save",
+            "cancel": "Cancel",
+            "add": "Add",
+            "delete": "Delete",
+            "edit": "Edit",
+            "view": "View",
+            "download": "Download",
+            "activate": "Activate",
+            "deactivate": "Deactivate",
+            "refresh": "Refresh",
+            "search": "Search",
+            "exportPdf": "PDF"
+        },
+        "dialogs": {
+            "deleteConfirmation": "Are you sure you want to delete this item?",
+            "activateConfirmation": "Are you sure you want to activate this item?",
+            "deactivateConfirmation": "Are you sure you want to deactivate this item?",
+            "printConfirmation": "Are you sure you want to print this item?",
+            "downloadConfirmation": "Are you sure you want to download this item?",
+            "viewConfirmation": "Are you sure you want to view this item?",
+            "editConfirmation": "Are you sure you want to edit this item?",
+            "changeImageConfirmation": "Are you sure you want to change the profile image?",
+            "unsavedChanges": "Are you sure you want to leave without saving your changes?",
+            "backConfirmation": "Are you sure you want to go back?",
+            "yes": "Yes",
+            "no": "No"
+        },
+        "labels": {
+            "name": "Name",
+            "gender": "Gender",
+            "phoneNumber": "Phone Number",
+            "email": "Email",
+            "password": "Password",
+            "confirmPassword": "Confirm Password",
+            "birthDate": "Birth Date",
+            "joinedDate": "Joined Date",
+            "description": "Description",
+            "capacity": "Student Capacity",
+            "numberOfStudents": "Number of Students",
+            "numberOfTeachers": "Number of Teachers",
+            "capacityStatus": "Capacity Status",
+            "capacityPercentage": "Capacity Percentage",
+            "status": "Status",
+            "years": "Years",
+            "year": "Year",
+            "day": "Day",
+            "date": "Date",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "startTime": "Start Time",
+            "endTime": "End Time",
+            "notes": "Notes",
+            "notesPlaceholder": "Add notes...",
+            "course": "Course",
+            "group": "Group",
+            "room": "Room",
+            "studentName": "Student Name",
+            "studentCode": "Student Code",
+            "teacherCode": "Teacher Code",
+            "coursesNumber": "Number of Courses",
+            "time": "Time",
+            "total": "Total",
+            "exportedOn": "Exported On",
+            "printedOn": "Printed On",
+            "attendancePercentage": "Attendance Percentage",
+            "month": "Month",
+            "numberOfSessions": "Number of Sessions",
+            "dailyAttendance": "Daily Attendance",
+            "education": "Education",
+            "qualifications": "Qualifications",
+            "experience": "Experience",
+            "teacherSignature": "Teacher Signature",
+            "dateSigned": "Date Signed",
+            "comingSoon": "More details coming soon...",
+            "allMonths": "All Months",
+            "dailySchedule": "Daily Schedule",
+            "comment": "Comment",
+            "attendanceReport": "Attendance Report",
+            "attendanceSummary": "Attendance Summary",
+            "monthlyBreakdown": "Monthly Breakdown",
+            "performanceAnalysis": "Performance Analysis",
+            "bestMonth": "Best Month",
+            "worstMonth": "Worst Month",
+            "overallPerformance": "Overall Performance",
+            "markAllPresent": "All",
+            "markAllLate": "All",
+            "markAllAbsent": "All",
+            "salary": "Salary",
+            "monthly": "Monthly",
+            "daily": "Daily"
+        },
+        "placeholders": {
+            "selectMonthPlaceholder": "Select Month",
+            "selectYearPlaceholder": "Select Year"
+        },
+        "validation": {
+            "passwordMismatch": "Password and confirm password do not match",
+            "requiredDropdown": "Please select {{field}} from the list",
+            "minLength": "{{field}} must be longer than {{length}} characters",
+            "emailInvalid": "{{field}} must be a valid email",
+            "required": "{{field}} is required"
+        },
+        "dropdown": {
+            "selectHere": "Select here",
+            "noResults": "No results found",
+            "all": "All",
+            "itemsCount": "{{count}} items",
+            "typeHere": "Type here"
+        },
+        "switch": {
+            "yes": "Yes",
+            "no": "No"
+        },
+        "timePicker": {
+            "selectTime": "Select time"
+        },
+        "fileUpload": {
+            "chooseFile": "Choose file"
+        },
+        "datePicker": {
+            "selectDate": "Select date"
+        },
+        "badges": {
+            "full": "Full",
+            "almostFull": "Almost Full",
+            "halfFull": "Half Full",
+            "available": "Available",
+            "active": "Active",
+            "inactive": "Inactive"
+        },
+        "table": {
+            "showing": "Showing",
+            "to": "to",
+            "of": "of",
+            "entries": "entries",
+            "noData": "No data available"
+        },
+        "noData": {
+            "noQualifications": "No qualifications",
+            "noExperience": "No experience",
+            "noCourses": "No courses",
+            "noGroups": "No groups",
+            "noStudents": "No students",
+            "noAttachments": "No attachments",
+            "noTeachers": "No teachers",
+            "noWeeklySchedule": "No weekly schedule",
+            "noAttendances": "No attendances",
+            "noClasses": "No classes scheduled for this day",
+            "noDailySchedule": "No schedule available currently",
+            "noFeedback": "No feedback",
+            "noFinances": "No finances"
+        },
+        "messages": {
+            "savedSuccessfully": "Saved successfully",
+            "updatedSuccessfully": "Updated successfully",
+            "deletedSuccessfully": "Deleted successfully",
+            "qualificationsSaveSuccess": "Qualifications saved successfully",
+            "experienceSaveSuccess": "Experience saved successfully",
+            "attachmentUploadSuccess": "Attachment uploaded successfully"
+        },
+        "pdf": {
+            "success": "PDF exported successfully",
+            "error": {
+                "general": "Error exporting PDF",
+                "noContent": "No content available for PDF export"
+            }
+        },
+        "tabs": {
+            "qualifications": "Qualifications",
+            "schedule": "Schedule",
+            "education": "Education",
+            "courses": "Courses",
+            "groups": "Groups",
+            "students": "Students",
+            "personalInfo": "Personal Info",
+            "attachments": "Attachments",
+            "attendance": "Attendance",
+            "teacherFeedback": "Feedback",
+            "finances": "Finances"
+        }
+    },
+    "validation": {
+        "passwordMismatch": "Password and confirm password do not match",
+        "requiredDropdown": "Please select {{field}} from the list",
+        "minLength": "{{field}} must be longer than {{length}} characters",
+        "emailInvalid": "{{field}} must be a valid email",
+        "required": "{{field}} is required"
+    },
+    "families": {
+        "all": "Families",
+        "one": "Family",
+        "formTitle": "Family Data",
+        "familyName": "Family Name",
+        "saveSuccess": "Family data saved successfully",
+        "updateSuccess": "Family data updated successfully",
+        "activateSuccess": "Family data activated successfully",
+        "deactivateSuccess": "Family data deactivated successfully",
+        "deleteSuccess": "Family data deleted successfully"
+    },
+    "errorPages": {
+        "notFound": {
+            "title": "Page Not Found",
+            "message": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+            "goHome": "Go to Home",
+            "goBack": "Go Back"
+        },
+        "accessDenied": {
+            "title": "Access Denied",
+            "message": "You don't have permission to access this page. Please contact your administrator if you believe this is an error.",
+            "goHome": "Go to Home",
+            "goBack": "Go Back",
+            "contactAdmin": "Contact Admin",
+            "contactAdminMessage": "Please contact your system administrator for access permissions."
+        },
+        "serverError": {
+            "title": "Server Error",
+            "message": "Something went wrong on our end. We're working to fix the problem. Please try again later.",
+            "retry": "Try Again",
+            "goHome": "Go to Home",
+            "contactSupport": "Contact Support",
+            "contactSupportMessage": "Please contact technical support for assistance."
+        },
+        "serviceUnavailable": {
+            "title": "Service Unavailable",
+            "message": "The service is temporarily unavailable due to maintenance or high traffic. Please try again later.",
+            "retry": "Try Again",
+            "goHome": "Go to Home",
+            "contactSupport": "Contact Support",
+            "contactSupportMessage": "Please contact technical support for assistance."
+        },
+        "gatewayTimeout": {
+            "title": "Gateway Timeout",
+            "message": "The server took too long to respond. This might be due to high traffic or server issues. Please try again.",
+            "retry": "Try Again",
+            "goHome": "Go to Home",
+            "contactSupport": "Contact Support",
+            "contactSupportMessage": "Please contact technical support for assistance."
+        }
+    },
+    "calendar": {
+        "month": "Month",
+        "week": "Week",
+        "day": "Day",
+        "previous": "Previous",
+        "next": "Next",
+        "today": "Today",
+        "todaySchedule": "Today's Schedule",
+        "tomorrowSchedule": "Tomorrow's Schedule",
+        "mathClass": "Math Class"
+    }
+}

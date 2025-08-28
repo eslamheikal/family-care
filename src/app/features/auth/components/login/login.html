@@ -1,0 +1,30 @@
+<h1 class="mb-2 fs-20">{{ 'auth.loginTitle' | translate }}</h1>
+<h4 class="fs-16 mb-4">{{'auth.login' | translate}}</h4>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="form-group flex items-center gap-2 mb-2">
+        <input-label [label]="'auth.username' | translate" [required]="true"
+            [formControl]="getFormControl('username')" />
+    </div>
+
+    <div class="form-group flex items-center gap-2 mb-2">
+        <input-label [label]="'auth.password' | translate" [required]="true"
+            [formControl]="getFormControl('password')" />
+    </div>
+
+    <div class="forgotpass">
+        <div class="remember-me">
+            <label class="custom_check mr-2 mb-0 d-inline-flex remember-me">
+                <span class="remember-text">{{ 'auth.rememberMe' | translate }}</span>
+                <span>
+                    <input type="checkbox" [formControl]="getFormControl('keepLoggedIn')">
+                    <span class="checkmark"></span>
+                </span>
+            </label>
+        </div>
+        <a [routerLink]="['/auth/forgot-password']">{{ 'auth.forgotPassword' | translate }}</a>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-block" type="submit">{{ 'auth.login' | translate }}</button>
+    </div>
+</form>

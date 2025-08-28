@@ -1,0 +1,14 @@
+<card-container [title]="'teachers.all' | translate" [addBtn]="permissionService.canAdd.teacher" (onAdd)="onAdd()">
+    <grid [pagedRows]="teachers" (onLazyLoad)="loadTeachers($event)" 
+          [columns]="columns" [pageSize]="10" [paginator]="true" [showFilters]="true"
+          [allowDelete]="permissionService.canDelete.teacher" (onDelete)="onDelete($event)"
+          [allowActivate]="permissionService.canActivate.teacher" (onActivate)="onActivate($event)"
+          [allowDeactivate]="permissionService.canDeactivate.teacher"  (onDeactivate)="onDeactivate($event)"
+          [allowView]="permissionService.canView.teacherProfile" (onView)="onView($event)"
+          [hasIsActive]="true" />
+</card-container>
+
+
+<app-teacher-form [showDialog]="showDialog && permissionService.canEdit.teacher" 
+[teacher]="teacher" (onSave)="loadTeachers(queryParams)" 
+(onCancel)="showDialog = false" />

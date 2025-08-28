@@ -3,12 +3,21 @@ body {
     font-family: 'din', sans-serif !important;
 }
 
-h1, h2, h3, h4, h5, h6, p, span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
     font-family: 'din', sans-serif !important;
 }
 
 .sidebar-menu .menu-arrow:before,
-.fa, .far, .fas {
+.fa,
+.far,
+.fas {
     font-family: "font awesome 5 free" !important;
 }
 
@@ -72,7 +81,7 @@ h1, h2, h3, h4, h5, h6, p, span {
     margin-right: 55px;
 }
 
-.mini-sidebar .sidebar-menu li.active > a {
+.mini-sidebar .sidebar-menu li.active>a {
     padding-left: 15px;
     justify-content: center;
 }
@@ -116,7 +125,7 @@ h1, h2, h3, h4, h5, h6, p, span {
         right: -22px;
     }
 
-    .mini-sidebar .page-wrapper{
+    .mini-sidebar .page-wrapper {
         margin-left: 0px;
         margin-right: 78px;
     }
@@ -282,22 +291,23 @@ h1, h2, h3, h4, h5, h6, p, span {
     margin-right: 10px;
 }
 
-.local-forms label{
+.local-forms label {
     left: 0;
     right: 0;
     width: fit-content;
 }
 
-.calendar-icon:after{
+.calendar-icon:after {
     right: unset;
     left: 15px;
 }
 
-.student-profile-head .follow-btn-group .follow-btns{
+.student-profile-head .follow-btn-group .follow-btns {
     margin-right: 0;
     margin-left: 15px;
 }
-.student-personals-grp .views-personal{
+
+.student-personals-grp .views-personal {
     margin-left: 0;
     margin-right: 15px;
 }
@@ -350,7 +360,7 @@ h1, h2, h3, h4, h5, h6, p, span {
     text-align: right;
 }
 
-.login-wrapper .loginbox .login-right .forgotpass a{
+.login-wrapper .loginbox .login-right .forgotpass a {
     margin-left: unset;
     margin-right: auto;
 }
@@ -395,15 +405,17 @@ h1, h2, h3, h4, h5, h6, p, span {
     left: 7px;
     right: unset;
 }
+
 .remember-me .custom_check .checkmark {
-   
+
     left: unset;
-    right: 0;}
-   .remember-me .custom_check .remember-text 
-        {
-      
-     margin-right: 30px;
-    }
+    right: 0;
+}
+
+.remember-me .custom_check .remember-text {
+
+    margin-right: 30px;
+}
 
 
 .product-view-list .menu-item .sortable-handle {
@@ -443,12 +455,15 @@ div.dataTables_wrapper div.dataTables_filter input {
     right: -7px !important;
     left: unset !important;
 }
-.phone-input input{
+
+.phone-input input {
     text-align: right;
 }
-#country-code{margin-left: 10px;
-margin-right: unset;
-direction: ltr;
+
+#country-code {
+    margin-left: 10px;
+    margin-right: unset;
+    direction: ltr;
 }
 
 .notifications .noti-content {
@@ -462,10 +477,152 @@ direction: ltr;
 }
 
 .p-paginator {
+
     .p-paginator-first,
     .p-paginator-last,
     .p-paginator-next,
     .p-paginator-prev {
         transform: rotate(180deg) !important;
+    }
+}
+
+.p-datepicker-header,
+.p-datepicker-timeonly .p-datepicker-time-picker {
+    direction: ltr;
+}
+
+.p-fileupload-file-list {
+
+    .p-fileupload-file-actions {
+        position: absolute;
+        left: 20px !important;
+        right: auto !important;
+    }
+
+}
+
+.calendar-navigation {
+    .navigation-buttons {
+        .previous-btn i {
+            transform: rotate(180deg);
+        }
+
+        .next-btn i {
+            transform: rotate(180deg);
+        }
+    }
+
+}
+
+.cal-month-view {
+    .cal-open-day-events {
+
+        .cal-event-actions {
+            float: left !important;
+            margin-left: 0px !important;
+            margin-right: 15px !important;
+        }
+    }
+
+    .cal-days {
+        .cal-day-cell {
+            border-right: 1px solid #e1e1e1 !important;
+        }
+    }
+
+}
+
+
+.cal-week-view {
+    .cal-day-headers {
+        padding-left: 18px !important;
+        padding-right: 70px !important;
+    }
+
+    .cal-day-columns:first-child {
+        padding-left: 17px !important;
+        padding-right: 0px !important;
+    }
+
+    .cal-time-events .cal-day-column:nth-last-child(7),
+    .cal-day-headers .cal-header:nth-last-child(1) {
+        border-right: 1px solid #e1e1e1 !important;
+    }
+
+    .cal-ends-within-day .cal-event {
+        direction: rtl !important;
+    }
+
+}
+
+
+.cal-day-view {
+
+    .cal-events-container,
+    .cal-current-time-marker {
+        margin-left: 0px !important;
+        margin-right: 70px !important;
+    }
+
+    .cal-events-container {
+        .cal-event {
+            direction: ltr !important;
+        }
+    }
+
+    .cal-event-actions a {
+        margin-left: 0px !important;
+        margin-right: 10px !important;
+    }
+}
+
+
+.p-confirmdialog {
+    .p-dialog-content .pi {
+        margin-right: -50px;
+    }
+}
+
+.attendance-form-content .session-info,
+.feedback-text {
+    border-left: 4px solid #007bff;
+    border-right: unset !important;
+}
+
+.p-tablist {
+    .p-tablist-nav-button {
+        transform: rotate(180deg);
+    }
+}
+
+.attendance-form-content {
+    .pdf-export-btn {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.25rem;
+        right: unset !important;
+    }
+}
+
+.border-left-before {
+    border-left: 4px solid #2c8da3 !important;
+    border-right: unset !important;
+    border-radius: 0.275rem;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%) !important;
+
+    .avatar-overlay {
+        left: 0;
+        right: unset !important;
+    }
+}
+
+
+.card-container {
+    .schedule-calendar-pdf-export-btn {
+        left: 68px;
+        right: unset !important;
     }
 }

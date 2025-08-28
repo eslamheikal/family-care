@@ -1,0 +1,120 @@
+.attendance-pdf-template {
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  color: black;
+
+  .pdf-header {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .top-header {
+      border-bottom: 1px solid #ccc9c9;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+
+    .pdf-title {
+      font-size: 12px !important;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .session-details {
+      display: flex;
+      justify-content: space-between;
+
+      .detail-row {
+        display: flex;
+        align-items: center;
+        min-width: 200px;
+        font-size: 12px;
+        margin-bottom: 5px;
+
+        .label {
+          font-weight: bold;
+          margin-right: 8px;
+          color: #555;
+        }
+
+        .value {
+          color: #333;
+        }
+      }
+    }
+  }
+
+  .attendance-table-pdf {
+    margin-bottom: 15px;
+  }
+
+  .attendance-summary-pdf {
+    margin-bottom: 10px;
+    padding: 5px;
+    padding-bottom: 8px;
+    // border: 1px solid #333;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-evenly;
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .summary-label {
+        font-weight: bold;
+        color: #555;
+      }
+
+      .summary-value {
+        font-weight: bold;
+        color: #333;
+      }
+    }
+  }
+
+  .pdf-footer {
+    display: flex;
+    justify-content: left;
+    padding-top: 40px;
+    margin-bottom: 25px;
+
+    .teacher-signature,
+    .date-signed {
+      flex: 1;
+      text-align: center;
+
+      .signature-line {
+        width: 200px;
+        height: 1px;
+        background-color: #ccc9c9;
+        margin: 0 auto 8px auto;
+      }
+
+      .signature-label {
+        font-size: 10px;
+        color: #666;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+// Print styles
+@media print {
+  .attendance-pdf-template {
+    padding: 0;
+    margin: 0;
+
+    * {
+      -webkit-print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+  }
+}

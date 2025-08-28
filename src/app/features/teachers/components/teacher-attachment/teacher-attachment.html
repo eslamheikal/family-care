@@ -1,0 +1,26 @@
+<div class="attachment-item-container" *ngFor="let attachment of teacher.attachments">
+
+    <div class="attachment-item">
+        <div class="attachment-icon">
+            <i class="fas {{getAttachmentIcon(attachment)}}"></i>
+        </div>
+
+        <div class="attachment-name mx-3">
+            <div class="attachment-name-text">
+                {{attachment.displayName}}
+            </div>
+            <div class="attachment-name-date">
+                {{displayDate(attachment.createdOn)}}
+            </div>
+        </div>
+    </div>
+
+    <div class="attachment-controls d-flex justify-content-around">
+        <delete-icon-button [disabled]="false" *ngIf="permissionService.canEdit.teacher" (onClick)="onDeleteAttachment(attachment)"></delete-icon-button>
+        &nbsp;&nbsp;
+        <download-icon-button [disabled]="false" (onClick)="onDownloadAttachment(attachment)"></download-icon-button>
+        &nbsp;&nbsp;
+        <view-icon-button [disabled]="false" (onClick)="onViewAttachment(attachment)"></view-icon-button>
+    </div>
+
+</div>

@@ -1,0 +1,31 @@
+<p-editor [formControl]="formControl" [style]="{ height: '320px' }">
+
+    <ng-template #header>
+        <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+            
+            <button class="ql-align" value=""></button>
+            <button class="ql-align" value="center"></button>
+            <button class="ql-align" value="right"></button>
+
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+
+            <select class="ql-color"></select> <!-- 🎨 Font color -->
+            <select class="ql-background"></select>
+
+            <select class="ql-size">
+                <option value="12px">12px</option>
+                <option selected value="14px">14px</option>
+                <option value="16px">16px</option>
+                <option value="18px">18px</option>
+                <option value="24px">24px</option>
+                <option value="32px">32px</option>
+              </select>
+              
+        </span>
+    </ng-template>
+
+</p-editor>

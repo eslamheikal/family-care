@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DateHelper } from '../../core/helpers/date.helper';
 
 @Component({
   selector: 'app-footer',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './footer.scss'
 })
 export class Footer {
-  year = new Date().getFullYear();
+  year = DateHelper.getCurrentYear();
 }

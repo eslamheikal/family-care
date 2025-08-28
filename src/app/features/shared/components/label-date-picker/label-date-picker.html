@@ -1,0 +1,20 @@
+<label for="name" class="font-semibold w-24">
+    {{label}}
+    <span *ngIf="required" class="text-danger">*</span>
+</label>
+
+<p-datepicker 
+    [formControl]="formControl"
+    (onSelect)="onDateChange($event)" 
+    [disabled]="disabled"
+    (onClear)="onClear()" 
+    [iconDisplay]="'input'" 
+    [showIcon]="true" 
+    inputId="icondisplay" 
+    class="w-100"
+    [readonlyInput]="true" 
+    dateFormat="dd/mm/yy" 
+    [placeholder]="placeholder | translate" 
+    [showButtonBar]="true" 
+    [firstDayOfWeek]="6" 
+    [appendTo]="'body'" />

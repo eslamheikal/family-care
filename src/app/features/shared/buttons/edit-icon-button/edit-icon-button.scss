@@ -1,0 +1,7 @@
+button {
+    color: var(--button-outline-secondary-color) !important;
+    &:hover {
+        background-color: var(--button-outline-secondary-hover-color);
+        border-color: var(--button-outline-secondary-color);
+    }
+}

@@ -1,0 +1,163 @@
+<div class="profile-data-container">
+
+    <!-- Profile Header -->
+    <personal-header [profileHeader]="profileHeader" [isEditing]="!disablePage && permissionService.canEdit.student"
+        (uploadImage)="onUploadImage($event)">
+    </personal-header>
+
+    <div class="mt-3"></div>
+
+    <!-- Profile Tabs -->
+    <personal-tabs [tabs]="tabs" (activeTabChange)="onActiveTabChange($event)" />
+
+    <!-- Profile Content -->
+    <p-card class="profile-tabs-card">
+
+        @if(activeTab === 'shared.tabs.personalInfo') {
+        <div class="d-flex justify-content-between header-title">
+            <h5>{{ 'shared.tabs.personalInfo' | translate }}</h5>
+
+            <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.student" (click)="onEditStudent()"
+                [showOutline]="true" />
+        </div>
+
+        <div class="contact-info student-personals-grp">
+
+            <div class="personal-activity">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-user"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.name' | translate }}</h4>
+                    <h5>{{student.name}}</h5>
+                </div>
+            </div>
+
+            <div class="personal-activity" *ngIf="permissionService.canEdit.student">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-phone"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.phoneNumber' | translate }}</h4>
+                    <h5>{{student.phoneNumber}}</h5>
+                </div>
+            </div>
+
+            <div class="personal-activity">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-envelope"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.email' | translate }}</h4>
+                    <h5><a href="mailto:{{student.email}}">{{student.email}}</a></h5>
+                </div>
+            </div>
+
+            <div class="personal-activity">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-venus-mars"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.gender' | translate }}</h4>
+                    <h5 *ngIf="!disablePage">{{getGender(student.gender)}}</h5>
+                </div>
+            </div>
+
+            <div class="personal-activity" *ngIf="permissionService.canEdit.student">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-calendar-alt"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.joinedDate' | translate }}</h4>
+                    <h5 *ngIf="!disablePage">{{student.joinedDate}}</h5>
+                </div>
+            </div>
+
+            <div class="personal-activity" *ngIf="permissionService.canEdit.student">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-calendar-alt"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.birthDate' | translate }}</h4>
+                    <h5 *ngIf="!disablePage">{{student.birthDate}}</h5>
+                </div>
+            </div>
+
+        </div>
+        }
+
+        @if(activeTab === 'shared.tabs.schedule') {
+        <student-daily-schedule [student]="student" />
+        }
+
+        @if(activeTab === 'shared.tabs.attendance') {
+        <student-attendance [student]="student" [showDailyAttendance]="showDailyAttendance"
+            [monthlyAttendanceData]="monthlyAttendanceData" [dailyAttendanceData]="dailyAttendanceData"
+            (onYearChanged)="loadMonthlyAttendanceData($event)"
+            (onMonthChanged)="loadDailyAttendanceData($event.year, $event.month)" />
+        }
+
+        @if(activeTab === 'shared.tabs.teacherFeedback') {
+        <student-feedback [student]="student" />
+        }
+
+        @if(activeTab === 'shared.tabs.groups') {
+        <div class="d-flex justify-content-between header-title">
+            <h5 class="mb-2">{{ 'shared.tabs.groups' | translate }}</h5>
+        </div>
+
+        <div class="tab-section-container auto-hover-scroll" *ngIf="student.groups && student.groups.length > 0">
+            <app-table [columns]="groupsColumns" [rows]="student.groups" />
+        </div>
+
+        <no-data [icon]="'fas fa-users'" *ngIf="!student.groups || student.groups.length === 0"
+            [text]="'shared.noData.noGroups' | translate" />
+        }
+
+        @if(activeTab === 'shared.tabs.qualifications') {
+        <div class="d-flex justify-content-between header-title">
+            <h5>{{ 'shared.tabs.qualifications' | translate }}</h5>
+
+            <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.student" (click)="onEditQualification()"
+                [showOutline]="true" />
+        </div>
+
+        <div class="tab-overflow-auto" *ngIf="student.qualification && student.qualification.length > 0">
+            <div [innerHTML]="getSafeHtml(student.qualification)"></div>
+        </div>
+
+        <no-data [icon]="'fas fa-graduation-cap'" *ngIf="!student.qualification || student.qualification?.length === 0"
+            [text]="'shared.noData.noQualifications' | translate" />
+        }
+
+        @if(activeTab === 'shared.tabs.attachments') {
+        <div class="d-flex justify-content-between header-title">
+            <h5>{{ 'shared.tabs.attachments' | translate }}</h5>
+
+            <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.student" (click)="onAddUserAttachment()"
+                [showOutline]="true" />
+        </div>
+
+        <div class="tab-section-container auto-hover-scroll">
+            <div class="tab-overflow-auto" *ngIf="student.attachments && student.attachments.length > 0">
+                <app-student-attachment [student]="student" />
+            </div>
+        </div>
+
+        <no-data *ngIf="student.attachments === null || student.attachments?.length === 0" [icon]="'fas fa-paperclip'"
+            [text]="'shared.noData.noAttachments' | translate" />
+        }
+
+    </p-card>
+
+</div>
+
+
+<app-student-form [showDialog]="showEditInfoDialog" [student]="student" (onSave)="loadStudent()"
+    (onCancel)="showEditInfoDialog = false" />
+
+<app-student-qualification [showDialog]="showQualificationDialog" [student]="student" (onSave)="loadStudent()"
+    (onCancel)="showQualificationDialog = false" />
+
+<user-attachment-dialog [showDialog]="showUserAttachmentDialog" (onSave)="saveUserAttachment($event)"
+    (onCancel)="showUserAttachmentDialog = false" [userId]="student.id" />

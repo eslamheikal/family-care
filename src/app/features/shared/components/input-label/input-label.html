@@ -1,0 +1,8 @@
+<label for="name" class="font-semibold w-24">
+    {{label}}
+    <span *ngIf="required" class="text-danger">*</span>
+</label>
+
+<input pInputText [type]="type" id="name" [disabled]="disabled" [formControl]="formControl" [placeholder]="placeholder" class="flex-auto w-100" autocomplete="off" />
+
+<form-error *ngIf="shouldShowError()" [isValid]="formControl.valid ? true :  false" [message]="getErrorMessage()" />

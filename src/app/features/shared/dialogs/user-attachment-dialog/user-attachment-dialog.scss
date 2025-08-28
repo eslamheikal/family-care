@@ -1,0 +1,38 @@
+/* Hide the progress bar */
+::ng-deep .hide-progress-bar .p-progressbar {
+    display: none !important;
+}
+
+::ng-deep .p-fileupload-content {
+    padding: 0 !important;
+}
+
+::ng-deep .p-fileupload-header {
+    padding: 0 !important;
+    
+    p-button.ng-star-inserted,
+    .p-button {
+        width: 100% !important;
+    }
+}
+
+::ng-deep .p-fileupload-file-list {
+
+    .p-fileupload-file {
+        padding: 0 !important;
+        padding-top: .5rem !important;
+    }
+
+    .p-fileupload-file-actions {
+        position: absolute;
+        right: 20px;
+    }
+    
+    .p-badge-warn {
+        display: none !important;
+    }
+}
+
+::ng-deep .p-fileupload-advanced {
+    border: none !important;
+}

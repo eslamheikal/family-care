@@ -1,0 +1,18 @@
+<dialog-buttons [header]="'courses.formTitle' | translate" [showSaveButton]="true" [width]="'25rem'"
+    (onSave)="hasId() ? update() : save()" (onCancel)="cancel()" [showDialog]="showDialog"
+    [saveDisabled]="!courseForm.valid">
+
+    <form [formGroup]="courseForm" (ngSubmit)="hasId() ? update() : save()">
+        <div class="flex items-center gap-4 mb-2">
+            <input-label [label]="'shared.labels.name' | translate" [required]="true"
+                [formControl]="getFormControl('name')" />
+        </div>
+
+        <div class="flex items-center gap-4 mb-4">
+            <input-label [label]="'shared.labels.description' | translate" [required]="false"
+                [formControl]="getFormControl('description')" />
+        </div>
+
+    </form>
+
+</dialog-buttons>

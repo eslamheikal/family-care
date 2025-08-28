@@ -1,0 +1,305 @@
+.student-attendance-pdf-template {
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    color: black;
+
+    // Header Styles
+    .pdf-header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #ccc9c9;
+        padding-bottom: 20px;
+
+        .pdf-title {
+            font-size: 16px !important;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+
+            .student-name {
+                font-size: 16px !important;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+        }
+
+        .student-details {
+            margin-top: 15px;
+
+            .detail-row {
+                display: flex;
+                margin-bottom: 8px;
+                font-size: 11px;
+
+                .label {
+                    font-weight: bold;
+                    color: #555;
+                    min-width: 120px;
+                }
+
+                .value {
+                    color: #333;
+                }
+            }
+        }
+    }
+
+    // Summary Statistics
+    .attendance-summary-pdf {
+        margin-bottom: 30px;
+
+        .summary-title {
+            font-size: 14px !important;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background-color: #f5f5f5;
+            border-left: 4px solid #007bff;
+            border-radius: 5px;
+        }
+
+        .summary-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f5f5f5;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px 15px;
+
+            .summary-card {
+                text-align: center;
+                flex: 1;
+
+                .summary-value {
+                    font-size: 12px;
+                    font-weight: bold;
+                    margin-bottom: 2px;
+
+                    &.total {
+                        color: #2c3e50;
+                    }
+
+                    &.present {
+                        color: #27ae60;
+                    }
+
+                    &.absent {
+                        color: #e74c3c;
+                    }
+
+                    &.late {
+                        color: #f39c12;
+                    }
+
+                    &.percentage {
+                        color: #3498db;
+                    }
+                }
+
+                .summary-label {
+                    font-size: 9px;
+                    color: #666;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    // Monthly Breakdown Table
+    .monthly-breakdown-pdf {
+        margin-bottom: 30px;
+
+        .breakdown-title {
+            font-size: 14px !important;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background-color: #f5f5f5;
+            border-left: 4px solid #007bff;
+            border-radius: 5px;
+        }
+
+        .pdf-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #333;
+            font-size: 11px;
+            margin-bottom: 15px;
+
+            th,
+            td {
+                border: 0.5px solid #333;
+                padding: 3px 6px;
+                text-align: start !important;
+                vertical-align: middle;
+                font-size: 10px;
+            }
+
+            th {
+                background-color: #f5f5f5;
+                font-weight: bold;
+                font-size: 11px;
+                text-wrap-mode: nowrap;
+                text-align: center !important;
+            }
+
+            td {
+
+                &.present-count {
+                    text-align: center !important;
+                }
+
+                &.late-count {
+                    text-align: center !important;
+                }
+
+                &.absent-count {
+                    text-align: center !important;
+                }
+
+                &.month-total {
+                    text-align: center !important;
+                }
+
+                &.month-percentage {
+                    color: #007bff;
+                    font-weight: 600;
+                    text-align: center !important;
+                }
+            }
+        }
+    }
+
+    // Performance Analysis
+    .performance-analysis-pdf {
+        margin-bottom: 30px;
+
+        .analysis-title {
+            font-size: 14px !important;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background-color: #f5f5f5;
+            border-left: 4px solid #007bff;
+            border-radius: 5px;
+        }
+
+        .analysis-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f5f5f5;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px 15px;
+
+            .analysis-item {
+                text-align: center;
+                flex: 1;
+
+                .analysis-label {
+                    font-weight: bold;
+                    color: #555;
+                    font-size: 9px;
+                    margin-bottom: 2px;
+                }
+
+                .analysis-value {
+                    font-weight: bold;
+                    font-size: 11px;
+
+                    &.excellent {
+                        color: #27ae60;
+                    }
+
+                    &.good {
+                        color: #3498db;
+                    }
+
+                    &.average {
+                        color: #f39c12;
+                    }
+
+                    &.below-average {
+                        color: #e67e22;
+                    }
+
+                    &.poor {
+                        color: #e74c3c;
+                    }
+                }
+            }
+        }
+    }
+
+    // Footer
+
+    .pdf-footer {
+        display: flex;
+        justify-content: left;
+        padding-top: 40px;
+
+        .teacher-signature,
+        .date-signed {
+            flex: 1;
+            text-align: center;
+
+            .signature-line {
+                width: 200px;
+                height: 1px;
+                background-color: #ccc9c9;
+                margin: 0 auto 8px auto;
+            }
+
+            .signature-label {
+                font-size: 10px;
+                color: #666;
+                font-style: italic;
+            }
+        }
+    }
+
+
+    // Print-specific styles
+    @media print {
+        .student-attendance-pdf-template {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 10px !important;
+
+            .pdf-header {
+                margin-bottom: 20px !important;
+                padding-bottom: 15px !important;
+            }
+
+            .attendance-summary-pdf {
+                margin-bottom: 20px !important;
+            }
+
+            .monthly-breakdown-pdf {
+                margin-bottom: 20px !important;
+
+                .pdf-table {
+                    font-size: 10px !important;
+
+                    th,
+                    td {
+                        padding: 6px !important;
+                        font-size: 9px !important;
+                    }
+                }
+            }
+
+            .performance-analysis-pdf {
+                margin-bottom: 20px !important;
+            }
+        }
+    }
+}

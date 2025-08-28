@@ -1,0 +1,44 @@
+<div class="sessions-list-pdf-template" #pdfContent>
+  <!-- Header -->
+  <pdf-template-header [title]="'sessions.list.title' | translate" />
+
+  <!-- Sessions Table -->
+  <div class="sessions-table-pdf" *ngIf="sessions.length > 0">
+    <div class="print-table">
+      <app-table [columns]="sessionColumns" [rows]="sessions" />
+    </div>
+  </div>
+
+  <no-data *ngIf="sessions.length === 0" [icon]="'fas fa-calendar-times'" [text]="'sessions.list.noSessions' | translate" />
+
+  <!-- No Sessions Message -->
+  <div class="no-sessions-pdf" *ngIf="sessions.length === 0">
+    <div class="no-sessions-content">
+      <i class="fa fa-calendar-times"></i>
+      <p>{{ 'sessions.list.noSessions' | translate }}</p>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="sessions-summary-pdf" *ngIf="sessions.length > 0">
+    <div class="summary-row">
+      <span class="summary-label">{{ 'shared.labels.total' | translate }} {{ 'sessions.all' | translate }}: &nbsp;</span>
+      <span class="summary-value">{{ sessions.length }}</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">{{ 'sessionStatus.scheduled' | translate }}: &nbsp;</span>
+      <span class="summary-value">{{ 0 }}</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">{{ 'sessionStatus.completed' | translate }}: &nbsp;</span>
+      <span class="summary-value">{{ 0 }}</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-label">{{ 'sessionStatus.cancelled' | translate }}: &nbsp;</span>
+      <span class="summary-value">{{ 0 }}</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <pdf-template-footer />
+</div> 

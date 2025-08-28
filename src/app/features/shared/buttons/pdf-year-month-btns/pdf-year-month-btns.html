@@ -1,0 +1,27 @@
+<div class="d-flex align-items-center gap-2">
+    <select *ngIf="showMonthSelect" dir="ltr" class="form-select"
+        [(ngModel)]="selectedMonth" (change)="onMonthChange()" style="width: 100px; padding: 4px 8px;">
+
+        <!-- Placeholder option -->
+        <option [value]="0" selected class="text-muted">
+            {{ 'shared.placeholders.selectMonthPlaceholder' | translate }}
+        </option>
+
+        <option *ngFor="let month of months" [value]="month.value">{{ month.label }}</option>
+    </select>
+
+    <select *ngIf="showYearSelect" dir="ltr" class="form-select"
+        [(ngModel)]="selectedYear" (change)="onYearChange()" style="width: 100px; padding: 4px 8px;">
+
+        <!-- Placeholder option -->
+        <option [value]="0" selected class="text-muted">
+            {{ 'shared.placeholders.selectYearPlaceholder' | translate }}
+        </option>
+
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+    </select>
+
+    <pdf-icon-btn
+        *ngIf="showPdfBtn"
+        [showOutline]="true" (onClick)="onExport.emit()" />
+</div>

@@ -1,0 +1,43 @@
+.attachment-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 8px;
+
+    &:hover {
+        background-color: #f0f0f0;
+        border-radius: 5px;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .attachment-item {
+        display: flex;
+        align-items: center;
+
+        .attachment-icon {
+            font-size: 30px;
+            color: #85878a;
+        }
+
+        .attachment-name {
+            font-size: 14px;
+        }
+
+        .attachment-name-text {
+            font-weight: 600;
+            color: #000;
+        }
+
+        .attachment-name-date {
+            font-size: 12px;
+            color: #85878a;
+            font-weight: 500;
+        }
+
+    }
+}

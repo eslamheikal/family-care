@@ -1,0 +1,18 @@
+<dialog-buttons [header]="'rooms.formTitle' | translate" [showSaveButton]="true" [width]="'25rem'"
+    (onSave)="hasId() ? update() : save()" (onCancel)="cancel()" [showDialog]="showDialog"
+    [saveDisabled]="!roomForm.valid">
+
+    <form [formGroup]="roomForm" (ngSubmit)="hasId() ? update() : save()">
+        <div class="flex items-center gap-4 mb-2">
+            <input-label [label]="'shared.labels.name' | translate" [required]="true"
+                [formControl]="getFormControl('name')" />
+        </div>
+
+        <div class="flex items-center gap-4 mb-4">
+            <input-label [label]="'shared.labels.capacity' | translate" [formControl]="getFormControl('capacity')"
+                type="number" />
+        </div>
+
+    </form>
+
+</dialog-buttons>

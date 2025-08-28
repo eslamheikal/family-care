@@ -1,0 +1,63 @@
+<dialog-buttons [header]="'families.formTitle' | translate" [showDialog]="showDialog" [showSaveButton]="true"
+    (onSave)="hasId() ? update() : save()" (onCancel)="cancel()" [saveDisabled]="!familyForm.valid" [width]="'45rem'">
+
+
+    <form [formGroup]="familyForm" (ngSubmit)="hasId() ? update() : save()">
+
+        <div class="row">
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'families.familyResponsible' | translate"
+                    [disabled]="!(permissionAccess.canEdit.teacherOnlyAdminOrEmployee)" [required]="true"
+                    [formControl]="getFormControl('familyResponsible')" />
+            </div>
+
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'families.familyName' | translate"
+                    [disabled]="true" [required]="true"
+                    [formControl]="getFormControl('familyName')" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <dropdown [label]="'shared.labels.gender' | translate" [required]="true" [options]="genderOptions"
+                    [formControl]="getFormControl('gender')"
+                    [disabled]="!(permissionAccess.canEdit.teacherOnlyAdminOrEmployee)" />
+            </div>
+
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <label-date-picker [label]="'shared.labels.birthDate' | translate"
+                    [disabled]="!(permissionAccess.canEdit.teacherOnlyAdminOrEmployee)"
+                    [formControl]="getFormControl('birthDate')" />
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'shared.labels.phoneNumber' | translate" 
+                    [disabled]="!(permissionAccess.canEdit.teacherOnlyAdminOrEmployee)" [required]="true"
+                    [formControl]="getFormControl('phoneNumber')" />
+            </div>
+
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'shared.labels.email' | translate"
+                    [disabled]="!(permissionAccess.canEdit.teacherOnlyAdminOrEmployee)" [required]="true"
+                    [formControl]="getFormControl('email')" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'shared.labels.password' | translate" [required]="requiredPassword"
+                    [formControl]="getFormControl('password')" />
+            </div>
+
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'shared.labels.confirmPassword' | translate" [required]="requiredPassword"
+                    [formControl]="getFormControl('confirmPassword')" />
+            </div>
+        </div>
+
+    </form>
+
+</dialog-buttons>

@@ -1,0 +1,92 @@
+<!-- Calendar Navigation -->
+<div class="calendar-navigation mb-3" *ngIf="showNavigation">
+  <div class="d-flex justify-content-between align-items-center">
+   
+    <!-- View Switcher -->
+    <div class="view-switcher" *ngIf="showViewSwitcher">
+      <button class="btn btn-primary" 
+              [class.active]="view === CalendarView.Month"
+              (click)="setView(CalendarView.Month)">
+        {{ 'calendar.month' | translate }}
+      </button>
+      <button class="btn btn-primary mx-2" 
+              [class.active]="view === CalendarView.Week"
+              (click)="setView(CalendarView.Week)">
+        {{ 'calendar.week' | translate }}
+      </button>
+      <button class="btn btn-primary" 
+              [class.active]="view === CalendarView.Day"
+              (click)="setView(CalendarView.Day)">
+        {{ 'calendar.day' | translate }}
+      </button>
+    </div>
+
+    <!-- Calendar Title selected view (Month Year) -->
+    <div class="calendar-title">
+      <h4 class="mb-0" [ngSwitch]="view">
+        <span *ngSwitchCase="CalendarView.Month">{{ getMonthViewTitle() }}</span>
+        <span *ngSwitchCase="CalendarView.Week">{{ getMonthViewTitle() }}</span>
+        <span *ngSwitchCase="CalendarView.Day">{{ getDayViewTitle() }}</span>
+      </h4>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons">
+      <button class="btn btn-outline-secondary previous-btn" (click)="previous()">
+        <i class="fas fa-chevron-left"></i> {{ 'calendar.previous' | translate }}
+      </button>
+      <button class="btn btn-outline-primary mx-2" (click)="today()">
+        {{ 'calendar.today' | translate }}
+      </button>
+      <button class="btn btn-outline-secondary next-btn" (click)="next()">
+        {{ 'calendar.next' | translate }} <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+   
+  </div>
+</div>
+
+<!-- Calendar Views -->
+<div class="calendar-views">
+  <div [ngSwitch]="view">
+
+    <ng-template #tooltipTemplate let-event="event">
+      <div tooltipPosition="top" [innerHTML]="buildTooltip(event)" class="tooltip-container" style="background-color: #555; color: #fff; padding: 10px 15px 15px 15px; border-radius: 5px;">
+      </div>
+    </ng-template>
+
+    <!-- Month View -->
+    <mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [activeDayIsOpen]="activeDayIsOpen"
+      [events]="events"
+      [weekStartsOn]="6"
+      (dayClicked)="onDayClicked($event.day)"
+      (eventClicked)="onEventClicked($event.event)"
+      [tooltipAppendToBody]="true"
+      [tooltipTemplate]="tooltipTemplate">
+    </mwl-calendar-month-view>
+
+    <!-- Week View -->
+    <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="events"
+      [weekStartsOn]="6"
+      (eventClicked)="onEventClicked($event.event)"
+      [tooltipAppendToBody]="true"
+      [tooltipTemplate]="tooltipTemplate">
+    </mwl-calendar-week-view>
+
+    <!-- Day View -->
+    <mwl-calendar-day-view
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="events"
+      (eventClicked)="onEventClicked($event.event)"
+      [tooltipAppendToBody]="true"
+      [tooltipTemplate]="tooltipTemplate">
+    </mwl-calendar-day-view>
+  </div>
+</div>

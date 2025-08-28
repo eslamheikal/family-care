@@ -1,0 +1,310 @@
+{
+    "welcome": "مرحبًا بك في التطبيق",
+    "appName": "مِسْك كَيْر",
+    "profile": "الملف الشخصي",
+    "logout": "تسجيل الخروج",
+    "auth": {
+        "loginTitle": "مرحبًا بك في مِسْك كَيْر",
+        "login": "تسجيل الدخول",
+        "username": "اسم المستخدم",
+        "password": "كلمة المرور",
+        "register": "تسجيل حساب",
+        "forgotPassword": "هل نسيت كلمة المرور؟",
+        "rememberMe": "تذكرني",
+        "forgetPasswordTitle": "نسيت كلمة المرور",
+        "forgetPasswordbtn": "إرسال",
+        "backToLogin": "العودة إلى تسجيل الدخول",
+        "loginSuccess": "تم تسجيل الدخول بنجاح",
+        "loginError": "فشل تسجيل الدخول. يرجى التحقق من بياناتك.",
+        "forgetPasswordSuccess": "تم إرسال رابط تعديل كلمة المرور إلى بريدك الإلكتروني"
+    },
+    "userRole": {
+        "admin": "مدير النظام",
+        "teacher": "مدرس",
+        "student": "طالب",
+        "parent": "ولي أمر",
+        "employee": "موظف"
+    },
+    "gender": {
+        "male": "ذكر",
+        "female": "أنثى"
+    },
+    "days": {
+        "monday": "الاثنين",
+        "tuesday": "الثلاثاء",
+        "wednesday": "الأربعاء",
+        "thursday": "الخميس",
+        "friday": "الجمعة",
+        "saturday": "السبت",
+        "sunday": "الأحد"
+    },
+    "months": {
+        "january": "يناير",
+        "february": "فبراير",
+        "march": "مارس",
+        "april": "أبريل",
+        "may": "مايو",
+        "june": "يونيو",
+        "july": "يوليو",
+        "august": "أغسطس",
+        "september": "سبتمبر",
+        "october": "أكتوبر",
+        "november": "نوفمبر",
+        "december": "ديسمبر"
+    },
+    "performance": {
+        "excellent": "ممتاز",
+        "good": "جيد",
+        "average": "متوسط",
+        "belowAverage": "أقل من المتوسط",
+        "poor": "ضعيف"
+    },
+    "toast": {
+        "success": "نجاح",
+        "info": "معلومة",
+        "warning": "تحذير",
+        "error": "خطأ",
+        "generalError": "حدث خطأ ما"
+    },
+    "sidebar": {
+        "mainMenu": "القائمة الرئيسية",
+        "dashboard": "الرئيسية",
+        "attendance": "الحضور والغياب",
+        "settings": "الإعدادات"
+    },
+    "shared": {
+        "grid": {
+            "searchBy": "بحث ب",
+            "clearFilter": "حذف الفلتر",
+            "noData": "لا توجد بيانات",
+            "delete": "حذف",
+            "edit": "تعديل",
+            "view": "عرض"
+        },
+        "buttons": {
+            "save": "حفظ",
+            "cancel": "إلغاء",
+            "add": "إضافة",
+            "delete": "حذف",
+            "edit": "تعديل",
+            "view": "عرض",
+            "download": "تحميل",
+            "activate": "تفعيل",
+            "deactivate": "تعطيل",
+            "refresh": "تحديث",
+            "search": "بحث",
+            "exportPdf": "PDF"
+        },
+        "dialogs": {
+            "deleteConfirmation": "هل أنت متأكد من حذف هذا العنصر؟",
+            "activateConfirmation": "هل أنت متأكد من تفعيل هذا العنصر؟",
+            "deactivateConfirmation": "هل أنت متأكد من تعطيل هذا العنصر؟",
+            "printConfirmation": "هل أنت متأكد من طباعة هذا العنصر؟",
+            "downloadConfirmation": "هل أنت متأكد من تحميل هذا العنصر؟",
+            "viewConfirmation": "هل أنت متأكد من عرض هذا العنصر؟",
+            "editConfirmation": "هل أنت متأكد من تعديل هذا العنصر؟",
+            "changeImageConfirmation": "هل أنت متأكد من تغيير صورة الملف الشخصي؟",
+            "unsavedChanges": "هل أنت متأكد من أنك تريد الخروج دون حفظ التغييرات؟",
+            "backConfirmation": "هل أنت متأكد من أنك تريد العودة؟",
+            "yes": "نعم",
+            "no": "لا"
+        },
+        "labels": {
+            "name": "الاسم",
+            "gender": "الجنس",
+            "phoneNumber": "رقم الهاتف",
+            "email": "البريد الإلكتروني",
+            "password": "كلمة المرور",
+            "confirmPassword": "تأكيد كلمة المرور",
+            "birthDate": "تاريخ الميلاد",
+            "joinedDate": "تاريخ الانضمام",
+            "description": "الوصف",
+            "capacity": "الكثافة الطلابية",
+            "numberOfStudents": "عدد الطلاب",
+            "numberOfTeachers": "عدد المعلمين",
+            "capacityStatus": "حالة الكثافة",
+            "capacityPercentage": "نسبة الكثافة",
+            "status": "الحالة",
+            "years": "سنة",
+            "year": "السنة",
+            "day": "اليوم",
+            "date": "التاريخ",
+            "startDate": "تاريخ البداية",
+            "endDate": "تاريخ النهاية",
+            "startTime": "وقت البداية",
+            "endTime": "وقت النهاية",
+            "notes": "ملاحظات",
+            "notesPlaceholder": "إضافة ملاحظات...",
+            "course": "المادة",
+            "group": "المجموعة",
+            "room": "الحلقة",
+            "time": "الوقت",
+            "attendancePercentage": "نسبة الحضور",
+            "month": "الشهر",
+            "dailySchedule": "الجدول اليومي",
+            "monthly": "شهري",
+            "daily": "يومي"
+        },
+        "placeholders": {
+            "selectMonthPlaceholder": "اختر الشهر",
+            "selectYearPlaceholder": "اختر السنة"
+        },
+        "validation": {
+            "passwordMismatch": "كلمة المرور وتأكيد كلمة المرور غير متطابقتين",
+            "requiredDropdown": "يجب اختيار {{field}} من القائمة",
+            "minLength": "{{field}} يجب ان يكون اطول من {{length}} حرف",
+            "emailInvalid": "{{field}} يجب ان يكون بريد إلكتروني صالح",
+            "required": "{{field}} مطلوب"
+        },
+        "dropdown": {
+            "selectHere": "اختر هنا",
+            "noResults": "لا يوجد نتائج",
+            "all": "الكل",
+            "itemsCount": "العناصر {{count}}",
+            "typeHere": "اكتب هنا"
+        },
+        "switch": {
+            "yes": "نعم",
+            "no": "لا"
+        },
+        "timePicker": {
+            "selectTime": "اختر الوقت"
+        },
+        "fileUpload": {
+            "chooseFile": "اختر ملف"
+        },
+        "datePicker": {
+            "selectDate": "اختر التاريخ"
+        },
+        "badges": {
+            "full": "ممتلئة",
+            "almostFull": "شبه ممتلئة",
+            "halfFull": "نصف ممتلئة",
+            "available": "متاحة",
+            "active": "نشط",
+            "inactive": "غير نشط"
+        },
+        "table": {
+            "showing": "عرض",
+            "to": "إلى",
+            "of": "من",
+            "entries": "عنصر",
+            "noData": "لا توجد بيانات"
+        },
+        "noData": {
+            "noQualifications": "لا يوجد مؤهلات",
+            "noExperience": "لا يوجد خبرات",
+            "noCourses": "لا يوجد دورات",
+            "noGroups": "لا يوجد مجموعات",
+            "noStudents": "لا يوجد طلاب",
+            "noAttachments": "لا يوجد مرفقات",
+            "noTeachers": "لا يوجد معلمين",
+            "noWeeklySchedule": "لا يوجد جدول أسبوعي",
+            "noAttendances": "لا يوجد حضور",
+            "noClasses": "لا يوجد مواعيد لهذا اليوم",
+            "noDailySchedule": "لا يوجد مواعيد حاليا",
+            "noFeedback": "لا يوجد ملاحظات",
+            "noFinances": "لا يوجد ماليات"
+        },
+        "messages": {
+            "savedSuccessfully": "تم الحفظ بنجاح",
+            "updatedSuccessfully": "تم التحديث بنجاح",
+            "deletedSuccessfully": "تم الحذف بنجاح",
+            "qualificationsSaveSuccess": "تم حفظ المؤهلات بنجاح",
+            "experienceSaveSuccess": "تم حفظ الخبرات بنجاح",
+            "attachmentUploadSuccess": "تم تحميل المرفق بنجاح"
+        },
+        "pdf": {
+            "success": "تم تصدير PDF بنجاح",
+            "error": {
+                "general": "خطأ في تصدير PDF",
+                "noContent": "لا يوجد محتوى لتصدير PDF"
+            }
+        },
+        "tabs": {
+            "qualifications": "المؤهلات",
+            "schedule": "المواعيد",
+            "education": "التعليم",
+            "courses": "الدورات",
+            "groups": "المجموعات",
+            "students": "الطلاب",
+            "personalInfo": "المعلومات الشخصية",
+            "attachments": "المرفقات",
+            "attendance": "الحضور",
+            "teacherFeedback": "الملاحظات",
+            "finances": "الماليات"
+        }
+    },
+    "validation": {
+        "passwordMismatch": "كلمة المرور وتأكيد كلمة المرور غير متطابقين",
+        "requiredDropdown": "يرجى اختيار {{field}} من القائمة",
+        "minLength": "{{field}} يجب أن يكون أطول من {{length}} أحرف",
+        "emailInvalid": "{{field}} يجب أن يكون بريد إلكتروني صحيح",
+        "required": "{{field}} مطلوب"
+    },
+    "families": {
+        "all": "العائلات",
+        "one": "العائلة",
+        "formTitle": "بيانات العائلة",
+        "familyName": "اسم العائلة",
+        "membersNumber": "عدد الأفراد",
+        "familyResponsible": "اسم مسئول العائلة",
+        "familyMembers": "أفراد العائلة",
+        "saveSuccess": "تم حفظ بيانات العائلة بنجاح",
+        "updateSuccess": "تم تعديل بيانات العائلة بنجاح",
+        "activateSuccess": "تم تفعيل بيانات العائلة بنجاح",
+        "deactivateSuccess": "تم تعطيل بيانات العائلة بنجاح",
+        "deleteSuccess": "تم حذف بيانات العائلة بنجاح"
+    },
+    "errorPages": {
+        "notFound": {
+            "title": "الصفحة غير موجودة",
+            "message": "الصفحة التي تبحث عنها قد تكون محذوفة أو تم تغيير اسمها أو غير متاحة مؤقتاً.",
+            "goHome": "العودة للرئيسية",
+            "goBack": "العودة للخلف"
+        },
+        "accessDenied": {
+            "title": "تم رفض الوصول",
+            "message": "ليس لديك صلاحية للوصول إلى هذه الصفحة. يرجى الاتصال بالمدير إذا كنت تعتقد أن هذا خطأ.",
+            "goHome": "العودة للرئيسية",
+            "goBack": "العودة للخلف",
+            "contactAdmin": "الاتصال بالمدير",
+            "contactAdminMessage": "يرجى الاتصال بمدير النظام للحصول على صلاحيات الوصول."
+        },
+        "serverError": {
+            "title": "خطأ في الخادم",
+            "message": "حدث خطأ من جانبنا. نحن نعمل على إصلاح المشكلة. يرجى المحاولة مرة أخرى لاحقاً.",
+            "retry": "حاول مرة أخرى",
+            "goHome": "العودة للرئيسية",
+            "contactSupport": "الاتصال بالدعم",
+            "contactSupportMessage": "يرجى الاتصال بالدعم الفني للمساعدة."
+        },
+        "serviceUnavailable": {
+            "title": "الخدمة غير متاحة",
+            "message": "الخدمة غير متاحة مؤقتاً بسبب الصيانة أو كثرة الزيارات. يرجى المحاولة مرة أخرى لاحقاً.",
+            "retry": "حاول مرة أخرى",
+            "goHome": "العودة للرئيسية",
+            "contactSupport": "الاتصال بالدعم",
+            "contactSupportMessage": "يرجى الاتصال بالدعم الفني للمساعدة."
+        },
+        "gatewayTimeout": {
+            "title": "انتهت مهلة البوابة",
+            "message": "استغرق الخادم وقتاً طويلاً للاستجابة. قد يكون هذا بسبب كثرة الزيارات أو مشاكل في الخادم. يرجى المحاولة مرة أخرى.",
+            "retry": "حاول مرة أخرى",
+            "goHome": "العودة للرئيسية",
+            "contactSupport": "الاتصال بالدعم",
+            "contactSupportMessage": "يرجى الاتصال بالدعم الفني للمساعدة."
+        }
+    },
+    "calendar": {
+        "month": "شهر",
+        "week": "أسبوع",
+        "day": "يوم",
+        "previous": "السابق",
+        "next": "التالي",
+        "today": "اليوم",
+        "todaySchedule": "جدول اليوم",
+        "tomorrowSchedule": "جدول الغد",
+        "mathClass": "حصة الرياضيات"
+    }
+}

@@ -1,0 +1,9 @@
+<button *ngIf="!showOutline" [pTooltip]="'shared.buttons.exportPdf' | translate" tooltipPosition="top" class="btn px-1 grid-btn" [disabled]="disabled" (click)="onPdfClick()" >
+    <i class="fa fa-file-pdf"></i>
+</button>
+
+<button *ngIf="showOutline" [pTooltip]="'shared.buttons.exportPdf' | translate" tooltipPosition="top" 
+class="btn btn-sm btn-outline-info" (click)="onPdfClick()">
+    <i class="fa fa-file-pdf"></i>
+    <span class="me-1" *ngIf="showText">{{ 'shared.buttons.exportPdf' | translate }}</span>
+</button>

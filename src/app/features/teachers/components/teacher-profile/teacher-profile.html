@@ -1,0 +1,229 @@
+<div class="profile-data-container">
+
+    <!-- Profile Header -->
+    <personal-header [profileHeader]="profileHeader" [isEditing]="!disablePage && permissionService.canEdit.teacher"
+        (uploadImage)="onUploadImage($event)">
+    </personal-header>
+
+    <div class="mt-3"></div>
+
+    <!-- Profile Tabs -->
+    <personal-tabs [tabs]="tabs" (activeTabChange)="onActiveTabChange($event)" />
+
+    <!-- Profile Content -->
+    <p-card class="profile-tabs-card">
+
+        @if(activeTab === 'shared.tabs.personalInfo') {
+        <div class="d-flex justify-content-between header-title">
+            <h5>{{ 'shared.tabs.personalInfo' | translate }}</h5>
+
+            <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.teacher" (click)="onEditTeacher()"
+                [showOutline]="true" />
+        </div>
+
+        <div class="contact-info teacher-personals-grp student-personals-grp">
+
+            <div class="personal-activity">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-user"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.name' | translate }}</h4>
+                    <h5>{{teacher.name}}</h5>
+                </div>
+            </div>
+
+            <div class="personal-activity" *ngIf="permissionService.canEdit.teacher">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-phone"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.phoneNumber' | translate }}</h4>
+                    <h5>{{teacher.phoneNumber}}</h5>
+                </div>
+            </div>
+
+            <div class="personal-activity">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-envelope"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.email' | translate }}</h4>
+                    <h5><a href="mailto:{{teacher.email}}">{{teacher.email}}</a></h5>
+                </div>
+            </div>
+
+            <div class="personal-activity">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-venus-mars"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.gender' | translate }}</h4>
+                    <h5 *ngIf="!disablePage">{{getGender(teacher.gender)}}</h5>
+                </div>
+            </div>
+
+            <div class="personal-activity" *ngIf="permissionService.canEdit.teacher">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-calendar-alt"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.joinedDate' | translate }}</h4>
+                    <h5 *ngIf="!disablePage">{{teacher.joinedDate}}</h5>
+                </div>
+            </div>
+
+            <div class="personal-activity" *ngIf="permissionService.canEdit.teacher">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-calendar-alt"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.birthDate' | translate }}</h4>
+                    <h5 *ngIf="!disablePage">{{teacher.birthDate}}</h5>
+                </div>
+            </div>
+
+        </div>
+        }
+
+        @if(activeTab === 'shared.tabs.schedule') {
+        <teacher-daily-schedule [teacher]="teacher" />
+        }
+
+        @if(activeTab === 'shared.tabs.groups') {
+        <div class="d-flex justify-content-between header-title">
+            <h5 class="mb-2">{{ 'shared.tabs.groups' | translate }}</h5>
+        </div>
+
+        <div class="tab-section-container auto-hover-scroll">
+            <div class="tab-overflow-auto" *ngIf="teacher.groups && teacher.groups.length > 0">
+                <app-table [columns]="groupsColumns" [rows]="teacher.groups || []" />
+            </div>
+        </div>
+
+        <no-data [icon]="'fas fa-users'" *ngIf="!teacher.groups || teacher.groups.length === 0"
+            [text]="'shared.noData.noGroups' | translate" />
+        }
+
+        @if(activeTab === 'shared.tabs.courses') {
+        <div class="d-flex justify-content-between header-title">
+            <h5>{{ 'shared.tabs.courses' | translate }}</h5>
+
+            <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.teacherCourses" (click)="onEditCourse()"
+                [showOutline]="true" />
+        </div>
+
+        <div class="tab-section-container auto-hover-scroll">
+            <div class="tab-overflow-auto" *ngIf="teacher.courses && teacher.courses.length > 0">
+                <app-table [columns]="coursesColumns" [rows]="teacher.courses || []" />
+            </div>
+        </div>
+
+        <no-data [icon]="'fas fa-book'" *ngIf="!teacher.courses || teacher.courses.length === 0"
+            [text]="'shared.noData.noCourses' | translate" />
+
+        }
+
+        @if(activeTab === 'shared.tabs.qualifications') {
+        <div class="tab-overflow-auto" *ngIf="teacher.qualification && teacher.qualification.length > 0">
+
+            <div class="d-flex justify-content-between header-title">
+                <h5>{{ 'shared.tabs.qualifications' | translate }}</h5>
+
+                <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.teacher"
+                    (click)="onEditQualification()" [showOutline]="true" />
+            </div>
+
+            <div [innerHTML]="getSafeHtml(teacher.qualification)"></div>
+
+            <br />
+
+            <div class="d-flex justify-content-between header-title">
+                <h5>{{ 'shared.labels.experience' | translate }}</h5>
+
+                <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.teacher" (click)="onEditExperience()"
+                    [showOutline]="true" />
+            </div>
+
+            <div [innerHTML]="getSafeHtml(teacher.experience)"></div>
+
+        </div>
+
+        <div *ngIf="teacher.qualification === null || teacher.qualification?.length === 0">
+
+            <div class="d-flex justify-content-between">
+                <h5>{{ 'shared.tabs.qualifications' | translate }}</h5>
+
+                <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.teacher"
+                    (click)="onEditQualification()" [showOutline]="true" />
+            </div>
+
+            <no-data [icon]="'fas fa-certificate'" [text]="'shared.noData.noQualifications' | translate" />
+        </div>
+
+        <div *ngIf="teacher.experience === null || teacher.experience?.length === 0">
+
+            <hr />
+
+            <div class="d-flex justify-content-between">
+                <h5>{{ 'shared.labels.experience' | translate }}</h5>
+
+                <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.teacher" (click)="onEditExperience()"
+                    [showOutline]="true" />
+            </div>
+
+            <no-data [icon]="'fas fa-briefcase'" [text]="'shared.noData.noExperience' | translate" />
+
+        </div>
+        }
+
+        @if(activeTab === 'shared.tabs.attachments') {
+        <div class="d-flex justify-content-between header-title">
+            <h5>{{ 'shared.tabs.attachments' | translate }}</h5>
+
+            <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.teacher" (click)="onAddUserAttachment()"
+                [showOutline]="true" />
+
+        </div>
+
+        <div class="tab-section-container auto-hover-scroll">
+            <div class="tab-overflow-auto" *ngIf="teacher.attachments && teacher.attachments.length > 0">
+                <app-teacher-attachment [teacher]="teacher" />
+            </div>
+        </div>
+
+        <no-data *ngIf="teacher.attachments === null || teacher.attachments?.length === 0" [icon]="'fas fa-paperclip'"
+            [text]="'shared.noData.noAttachments' | translate" />
+        }
+
+        @if(activeTab === 'shared.tabs.finances') {
+        <div class="d-flex justify-content-between header-title">
+            <h5>{{ 'shared.tabs.finances' | translate }}</h5>
+        </div>
+
+        <!-- <div class="tab-overflow-auto"> -->
+        <!-- </div> -->
+
+        <no-data [icon]="'fas fa-money-bill'" [text]="'shared.noData.noFinances' | translate" />
+        }
+
+    </p-card>
+
+</div>
+
+
+<app-teacher-form [showDialog]="showEditInfoDialog" [teacher]="teacher" (onSave)="loadTeacher()"
+    (onCancel)="showEditInfoDialog = false" />
+
+<app-teacher-qualification [showDialog]="showQualificationDialog" [teacher]="teacher" (onSave)="loadTeacher()"
+    (onCancel)="showQualificationDialog = false" />
+
+<app-teacher-experience [showDialog]="showExperienceDialog" [teacher]="teacher" (onSave)="loadTeacher()"
+    (onCancel)="showExperienceDialog = false" />
+
+<user-attachment-dialog [showDialog]="showUserAttachmentDialog" (onSave)="saveUserAttachment($event)"
+    (onCancel)="showUserAttachmentDialog = false" [userId]="teacher.id" />
+
+<courses-dialog [showDialog]="showEditCourseDialog" *ngIf="showEditCourseDialog"
+    [selectedCourses]="teacher.courses || []" (onCancel)="showEditCourseDialog = false"
+    (onSave)="onSaveCourses($event)" />

@@ -1,0 +1,32 @@
+<!-- Profile Header -->
+<div class="profile-header">
+    <div class="profile-avatar-section">
+        <div class="avatar-container">
+
+            <img [src]="getImageUrl(profileHeader.image)" alt="Profile Avatar" class="profile-avatar">
+
+            @if(isEditing) {
+            <div class="avatar-overlay">
+                <button class="change-avatar-btn" (click)="changeImage()">
+                    <i class="fas fa-camera"></i>
+                </button>
+
+                <input #fileInput type="file" accept="image/*" style="display: none;" (change)="onUploadImage($event)">
+            </div>
+            }
+
+        </div>
+
+        <div class="profile-basic-info">
+            <h1 class="profile-name">{{ profileHeader.fullName || '-'}}</h1>
+            <p class="profile-info">
+                <span class="profile-value">{{ profileHeader.code || 'T_000000'}}</span>
+            </p>
+            <p class="profile-info">
+                <span class="profile-value">{{ getAge(profileHeader.dateOfBirth) || '-'}}</span>
+                <span class="profile-label mx-1">{{ 'shared.labels.years' | translate }}</span>
+            </p>
+        </div>
+
+    </div>
+</div>

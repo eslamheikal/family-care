@@ -1,0 +1,13 @@
+<div class="d-flex">
+    <p-toggleSwitch [(ngModel)]="checked" [formControl]="formControl"
+        [disabled]="disabled">
+        
+        <ng-template #handle let-checked="checked">
+            <i [ngClass]="['!text-xs', 'pi', checked ? 'pi-check' : 'pi-times']"></i>
+        </ng-template>
+
+    </p-toggleSwitch>
+
+    <p class="mx-2" *ngIf="checked">{{ checkedText | translate }}</p>
+    <p class="mx-2" *ngIf="!checked">{{ unCheckedText | translate }}</p>
+</div>

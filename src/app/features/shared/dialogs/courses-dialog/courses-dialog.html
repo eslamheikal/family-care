@@ -1,0 +1,10 @@
+<dialog-buttons [header]="'courses.all' | translate" [showDialog]="showDialog" [showSaveButton]="true"
+    (onSave)="save()" (onCancel)="cancel()" width="25rem" [saveDisabled]="!coursesForm.valid">
+
+    <form [formGroup]="coursesForm" (ngSubmit)="save()">
+
+        <dropdown [label]="'courses.all' | translate" [multi]="true" [options]="coursesOptions" [formControl]="getFormControl('courses')" />
+
+    </form>
+
+</dialog-buttons>

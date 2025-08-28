@@ -1,0 +1,12 @@
+button {
+    i {
+        font-size: 1rem;
+        color: var(--button-outline-info-color);
+
+    }
+
+    &:hover {
+        border-color: var(--button-outline-info-color);
+        background-color: var(--button-outline-info-hover-color);
+    }
+}

@@ -1,0 +1,28 @@
+<card-container [title]="'schedules.all' | translate" [addBtn]="permissionService.canAdd.schedule" (onAdd)="onAdd()">
+
+  <!-- PDF Export Button -->
+  <div class="schedule-calendar-pdf-export-btn pdf-export-btn" *ngIf="permissionService.canExport.exportSchedulePdf">
+    <pdf-icon-btn (onClick)="exportToPdf()" [showOutline]="true" [showText]="false" />
+  </div>
+
+  <!-- Shared Calendar Component -->
+  <calendar [config]="calendarConfig" [activeDayIsOpen]="activeDayIsOpen" (eventClicked)="eventClicked($event)"
+    (editClicked)="editEvent($event)" (deleteClicked)="deleteEvent($event)" (nextClicked)="onNext($event)"
+    (previousClicked)="onPrev($event)" (todayClicked)="onToday($event)">
+  </calendar>
+
+</card-container>
+
+<!-- Hidden PDF Template -->
+
+<div class="print-pdf-template-hidden">
+  <monthly-schedule-pdf-template [schedules]="schedules" [month]="currentDate.getMonth() + 1"
+    [year]="currentDate.getFullYear()"
+    [title]="getReportTitle()" />
+</div>
+
+<schedule-dialog [showDialog]="showDialog" *ngIf="showDialog" [schedule]="schedule"
+  (onClose)="this.showDialog = false" />
+
+<schedule-form [showDialog]="showScheduleForm" *ngIf="showScheduleForm" [schedule]="schedule" (onSave)="onSave()"
+  (onCancel)="this.showScheduleForm = false" />

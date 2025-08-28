@@ -1,0 +1,27 @@
+<label for="timePicker" class="font-semibold w-24">
+    {{label}}
+    <span *ngIf="required" class="text-danger">*</span>
+</label>
+
+<p-datepicker 
+    id="timePicker"
+    [formControl]="formControl" 
+    (onSelect)="onTimeChange($event)" 
+    [disabled]="disabled"
+    (onClear)="onClear()" 
+    [iconDisplay]="'input'" 
+    [showIcon]="true" 
+    class="w-100 flex-auto"
+    [readonlyInput]="true" 
+    [placeholder]="placeholder | translate" 
+    [timeOnly]="true" 
+    [hourFormat]="'12'" 
+    [appendTo]="'body'">
+
+    <ng-template #inputicon let-clickCallBack="clickCallBack">
+        <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+    </ng-template>
+
+</p-datepicker>
+
+<form-error *ngIf="shouldShowError()" [isValid]="formControl.valid" [message]="getErrorMessage()" />

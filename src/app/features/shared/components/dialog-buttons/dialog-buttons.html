@@ -1,0 +1,17 @@
+<p-dialog [header]="header" [modal]="true" [(visible)]="showDialog"
+  [style]="{ width: width }" [draggable]="false" [resizable]="false">
+
+  <ng-content></ng-content>
+
+  <div class="actions-buttons-save-cancel">
+    
+    <save-btn *ngIf="showSaveButton" [disabled]="saveDisabled" (onClick)="onSaveClick()" />
+
+    <search-btn *ngIf="showSearchButton" [disabled]="searchDisabled" (onClick)="onSearchClick()" />
+
+    &nbsp;
+    <cancel-btn *ngIf="showCancelButton" (onClick)="onCancelClick()" />
+
+  </div>
+
+</p-dialog>

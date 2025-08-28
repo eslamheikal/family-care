@@ -1,0 +1,21 @@
+<div class="error-page">
+  <div class="error-container">
+    <div class="error-icon">
+      <i class="pi pi-clock"></i>
+    </div>
+
+    <div class="error-content">
+      <h1 class="error-code">504</h1>
+      <h2 class="error-title">{{ 'errorPages.gatewayTimeout.title' | translate }}</h2>
+      <p class="error-message">{{ 'errorPages.gatewayTimeout.message' | translate }}</p>
+
+      <div class="error-actions">
+
+        <button pButton type="button" [label]="'errorPages.notFound.goHome' | translate" icon="fas fa-home"
+          class="p-button-primary" (click)="goHome()">
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
