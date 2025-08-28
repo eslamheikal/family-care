@@ -1,0 +1,20 @@
+
+.btn-primary {
+    color: #fff;
+    background-color: var(--button-primary-color);
+    padding: var(--button-padding);
+}
+
+.btn-primary-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    background-color: var(--button-primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    color: #fff;
+    background-color: var(--button-primary-hover-color) !important;
+    border-color: var(--button-primary-hover-color) !important;
+}

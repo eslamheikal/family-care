@@ -1,0 +1,23 @@
+.dropdown-input-search-radius:focus,
+.multiselect-input-search-radius:focus {
+    border: 1px solid #ced4da;
+    border-right: 0px;
+    box-shadow: none;
+}
+
+.dropdown-input-search-radius,
+.multiselect-input-search-radius {
+    border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+    border-right: 0px;
+}
+
+.dropdown-icon-search-radius,
+.multiselect-icon-search-radius {
+    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+}
+
+::ng-deep .p-dropdown-panel {
+    z-index: 1050;
+    overflow-y: auto;
+}
+

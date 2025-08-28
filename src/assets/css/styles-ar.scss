@@ -1,0 +1,471 @@
+body {
+    direction: rtl;
+    font-family: 'din', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+    font-family: 'din', sans-serif !important;
+}
+
+.sidebar-menu .menu-arrow:before,
+.fa, .far, .fas {
+    font-family: "font awesome 5 free" !important;
+}
+
+.sidebar-menu .menu-arrow {
+    left: 10px;
+    right: unset;
+}
+
+.sidebar-menu .menu-arrow:before {
+    content: "\f104";
+}
+
+.sidebar-menu li a.subdrop .menu-arrow {
+    -ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.sidebar .sidebar-menu>ul>li>a span {
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+.sidebar-menu ul ul a {
+    padding: 7px 30px 7px 10px;
+}
+
+.sidebar-menu li.active>a::before {
+    left: unset;
+    right: 0px;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.sidebar {
+    left: unset;
+    right: 0;
+}
+
+.page-wrapper {
+    margin-left: 0px;
+    margin-right: 259px;
+    min-height: 738px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header .user-menu {
+    float: left;
+}
+
+.header .header-left,
+.header .menu-toggle,
+.header .top-nav-search {
+    float: right;
+}
+
+.header .top-nav-search {
+    margin-left: 0px;
+    margin-right: 55px;
+}
+
+.mini-sidebar .sidebar-menu li.active > a {
+    padding-left: 15px;
+    justify-content: center;
+}
+
+.mini-sidebar .submenu .fa-grip-horizontal {
+    margin-right: -15px;
+}
+
+.expand-menu .sidebar-menu li.active>a {
+    padding-left: 0%;
+    justify-content: right;
+}
+
+.dropdown-toggle::after {
+    margin-right: .255em;
+    margin-left: 0;
+}
+
+.user-img .user-text {
+    text-align: right;
+}
+
+.user-img {
+    margin-right: 0;
+    margin-left: 3px;
+}
+
+.language-drop .noti-content img {
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
+@media (min-width: 992px) {
+    .mini-sidebar .menu-toggle #toggle_btn {
+        left: 0;
+        right: 5px;
+    }
+
+    #toggle_btn {
+        left: 0;
+        right: -22px;
+    }
+
+    .mini-sidebar .page-wrapper{
+        margin-left: 0px;
+        margin-right: 78px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .header .mobile_btn {
+        left: unset;
+        right: 0;
+    }
+
+    .page-wrapper {
+        margin-right: 0;
+    }
+
+    .sidebar {
+        margin-right: -225px;
+    }
+
+    .slide-nav .sidebar {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    li.header-notification-dropdown {
+        margin-right: .25rem !important;
+        margin-left: -5px !important;
+    }
+
+    .header-left .logo.logo-small {
+        right: 45%;
+        left: 0;
+    }
+
+    .teacher-date-list li:last-child {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
+
+.page-sub-header {
+    justify-content: space-between;
+}
+
+.page-sub-header .breadcrumb {
+    margin-left: unset;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    float: right;
+    padding-right: 0.5rem;
+    padding-left: .5rem;
+}
+
+.chart-list-out li,
+.apexcharts-tooltip-marker,
+.star-student.table-striped tbody tr td img,
+.award-boxs {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.chart-list-out span,
+.apexcharts-legend-marker {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+.chart-list-out.student-ellips,
+.award-time-list {
+    flex: auto;
+}
+
+.activity-awards .award-time-list {
+    text-align: left;
+}
+
+.social-boxs {
+    margin-left: unset;
+    margin-right: auto;
+}
+
+.comman-shadow .view-link {
+    float: left !important;
+}
+
+.comman-shadow .lesson {
+    padding: 0 1rem;
+}
+
+.lesson .table td:last-child {
+    text-align: left;
+}
+
+.teacher-date-list i {
+    margin-left: .5rem !important;
+    margin-right: 0 !important;
+}
+
+.teacher-date-list li:last-child {
+    margin-left: 0;
+    margin-right: 12px;
+}
+
+.teacher-date-list li:first-child {
+    margin-left: 12px;
+    margin-right: 0px;
+}
+
+.event-wrapper .event-summary {
+    text-align: right;
+}
+
+.calandar-event-name {
+    padding-right: 10px;
+}
+
+.calendar-info p {
+    margin-left: 10px;
+}
+
+.calendar-box span {
+    margin-left: unset;
+    margin-right: auto;
+}
+
+.activity-feed .feed-item:before {
+    right: -7px;
+    left: 0;
+}
+
+.activity-feed .feed-item:after {
+    right: -4px;
+    left: 0;
+}
+
+.activity-feed .feed-item {
+    border-left: unset;
+    border-right: 2px solid #e4e8eb;
+    ;
+}
+
+.activity-feed .feed-item {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+.comman-shadow .steps-history {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.activity-feed .activity-btns,
+.page-header .breadcrumb {
+    margin-left: unset !important;
+    margin-right: auto;
+}
+
+.lesson-activity .views-lesson {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.local-forms label{
+    left: 0;
+    right: 0;
+    width: fit-content;
+}
+
+.calendar-icon:after{
+    right: unset;
+    left: 15px;
+}
+
+.student-profile-head .follow-btn-group .follow-btns{
+    margin-right: 0;
+    margin-left: 15px;
+}
+.student-personals-grp .views-personal{
+    margin-left: 0;
+    margin-right: 15px;
+}
+
+.page-item:first-child .page-link {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+
+.page-item:last-child .page-link {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.select2-results__option {
+    text-align: right;
+}
+
+
+.store-detail-form-btn {
+    justify-content: right !important;
+    direction: ltr;
+}
+
+.settings-form .social-icon {
+    margin-left: 6px;
+    margin-right: 0px;
+}
+
+.settings-form .trash {
+    margin-right: 12px;
+}
+
+.settings-form .fa-phone {
+    transform: rotate(0deg);
+}
+
+.tab-content .store-detail-form-btn {
+    direction: ltr;
+    justify-content: right !important;
+}
+
+.login-right-wrap,
+.login-wrapper .loginbox .login-right h1,
+.login-wrapper .loginbox .login-right .account-subtitle {
+    text-align: right;
+}
+
+.login-wrapper .loginbox .login-right .forgotpass a{
+    margin-left: unset;
+    margin-right: auto;
+}
+
+.login-right-wrap .profile-views {
+    left: 17px;
+    right: unset;
+}
+
+.login-wrapper .loginbox .login-right .login-right-wrap .form-group label {
+    right: 10px;
+    left: unset;
+}
+
+.twitter-bs-wizard .twitter-bs-wizard-nav .nav-link::after {
+    left: unset;
+}
+
+.payment__history--list:last-child {
+    margin-right: 1.5rem
+}
+
+.returnToCart {
+    margin-right: 1.5rem;
+}
+
+.alertify-notifier.ajs-right .ajs-message.ajs-visible {
+    right: 40px !important;
+    left: auto
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    text-align: right;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-right: 15px;
+    padding-left: 30px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    left: 7px;
+    right: unset;
+}
+.remember-me .custom_check .checkmark {
+   
+    left: unset;
+    right: 0;}
+   .remember-me .custom_check .remember-text 
+        {
+      
+     margin-right: 30px;
+    }
+
+
+.product-view-list .menu-item .sortable-handle {
+    margin-right: auto;
+}
+
+.product-view-list .img-tittle {
+    margin-right: 20px;
+}
+
+.product-view-list .dropdown-menu li {
+    text-align: right;
+}
+
+.btn-arrow-back {
+    transform: rotate(0deg)
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0rem;
+    margin-right: 0.5rem;
+}
+
+.orders-view-list div.dataTables_wrapper div.dataTables_filter,
+.client-view-list div.dataTables_wrapper div.dataTables_filter {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    right: unset;
+}
+
+.minicart__text {
+    padding-right: 13px;
+}
+
+.new-orders-number-icon .badge {
+    right: -7px !important;
+    left: unset !important;
+}
+.phone-input input{
+    text-align: right;
+}
+#country-code{margin-left: 10px;
+margin-right: unset;
+direction: ltr;
+}
+
+.notifications .noti-content {
+    text-align: right
+}
+
+@media (max-width: 479px) {
+    .dropdown-menu.notifications.show {
+        transform: translate3d(-40px, 50px, 0px) !important;
+    }
+}
+
+.p-paginator {
+    .p-paginator-first,
+    .p-paginator-last,
+    .p-paginator-next,
+    .p-paginator-prev {
+        transform: rotate(180deg) !important;
+    }
+}

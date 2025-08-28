@@ -1,0 +1,20 @@
+<div class="main-wrapper">
+    <app-header />
+
+    <app-sidenav />
+
+    <div class="page-wrapper">
+
+        <div class="content container-fluid mb-4">
+            <router-outlet />
+        </div>
+
+        <app-footer />
+        
+    </div>
+</div>
+
+<div class="sidebar-overlay"></div>
+<div style="position: relative">
+    <ngx-ui-loader></ngx-ui-loader>
+</div>

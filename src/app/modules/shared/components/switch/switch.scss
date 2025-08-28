@@ -1,0 +1,12 @@
+::ng-deep .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-handle {
+    color: var(--primary-color);
+}
+
+::ng-deep .p-toggleswitch .p-toggleswitch-handle i {
+    font-size: 9px !important;
+    font-weight: 700 !important;
+}
+
+::ng-deep .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-slider {
+    background-color: var(--primary-color) !important;
+}

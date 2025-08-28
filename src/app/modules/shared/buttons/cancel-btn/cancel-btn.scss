@@ -1,0 +1,14 @@
+
+.btn-outline-primary {
+    border-color: var(--button-outline-primary-border-color);
+    padding: var(--button-padding);
+    color: var(--button-outline-primary-border-color);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
+    background-color: var(--button-outline-primary-hover-color) !important;
+    color: var(--button-outline-primary-border-color) !important;
+    border-color: var(--button-outline-primary-border-color) !important;
+}
