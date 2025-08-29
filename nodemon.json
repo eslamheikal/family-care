@@ -1,0 +1,9 @@
+{
+  "watch": ["api", "local-server.ts"],
+  "ext": "ts,js,json",
+  "ignore": ["node_modules"],
+  "exec": "npx ts-node -P tsconfig.server.json local-server.ts",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

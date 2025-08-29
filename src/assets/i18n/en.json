@@ -233,6 +233,9 @@
             "mathClass": "Math Class"
         }
     },
+    "footer": {
+        "copyright": "All rights reserved"
+    },
     "errorPages": {
         "notFound": {
             "title": "Page Not Found",

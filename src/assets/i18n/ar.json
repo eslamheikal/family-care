@@ -233,6 +233,9 @@
             "mathClass": "حصة الرياضيات"
         }
     },
+    "footer": {
+        "copyright": "جميع الحقوق محفوظة"
+    },
     "errorPages": {
         "notFound": {
             "title": "الصفحة غير موجودة",
