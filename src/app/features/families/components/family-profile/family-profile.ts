@@ -117,7 +117,7 @@ export class FamilyProfile implements OnInit, OnDestroy {
   private readonly router = inject(Router);
   private readonly authService = inject(AuthService);
   private readonly genderService = inject(GenderService);
-  private readonly permissionService = inject(PermissionService);
+  public readonly permissionService = inject(PermissionService);
   //#endregion
 
   // Tab configuration
