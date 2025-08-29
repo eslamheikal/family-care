@@ -8,7 +8,6 @@ import { Family } from '../../../../core/models/family.model';
 import { QueryParamsModel } from '../../../shared/models/query-params.model';
 import { PagedList } from '../../../shared/models/paged-list.model';
 import { Subject, takeUntil } from 'rxjs';
-import { PermissionAccessService } from '../../../../core/services/permission-access.service';
 import { ConfirmService } from '../../../shared/services/confirm.serivce';
 import { Router } from '@angular/router';
 import { ToastService } from '../../../shared/services/toast.service';
@@ -19,6 +18,7 @@ import { ColumnTypeEnum } from '../../../shared/enums/column.type.enum';
 import { ColumnFilterTypeEnum } from '../../../shared/enums/column.filter.type.enum';
 import { FilterOperators } from '../../../shared/models/query-filter-params.model';
 import { FamilyForm } from "../family-form/family-form";
+import { PermissionService } from '../../../../core/authorization/permission.service';
 
 @Component({
   selector: 'app-families-list',
@@ -51,12 +51,12 @@ export class FamiliesList {
   private router = inject(Router);
   private translate = inject(TranslateService);
   private confirmService = inject(ConfirmService);
-  public permissionService = inject(PermissionAccessService);
+  public permissionService = inject(PermissionService);
   //#endregion
 
   //#region Columns
   columns: GridColumn[] = [
-    { field: 'name', apiField: 'name', title: this.translate.instant('families.familyName'), columnType: ColumnTypeEnum.text, sortable: true, filterType: ColumnFilterTypeEnum.text },
+    { field: 'familyName', apiField: 'familyName', title: this.translate.instant('families.familyName'), columnType: ColumnTypeEnum.text, sortable: true, filterType: ColumnFilterTypeEnum.text },
     { field: 'membersNumber', apiField: 'membersNumber', title: this.translate.instant('families.membersNumber'), columnType: ColumnTypeEnum.text, sortable: true, filterType: ColumnFilterTypeEnum.text },
     { field: 'joinedDate', apiField: 'joinedDate', title: this.translate.instant('shared.labels.joinedDate'), columnType: ColumnTypeEnum.date, sortable: true, filterType: ColumnFilterTypeEnum.date, filterOperator: FilterOperators.equal },
     { field: 'isActive', apiField: 'isActive', title: this.translate.instant('shared.labels.status'), columnType: ColumnTypeEnum.badge, badgeConfig: { getValue: (item: Family) => item.isActive ? this.translate.instant('shared.badges.active') : this.translate.instant('shared.badges.inactive'), getColor: (item: Family) => item.isActive ? 'green' : 'red' }   },

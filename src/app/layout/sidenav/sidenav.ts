@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { PermissionAccessService } from '../../core/services/permission-access.service';
+import { PermissionService } from '../../core/authorization/permission.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,7 +14,7 @@ import { PermissionAccessService } from '../../core/services/permission-access.s
 export class Sidenav {
 
   private router = inject(Router);
-  public permissionAccess = inject(PermissionAccessService);
+  public permissionService = inject(PermissionService);
 
   isActiveRoute(routes: string[]): boolean {
     return routes.some(route => this.router.url.startsWith(route));

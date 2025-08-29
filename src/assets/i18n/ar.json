@@ -1,44 +1,35 @@
 {
     "welcome": "مرحبًا بك في التطبيق",
     "appName": "مِسْك كَيْر",
-    "profile": "الملف الشخصي",
-    "logout": "تسجيل الخروج",
-    "auth": {
-        "loginTitle": "مرحبًا بك في مِسْك كَيْر",
-        "login": "تسجيل الدخول",
-        "username": "اسم المستخدم",
-        "password": "كلمة المرور",
-        "register": "تسجيل حساب",
-        "forgotPassword": "هل نسيت كلمة المرور؟",
-        "rememberMe": "تذكرني",
-        "forgetPasswordTitle": "نسيت كلمة المرور",
-        "forgetPasswordbtn": "إرسال",
-        "backToLogin": "العودة إلى تسجيل الدخول",
-        "loginSuccess": "تم تسجيل الدخول بنجاح",
-        "loginError": "فشل تسجيل الدخول. يرجى التحقق من بياناتك.",
-        "forgetPasswordSuccess": "تم إرسال رابط تعديل كلمة المرور إلى بريدك الإلكتروني"
-    },
+    "mainMenu": "القائمة الرئيسية",
     "userRole": {
+        "all": "الصلاحيات",
+        "one": "الصلاحية",
         "admin": "مدير النظام",
-        "teacher": "مدرس",
-        "student": "طالب",
-        "parent": "ولي أمر",
-        "employee": "موظف"
+        "employee": "موظف",
+        "familyParent": "ولي أمر",
+        "familyMember": "أفراد العائلة"
     },
     "gender": {
+        "all": "الجنس",
+        "one": "الجنس",
         "male": "ذكر",
         "female": "أنثى"
     },
     "days": {
+        "all": "الأيام",
+        "one": "اليوم",
+        "saturday": "السبت",
+        "sunday": "الأحد",
         "monday": "الاثنين",
         "tuesday": "الثلاثاء",
         "wednesday": "الأربعاء",
         "thursday": "الخميس",
-        "friday": "الجمعة",
-        "saturday": "السبت",
-        "sunday": "الأحد"
+        "friday": "الجمعة"
     },
     "months": {
+        "all": "الشهور",
+        "one": "الشهر",
         "january": "يناير",
         "february": "فبراير",
         "march": "مارس",
@@ -66,11 +57,33 @@
         "error": "خطأ",
         "generalError": "حدث خطأ ما"
     },
-    "sidebar": {
-        "mainMenu": "القائمة الرئيسية",
-        "dashboard": "الرئيسية",
-        "attendance": "الحضور والغياب",
-        "settings": "الإعدادات"
+    "familyRelations": {
+        "all": "الصلة القرابة",
+        "one": "الصلة القرابة",
+        "father": "أب",
+        "mother": "أم",
+        "son": "ابن",
+        "daughter": "ابنة",
+        "grandFather": "جد",
+        "grandMother": "جدة"
+    },
+    "visitType": {
+        "all": "نوع الفحص",
+        "one": "نوع الفحص",
+        "generalCheckup": "كشف عام",
+        "followUp": "متابعة",
+        "labTests": "تحاليل",
+        "radiology": "أشعة",
+        "surgery": "عملية",
+        "vaccination": "تطعيم",
+        "consultation": "استشارة"
+    },
+    "visitStatus": {
+        "all": "حالة الفحص",
+        "one": "حالة الفحص",
+        "pending": "قيد الانتظار",
+        "completed": "أكتمل",
+        "cancelled": "ملغي"
     },
     "shared": {
         "grid": {
@@ -111,23 +124,19 @@
         },
         "labels": {
             "name": "الاسم",
+            "age": "العمر",
             "gender": "الجنس",
             "phoneNumber": "رقم الهاتف",
             "email": "البريد الإلكتروني",
+            "username": "اسم المستخدم",
             "password": "كلمة المرور",
             "confirmPassword": "تأكيد كلمة المرور",
             "birthDate": "تاريخ الميلاد",
             "joinedDate": "تاريخ الانضمام",
             "description": "الوصف",
-            "capacity": "الكثافة الطلابية",
-            "numberOfStudents": "عدد الطلاب",
-            "numberOfTeachers": "عدد المعلمين",
-            "capacityStatus": "حالة الكثافة",
-            "capacityPercentage": "نسبة الكثافة",
             "status": "الحالة",
             "years": "سنة",
             "year": "السنة",
-            "day": "اليوم",
             "date": "التاريخ",
             "startDate": "تاريخ البداية",
             "endDate": "تاريخ النهاية",
@@ -135,15 +144,11 @@
             "endTime": "وقت النهاية",
             "notes": "ملاحظات",
             "notesPlaceholder": "إضافة ملاحظات...",
-            "course": "المادة",
-            "group": "المجموعة",
-            "room": "الحلقة",
-            "time": "الوقت",
-            "attendancePercentage": "نسبة الحضور",
-            "month": "الشهر",
             "dailySchedule": "الجدول اليومي",
             "monthly": "شهري",
-            "daily": "يومي"
+            "daily": "يومي",
+            "location": "المكان",
+            "cost": "التكلفة"
         },
         "placeholders": {
             "selectMonthPlaceholder": "اختر الشهر",
@@ -192,26 +197,15 @@
             "noData": "لا توجد بيانات"
         },
         "noData": {
-            "noQualifications": "لا يوجد مؤهلات",
-            "noExperience": "لا يوجد خبرات",
-            "noCourses": "لا يوجد دورات",
-            "noGroups": "لا يوجد مجموعات",
-            "noStudents": "لا يوجد طلاب",
             "noAttachments": "لا يوجد مرفقات",
-            "noTeachers": "لا يوجد معلمين",
-            "noWeeklySchedule": "لا يوجد جدول أسبوعي",
-            "noAttendances": "لا يوجد حضور",
-            "noClasses": "لا يوجد مواعيد لهذا اليوم",
-            "noDailySchedule": "لا يوجد مواعيد حاليا",
-            "noFeedback": "لا يوجد ملاحظات",
-            "noFinances": "لا يوجد ماليات"
+            "noComingVisits": "لا يوجد زيارات قادمة"
         },
         "messages": {
             "savedSuccessfully": "تم الحفظ بنجاح",
             "updatedSuccessfully": "تم التحديث بنجاح",
             "deletedSuccessfully": "تم الحذف بنجاح",
-            "qualificationsSaveSuccess": "تم حفظ المؤهلات بنجاح",
-            "experienceSaveSuccess": "تم حفظ الخبرات بنجاح",
+            "activatedSuccessfully": "تم التفعيل بنجاح",
+            "deactivatedSuccessfully": "تم التعطيل بنجاح",
             "attachmentUploadSuccess": "تم تحميل المرفق بنجاح"
         },
         "pdf": {
@@ -222,39 +216,22 @@
             }
         },
         "tabs": {
-            "qualifications": "المؤهلات",
             "schedule": "المواعيد",
-            "education": "التعليم",
-            "courses": "الدورات",
-            "groups": "المجموعات",
-            "students": "الطلاب",
             "personalInfo": "المعلومات الشخصية",
-            "attachments": "المرفقات",
             "attendance": "الحضور",
-            "teacherFeedback": "الملاحظات",
-            "finances": "الماليات"
+            "comingVisits": "الفحوصات القادمة"
+        },
+        "calendar": {
+            "month": "شهر",
+            "week": "أسبوع",
+            "day": "يوم",
+            "previous": "السابق",
+            "next": "التالي",
+            "today": "اليوم",
+            "todaySchedule": "جدول اليوم",
+            "tomorrowSchedule": "جدول الغد",
+            "mathClass": "حصة الرياضيات"
         }
-    },
-    "validation": {
-        "passwordMismatch": "كلمة المرور وتأكيد كلمة المرور غير متطابقين",
-        "requiredDropdown": "يرجى اختيار {{field}} من القائمة",
-        "minLength": "{{field}} يجب أن يكون أطول من {{length}} أحرف",
-        "emailInvalid": "{{field}} يجب أن يكون بريد إلكتروني صحيح",
-        "required": "{{field}} مطلوب"
-    },
-    "families": {
-        "all": "العائلات",
-        "one": "العائلة",
-        "formTitle": "بيانات العائلة",
-        "familyName": "اسم العائلة",
-        "membersNumber": "عدد الأفراد",
-        "familyResponsible": "اسم مسئول العائلة",
-        "familyMembers": "أفراد العائلة",
-        "saveSuccess": "تم حفظ بيانات العائلة بنجاح",
-        "updateSuccess": "تم تعديل بيانات العائلة بنجاح",
-        "activateSuccess": "تم تفعيل بيانات العائلة بنجاح",
-        "deactivateSuccess": "تم تعطيل بيانات العائلة بنجاح",
-        "deleteSuccess": "تم حذف بيانات العائلة بنجاح"
     },
     "errorPages": {
         "notFound": {
@@ -296,15 +273,28 @@
             "contactSupportMessage": "يرجى الاتصال بالدعم الفني للمساعدة."
         }
     },
-    "calendar": {
-        "month": "شهر",
-        "week": "أسبوع",
-        "day": "يوم",
-        "previous": "السابق",
-        "next": "التالي",
-        "today": "اليوم",
-        "todaySchedule": "جدول اليوم",
-        "tomorrowSchedule": "جدول الغد",
-        "mathClass": "حصة الرياضيات"
+    "auth": {
+        "profile": "الملف الشخصي",
+        "logout": "تسجيل الخروج",
+        "loginTitle": "مرحبًا بك في مِسْك كَيْر",
+        "login": "تسجيل الدخول",
+        "register": "تسجيل حساب",
+        "forgotPassword": "هل نسيت كلمة المرور؟",
+        "rememberMe": "تذكرني",
+        "forgetPasswordTitle": "نسيت كلمة المرور",
+        "forgetPasswordbtn": "إرسال",
+        "backToLogin": "العودة إلى تسجيل الدخول",
+        "loginSuccess": "تم تسجيل الدخول بنجاح",
+        "loginError": "فشل تسجيل الدخول. يرجى التحقق من بياناتك.",
+        "forgetPasswordSuccess": "تم إرسال رابط تعديل كلمة المرور إلى بريدك الإلكتروني"
+    },
+    "families": {
+        "all": "العائلات",
+        "one": "العائلة",
+        "formTitle": "بيانات العائلة",
+        "familyName": "اسم العائلة",
+        "membersNumber": "عدد أفراد العائلة",
+        "familyResponsible": "اسم مسئول العائلة",
+        "familyMembers": "أفراد العائلة"
     }
 }

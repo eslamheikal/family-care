@@ -198,7 +198,7 @@ export class Grid {
         let filteredColValue = this.getHeaderControl(field!, type!).value;
 
         if(filteredColValue && type == ColumnFilterTypeEnum.date) {
-          filteredColValue = DateHelper.toOldDatePicker(filteredColValue);
+          filteredColValue = DateHelper.toDateOnly(filteredColValue);
         }
 
         this.searchSubject$.next({

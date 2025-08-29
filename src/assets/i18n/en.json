@@ -1,44 +1,35 @@
 {
     "welcome": "Welcome to the app",
     "appName": "Misk Care",
-    "profile": "Profile",
-    "logout": "Logout",
-    "auth": {
-        "loginTitle": "Welcome to Misk Care",
-        "login": "Login",
-        "username": "User Name",
-        "password": "Password",
-        "register": "Register",
-        "forgotPassword": "Forgot Password?",
-        "rememberMe": "Remember Me",
-        "forgetPasswordTitle": "Forgot Password",
-        "forgetPasswordbtn": "Send",
-        "backToLogin": "Back to Login",
-        "loginSuccess": "Login successful",
-        "loginError": "Login failed. Please check your credentials.",
-        "forgetPasswordSuccess": "An email has been sent to reset your password"
-    },
+    "mainMenu": "Main Menu",
     "userRole": {
-        "admin": "Admin",
-        "teacher": "Teacher",
-        "student": "Student",
-        "parent": "Parent",
-        "employee": "Employee"
+        "all": "Roles",
+        "one": "Role",
+        "admin": "System Administrator",
+        "employee": "Employee",
+        "familyParent": "Family Parent",
+        "familyMember": "Family Member"
     },
     "gender": {
+        "all": "Gender",
+        "one": "Gender",
         "male": "Male",
         "female": "Female"
     },
     "days": {
+        "all": "Days",
+        "one": "Day",
+        "saturday": "Saturday",
+        "sunday": "Sunday",
         "monday": "Monday",
         "tuesday": "Tuesday",
         "wednesday": "Wednesday",
         "thursday": "Thursday",
-        "friday": "Friday",
-        "saturday": "Saturday",
-        "sunday": "Sunday"
+        "friday": "Friday"
     },
     "months": {
+        "all": "Months",
+        "one": "Month",
         "january": "January",
         "february": "February",
         "march": "March",
@@ -66,11 +57,33 @@
         "error": "Error",
         "generalError": "Something went wrong"
     },
-    "sidebar": {
-        "mainMenu": "Main Menu",
-        "dashboard": "Dashboard",
-        "attendance": "Attendance",
-        "settings": "Settings"
+    "familyRelations": {
+        "all": "Family Relations",
+        "one": "Family Relation",
+        "father": "Father",
+        "mother": "Mother",
+        "son": "Son",
+        "daughter": "Daughter",
+        "grandFather": "Grandfather",
+        "grandMother": "Grandmother"
+    },
+    "visitType": {
+        "all": "Visit Type",
+        "one": "Visit Type",
+        "generalCheckup": "General Checkup",
+        "followUp": "Follow-up",
+        "labTests": "Lab Tests",
+        "radiology": "Radiology",
+        "surgery": "Surgery",
+        "vaccination": "Vaccination",
+        "consultation": "Consultation"
+    },
+    "visitStatus": {
+        "all": "Visit Status",
+        "one": "Visit Status",
+        "pending": "Pending",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
     },
     "shared": {
         "grid": {
@@ -111,23 +124,19 @@
         },
         "labels": {
             "name": "Name",
+            "age": "Age",
             "gender": "Gender",
             "phoneNumber": "Phone Number",
             "email": "Email",
+            "username": "Username",
             "password": "Password",
             "confirmPassword": "Confirm Password",
             "birthDate": "Birth Date",
             "joinedDate": "Joined Date",
             "description": "Description",
-            "capacity": "Student Capacity",
-            "numberOfStudents": "Number of Students",
-            "numberOfTeachers": "Number of Teachers",
-            "capacityStatus": "Capacity Status",
-            "capacityPercentage": "Capacity Percentage",
             "status": "Status",
             "years": "Years",
             "year": "Year",
-            "day": "Day",
             "date": "Date",
             "startDate": "Start Date",
             "endDate": "End Date",
@@ -135,43 +144,11 @@
             "endTime": "End Time",
             "notes": "Notes",
             "notesPlaceholder": "Add notes...",
-            "course": "Course",
-            "group": "Group",
-            "room": "Room",
-            "studentName": "Student Name",
-            "studentCode": "Student Code",
-            "teacherCode": "Teacher Code",
-            "coursesNumber": "Number of Courses",
-            "time": "Time",
-            "total": "Total",
-            "exportedOn": "Exported On",
-            "printedOn": "Printed On",
-            "attendancePercentage": "Attendance Percentage",
-            "month": "Month",
-            "numberOfSessions": "Number of Sessions",
-            "dailyAttendance": "Daily Attendance",
-            "education": "Education",
-            "qualifications": "Qualifications",
-            "experience": "Experience",
-            "teacherSignature": "Teacher Signature",
-            "dateSigned": "Date Signed",
-            "comingSoon": "More details coming soon...",
-            "allMonths": "All Months",
             "dailySchedule": "Daily Schedule",
-            "comment": "Comment",
-            "attendanceReport": "Attendance Report",
-            "attendanceSummary": "Attendance Summary",
-            "monthlyBreakdown": "Monthly Breakdown",
-            "performanceAnalysis": "Performance Analysis",
-            "bestMonth": "Best Month",
-            "worstMonth": "Worst Month",
-            "overallPerformance": "Overall Performance",
-            "markAllPresent": "All",
-            "markAllLate": "All",
-            "markAllAbsent": "All",
-            "salary": "Salary",
             "monthly": "Monthly",
-            "daily": "Daily"
+            "daily": "Daily",
+            "location": "Location",
+            "cost": "Cost"
         },
         "placeholders": {
             "selectMonthPlaceholder": "Select Month",
@@ -220,26 +197,15 @@
             "noData": "No data available"
         },
         "noData": {
-            "noQualifications": "No qualifications",
-            "noExperience": "No experience",
-            "noCourses": "No courses",
-            "noGroups": "No groups",
-            "noStudents": "No students",
             "noAttachments": "No attachments",
-            "noTeachers": "No teachers",
-            "noWeeklySchedule": "No weekly schedule",
-            "noAttendances": "No attendances",
-            "noClasses": "No classes scheduled for this day",
-            "noDailySchedule": "No schedule available currently",
-            "noFeedback": "No feedback",
-            "noFinances": "No finances"
+            "noComingVisits": "No upcoming visits"
         },
         "messages": {
             "savedSuccessfully": "Saved successfully",
             "updatedSuccessfully": "Updated successfully",
             "deletedSuccessfully": "Deleted successfully",
-            "qualificationsSaveSuccess": "Qualifications saved successfully",
-            "experienceSaveSuccess": "Experience saved successfully",
+            "activatedSuccessfully": "Activated successfully",
+            "deactivatedSuccessfully": "Deactivated successfully",
             "attachmentUploadSuccess": "Attachment uploaded successfully"
         },
         "pdf": {
@@ -250,36 +216,22 @@
             }
         },
         "tabs": {
-            "qualifications": "Qualifications",
             "schedule": "Schedule",
-            "education": "Education",
-            "courses": "Courses",
-            "groups": "Groups",
-            "students": "Students",
             "personalInfo": "Personal Info",
-            "attachments": "Attachments",
             "attendance": "Attendance",
-            "teacherFeedback": "Feedback",
-            "finances": "Finances"
+            "comingVisits": "Upcoming Visits"
+        },
+        "calendar": {
+            "month": "Month",
+            "week": "Week",
+            "day": "Day",
+            "previous": "Previous",
+            "next": "Next",
+            "today": "Today",
+            "todaySchedule": "Today's Schedule",
+            "tomorrowSchedule": "Tomorrow's Schedule",
+            "mathClass": "Math Class"
         }
-    },
-    "validation": {
-        "passwordMismatch": "Password and confirm password do not match",
-        "requiredDropdown": "Please select {{field}} from the list",
-        "minLength": "{{field}} must be longer than {{length}} characters",
-        "emailInvalid": "{{field}} must be a valid email",
-        "required": "{{field}} is required"
-    },
-    "families": {
-        "all": "Families",
-        "one": "Family",
-        "formTitle": "Family Data",
-        "familyName": "Family Name",
-        "saveSuccess": "Family data saved successfully",
-        "updateSuccess": "Family data updated successfully",
-        "activateSuccess": "Family data activated successfully",
-        "deactivateSuccess": "Family data deactivated successfully",
-        "deleteSuccess": "Family data deleted successfully"
     },
     "errorPages": {
         "notFound": {
@@ -321,15 +273,28 @@
             "contactSupportMessage": "Please contact technical support for assistance."
         }
     },
-    "calendar": {
-        "month": "Month",
-        "week": "Week",
-        "day": "Day",
-        "previous": "Previous",
-        "next": "Next",
-        "today": "Today",
-        "todaySchedule": "Today's Schedule",
-        "tomorrowSchedule": "Tomorrow's Schedule",
-        "mathClass": "Math Class"
+    "auth": {
+        "profile": "Profile",
+        "logout": "Logout",
+        "loginTitle": "Welcome to Misk Care",
+        "login": "Login",
+        "register": "Register",
+        "forgotPassword": "Forgot Password?",
+        "rememberMe": "Remember Me",
+        "forgetPasswordTitle": "Forgot Password",
+        "forgetPasswordbtn": "Send",
+        "backToLogin": "Back to Login",
+        "loginSuccess": "Login successful",
+        "loginError": "Login failed. Please check your credentials.",
+        "forgetPasswordSuccess": "Password reset link has been sent to your email"
+    },
+    "families": {
+        "all": "Families",
+        "one": "Family",
+        "formTitle": "Family Data",
+        "familyName": "Family Name",
+        "membersNumber": "Number of Family Members",
+        "familyResponsible": "Family Responsible",
+        "familyMembers": "Family Members"
     }
 }

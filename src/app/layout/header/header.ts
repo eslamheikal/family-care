@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { SelectLanguage } from '../select-language/select-language';
 import { Notification } from "../notification/notification";
 import { TranslateModule } from '@ngx-translate/core';
-import { getRoleString, UserRoleEnum } from '../../core/enums/user-role.enum';
-import { AuthService } from '../../core/services/auth.service';
+import { UserRoleEnum, UserRoleService } from '../../core/enums/user-role.enum';
+import { AuthService } from '../../core/authorization/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,6 +18,7 @@ export class Header {
   role: UserRoleEnum = UserRoleEnum.Admin;
 
   private authService = inject(AuthService);
+  private userRoleService = inject(UserRoleService);
   private router = inject(Router);
 
   ngOnInit() {
@@ -28,7 +29,7 @@ export class Header {
   }
 
   getUserRole(): string {
-    return "userRole." + getRoleString(this.role);
+    return this.userRoleService.getRole(this.role);
   }
 
   goToProfile() {

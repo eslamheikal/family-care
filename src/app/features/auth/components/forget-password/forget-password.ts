@@ -5,7 +5,7 @@ import { InputLabel } from '../../../shared/components/input-label/input-label';
 import { Router, RouterLink } from '@angular/router';
 import { ToastService } from '../../../shared/services/toast.service';
 import { LoaderService } from '../../../shared/services/loader.service';
-import { AuthApiService } from '../../../../core/services/auth-api.service';
+import { AuthenticationService } from '../../../../core/services/authentication.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -18,7 +18,7 @@ export class ForgetPassword {
   forgetForm!: FormGroup;
 
   private fb = inject(FormBuilder);
-  private authService = inject(AuthApiService);
+  private authService = inject(AuthenticationService);
   private toastService = inject(ToastService);
   private loader = inject(LoaderService);
   private router = inject(Router);

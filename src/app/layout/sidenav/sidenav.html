@@ -7,9 +7,9 @@
                     <li class="menu-title">
                         <span>{{ 'sidebar.mainMenu' | translate }}</span>
 
-                    <li routerLinkActive="active" *ngIf="permissionAccess.canViewSideNav.families">
+                    <li routerLinkActive="active" *ngIf="permissionService.canViewSideNav.families">
                         <a routerLink="/families">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-house-user"></i>
                             <span>{{ 'families.all' | translate }}</span>
                         </a>
                     </li>

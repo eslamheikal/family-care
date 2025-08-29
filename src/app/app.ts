@@ -9,7 +9,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CommonModule } from '@angular/common';
 import { AuthLayout } from "./features/auth/components/auth-layout/auth-layout";
-import { AuthService } from './core/services/auth.service';
+import { AuthService } from './core/authorization/auth.service';
 
 @Component({
   selector: 'app-root',

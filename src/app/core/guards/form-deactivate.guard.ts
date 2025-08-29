@@ -1,22 +1,21 @@
 import { CanDeactivateFn } from "@angular/router";
-import { ConfirmLeaveService } from "../../features/shared/services/confirm-leave-service";
 import { inject } from "@angular/core";
+import { ConfirmService } from "../../features/shared/services/confirm.serivce";
 
 export interface CanDeactivateComponent {
   get dirty(): boolean;
 }
 
 export const canDeactivateForm: CanDeactivateFn<CanDeactivateComponent> = (component) => {
-  const confirmLeaveService = inject(ConfirmLeaveService);
+  const confirmService = inject(ConfirmService);
 
   if (!component.dirty) {
     return true;
   }
 
   return new Promise<boolean>(resolve => {
-    confirmLeaveService.confirm(
-      () => resolve(true),
-      () => resolve(false)
+    confirmService.confirmLeave(
+      () => resolve(true)
     );
   });
 };

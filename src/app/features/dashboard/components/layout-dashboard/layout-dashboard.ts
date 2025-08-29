@@ -1,13 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { AuthService } from '../../../../core/services/auth.service';
+import { AuthService } from '../../../../core/authorization/auth.service';
 import { AdminDashboard } from "../admin-dashboard/admin-dashboard";
-import { TeacherDashboard } from "../teacher-dashboard/teacher-dashboard";
-import { StudentDashboard } from "../student-dashboard/student-dashboard";
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-layout-dashboard',
-  imports: [CommonModule, AdminDashboard, TeacherDashboard, StudentDashboard],
+  imports: [CommonModule, AdminDashboard],
   templateUrl: './layout-dashboard.html',
   styleUrl: './layout-dashboard.scss'
 })

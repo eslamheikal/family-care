@@ -3,10 +3,10 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { InputLabel } from '../../../shared/components/input-label/input-label';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../../core/services/auth.service';
+import { AuthService } from '../../../../core/authorization/auth.service';
 import { ToastService } from '../../../shared/services/toast.service';
 import { LoaderService } from '../../../shared/services/loader.service';
-import { AuthApiService } from '../../../../core/services/auth-api.service';
+import { AuthenticationService } from '../../../../core/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class Login {
 
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
-  private authApiService = inject(AuthApiService);
+  private authenticationService = inject(AuthenticationService);
   private toastService = inject(ToastService);
   private loader = inject(LoaderService);
   private router = inject(Router);
@@ -57,7 +57,7 @@ export class Login {
     }
 
     this.loader.show();
-    this.authApiService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe((result) => {
+    this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe((result) => {
       if(result.user && result.user.id > 0){
         this.toastService.showSuccess(this.translate.instant('auth.loginSuccess'));
         this.authService.saveAuthData(result, this.loginForm.value.keepLoggedIn);

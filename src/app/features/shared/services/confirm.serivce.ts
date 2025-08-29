@@ -141,4 +141,18 @@ export class ConfirmService {
             'pi pi-arrow-left text-primary'
         );
     }
+
+    confirmLeave(
+        acceptCallback: () => void,
+        message?: string
+    ): void {
+        this.confirm(
+            message || this.translate.instant('shared.dialogs.leaveConfirmation'),
+            acceptCallback,
+            undefined,
+            'pi pi-arrow-left text-primary'
+        );
+    }
+
+
 }

@@ -4,8 +4,8 @@ import { DropdownProps } from '../../props/dropdown.props';
 import { TranslateModule } from '@ngx-translate/core';
 import { PdfIconBtn } from "../pdf-icon-btn/pdf-icon-btn";
 import { CommonModule } from '@angular/common';
-import { MonthesService } from '../../../../core/services/monthes.service';
 import { DateHelper } from '../../../../core/helpers/date.helper';
+import { MonthService } from '../../../../core/enums/month.enum';
 
 @Component({
   selector: 'pdf-year-month-btns',
@@ -30,7 +30,7 @@ export class PdfYearMonthBtns {
   years: number[] = [];
   months: DropdownProps[] = [];
 
-  private monthesService = inject(MonthesService);
+  private monthService = inject(MonthService);
 
 
   @Output() onYearChanged = new EventEmitter<number>();
@@ -39,7 +39,7 @@ export class PdfYearMonthBtns {
 
   ngOnInit() {
     this.years = Array.from({ length: 10 }, (_, i) => DateHelper.getCurrentYear() - i);
-    this.months = this.monthesService.getMonthsDropdownProps();
+    this.months = this.monthService.getOptions();
   }
 
   onYearChange() {

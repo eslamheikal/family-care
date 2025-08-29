@@ -2,10 +2,6 @@ import { formatDate } from "@angular/common";
 
 export class DateHelper {
 
-  static toOldDatePicker(date: string | null | undefined): string | null {
-    return date ? formatDate(date, 'yyyy-MM-dd', 'en-US') : null;
-  }
-
   static toDatePicker(date: string | null | undefined): Date | null {
     return date ? new Date(date) : null;
   }
@@ -36,4 +32,9 @@ export class DateHelper {
   static getCurrentYear(): number {
     return new Date().getFullYear();
   }
+
+  static getCurrentDate(): string {
+    return this.toDateOnly(new Date().toISOString()) || '';
+  }
+  
 }

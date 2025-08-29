@@ -22,7 +22,7 @@
             <p class="profile-info">
                 <span class="profile-value">{{ profileHeader.code || 'T_000000'}}</span>
             </p>
-            <p class="profile-info">
+            <p class="profile-info" *ngIf="profileHeader.dateOfBirth">
                 <span class="profile-value">{{ getAge(profileHeader.dateOfBirth) || '-'}}</span>
                 <span class="profile-label mx-1">{{ 'shared.labels.years' | translate }}</span>
             </p>

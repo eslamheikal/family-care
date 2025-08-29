@@ -1,7 +1,7 @@
 import { Component, inject, Input, SimpleChanges } from '@angular/core';
-import { MonthesService } from '../../../../core/services/monthes.service';
 import { LineChartProps } from '../../props/line-chart.props';
 import { ChartModule } from "primeng/chart";
+import { MonthService } from '../../../../core/enums/month.enum';
 
 @Component({
     selector: 'line-chart',
@@ -21,7 +21,7 @@ export class LineChart {
     @Input() tooltipLabel: (context: any) => string = () => '';
 
     // private translateService = inject(TranslateService);
-    private monthesService = inject(MonthesService);
+    private monthService = inject(MonthService);
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes['dataSet']) {
@@ -32,7 +32,7 @@ export class LineChart {
     initializeChart() {
 
         this.chartData = {
-            labels: this.labels.length > 0 ? this.labels : this.monthesService.getMonthes(),
+            labels: this.labels.length > 0 ? this.labels : this.monthService.getMonths(),
             datasets: this.dataSet
         };
 
