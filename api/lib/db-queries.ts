@@ -51,8 +51,13 @@ export class DbQueries {
      */
     async create(data: Partial<any>): Promise<any> {
         try {
-            const docRef = this.getCollection().doc();
-            const newData = { ...data, [this.idField]: docRef.id };
+            // get the last document to know the next id
+            const lastDoc = await this.getCollection().orderBy(this.idField, 'desc').limit(1).get();
+            const lastId = lastDoc.docs[0]?.id ?? 0;
+            const nextId = parseInt(lastId) + 1;
+
+            const docRef = this.getCollection().doc(nextId.toString());
+            const newData = { ...data, [this.idField]: nextId };
             await docRef.set(newData);
             return newData;
         } catch (error) {

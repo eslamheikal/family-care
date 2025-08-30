@@ -19,10 +19,11 @@ export class Endpoints {
         }
     };
 
-    static readonly FAMILIES = {
-        Controller: 'families',
+    static readonly USERS = {
+        Controller: 'users',
         Actions: {
             Paged: `paged`,
+            Add: 'add',
             Activate: (id: string | number) => `activate/${id}`,
             Deactivate: (id: string | number) => `deactivate/${id}`,
         }

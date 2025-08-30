@@ -7,10 +7,10 @@
                     <li class="menu-title">
                         <span>{{ 'mainMenu' | translate }}</span>
 
-                    <li routerLinkActive="active" *ngIf="permissionService.canViewSideNav.families">
-                        <a routerLink="/families">
+                    <li routerLinkActive="active" *ngIf="permissionService.canViewSideNav.users">
+                        <a routerLink="/users">
                             <i class="fas fa-house-user"></i>
-                            <span>{{ 'families.all' | translate }}</span>
+                            <span>{{ 'users.all' | translate }}</span>
                         </a>
                     </li>
 

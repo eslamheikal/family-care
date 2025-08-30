@@ -19,12 +19,11 @@ import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 
 // Core Models
-import { Family } from '../../../../core/models/family.model';
-import { UserAttachment } from '../../../../core/models/user-attachment.model';
+import { User } from '../../../../core/models/user.model';
 
 // Core Services
-import { FamilyService } from '../../../../core/services/family.service';
 import { AuthService } from '../../../../core/authorization/auth.service';
+import { UserService } from '../../../../core/services/user.service';
 
 // Core Helpers
 import { DateHelper } from '../../../../core/helpers/date.helper';
@@ -49,14 +48,12 @@ import { ProfileHeader } from '../../../shared/props/profile.props';
 import { TableColumn } from '../../../shared/props/table-column.props';
 
 // Feature Components
-import { FamilyForm } from '../family-form/family-form';
-import { FamilyRelation, FamilyRelationService } from '../../../../core/enums/family.relation.enum';
-import { FamilyMember } from '../../../../core/models/family-member.model';
-import { FamilyVisits } from '../../../../core/models/family-visits.model';
+import { Visits } from '../../../../core/models/visits.model';
 import { PermissionService } from '../../../../core/authorization/permission.service';
+import { UserForm } from '../user-form/user-form';
 
 // Interfaces
-interface FamilyProfileState {
+interface UserProfileState {
   showEditInfoDialog: boolean;
   showUserAttachmentDialog: boolean;
   disablePage: boolean;
@@ -64,11 +61,10 @@ interface FamilyProfileState {
 }
 
 @Component({
-  selector: 'app-family-profile',
+  selector: 'app-user-profile',
   imports: [
     TabsModule,
     TooltipModule,
-    FamilyForm,
     CommonModule,
     TableModule,
     TranslateModule,
@@ -79,11 +75,12 @@ interface FamilyProfileState {
     PersonalHeader,
     PersonalTabs,
     Table,
+    UserForm,
   ],
-  templateUrl: './family-profile.html',
-  styleUrl: './family-profile.scss'
+  templateUrl: './user-profile.html',
+  styleUrl: './user-profile.scss'
 })
-export class FamilyProfile implements OnInit, OnDestroy {
+export class UserProfile implements OnInit, OnDestroy {
 
   //#region ViewChild
   @ViewChild('fileInput') fileInput!: ElementRef;
@@ -93,27 +90,26 @@ export class FamilyProfile implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject<void>();
 
   // State management
-  private readonly state: FamilyProfileState = {
+  private readonly state: UserProfileState = {
     showEditInfoDialog: false,
     showUserAttachmentDialog: false,
     disablePage: false,
-    activeTab: 'families.formTitle'
+    activeTab: 'users.formTitle'
   };
 
   // Data management
-  public family: Family = {} as Family;
-  public visits: FamilyVisits[] = [];
+  public user: User = {} as User;
+  public visits: Visits[] = [];
   public profileHeader: ProfileHeader = {} as ProfileHeader;
 
   //#region Services
-  private readonly familyService = inject(FamilyService);
+  private readonly userService = inject(UserService);
   private readonly loader = inject(LoaderService);
   private readonly route = inject(ActivatedRoute);
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly toaster = inject(ToastService);
   private readonly translate = inject(TranslateService);
   private readonly confirmService = inject(ConfirmService);
-  private readonly familyRelationService = inject(FamilyRelationService);
   private readonly router = inject(Router);
   private readonly authService = inject(AuthService);
   private readonly genderService = inject(GenderService);
@@ -122,21 +118,11 @@ export class FamilyProfile implements OnInit, OnDestroy {
 
   // Tab configuration
   readonly tabs: PersonalTab[] = [
-    { label: 'families.formTitle', icon: 'fas fa-house-user' },
-    { label: 'families.familyMembers', icon: 'fas fa-users' },
+    { label: 'users.formTitle', icon: 'fas fa-user' },
     { label: 'shared.tabs.comingVisits', icon: 'fas fa-calendar-alt' },
   ];
 
   // Table configuration
-  readonly membersColumns: TableColumn[] = [
-    { field: 'name', title: 'shared.labels.name', type: 'text', onClick: (row: FamilyMember) => this.onMemberClick(row) },
-    { field: 'relationName', title: 'shared.labels.familyRelations', type: 'text' },
-    { field: 'birthDate', title: 'shared.labels.birthDate', type: 'date' },
-    { field: 'age', title: 'shared.labels.age', type: 'number' },
-    { field: 'phoneNumber', title: 'shared.labels.phoneNumber', type: 'text' },
-    { field: 'email', title: 'shared.labels.email', type: 'text' },
-  ];
-
   readonly visitsColumns: TableColumn[] = [
     { field: 'memberName', title: 'shared.labels.name', type: 'text' },
     { field: 'date', title: 'shared.labels.date', type: 'date' },
@@ -183,49 +169,43 @@ export class FamilyProfile implements OnInit, OnDestroy {
     this.route.params
       .pipe(takeUntil(this.destroy$))
       .subscribe(params => {
-        const familyId = Number(params['id']);
-        this.loadFamily(familyId);
+        const userId = Number(params['id']);
+        this.loadUser(userId);
       });
   }
 
-  private loadFamily(familyId: number): void {
+  private loadUser(userId: number): void {
     this.showLoader();
 
-    this.familyService.get(familyId)
+    this.userService.get(userId)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (family: Family) => this.handleFamilyLoaded(family),
+        next: (user: User) => this.handleUserLoaded(user),
         error: () => { },
         complete: () => this.hideLoader()
       });
   }
 
-  private handleFamilyLoaded(family: Family): void {
+  private handleUserLoaded(user: User): void {
+    this.user = { ...user };
+    this.user.age = this.getAge(this.user.birthDate || null);
 
-    this.family = { ...family };
-    this.family.familyResponsible.relationName = this.getRelation(this.family.familyResponsible.relation);
-    this.family.familyMembers.forEach(member => {
-      member.relationName = this.getRelation(member.relation);
-      member.age = this.getAge(member.birthDate);
-    });
-    this.family.familyMembers = this.family.familyMembers.sort((a, b) => a.relation - b.relation);
+    this.updateProfileHeader(user);
 
-    this.updateProfileHeader(family);
-
-    if (family.id === 0) {
-      this.toaster.showError(this.translate.instant('families.notFound'));
+    if (user.id === 0) {
+      this.toaster.showError(this.translate.instant('users.notFound'));
       this.state.disablePage = true;
     }
 
     this.cdr.detectChanges();
   }
 
-  private updateProfileHeader(family: Family): void {
+  private updateProfileHeader(user: User): void {
     this.profileHeader = {
-      fullName: family.familyName,
-      code: family.code as string,
+      fullName: user.name,
+      code: user.id?.toString() || '',
       image: 'assets/icons/avatar-student.svg',
-      dateOfBirth: null
+      dateOfBirth: user.birthDate || null
     };
   }
 
@@ -244,12 +224,6 @@ export class FamilyProfile implements OnInit, OnDestroy {
   onActiveTabChange(tab: string): void {
     this.state.activeTab = tab;
   }
-
-  onMemberClick(member: FamilyMember): void {
-    this.confirmService.confirmView(() => {
-      // this.router.navigate(['/families', member.id]);
-    });
-  }
   //#endregion
 
   //#region Dialog Management
@@ -261,13 +235,12 @@ export class FamilyProfile implements OnInit, OnDestroy {
     this.state.showUserAttachmentDialog = false;
   }
 
-  reloadFamily(): void {
-    this.loadFamily(this.family.id);
+  reloadUser(): void {
+    this.loadUser(this.user.id);
   }
   //#endregion
 
-  //#region Family Info Methods
-
+  //#region User Info Methods
   getAge(birthDate: string | null): number {
     return birthDate ? DateHelper.getAge(birthDate) : 0;
   }
@@ -280,13 +253,9 @@ export class FamilyProfile implements OnInit, OnDestroy {
     return this.genderService.getGender(gender);
   }
 
-  getRelation(relation: FamilyRelation): string {
-    return this.familyRelationService.getRelation(relation);
-  }
-
-  onEditFamily(): void {
+  onEditUser(): void {
     this.confirmService.confirmEdit(() => {
-      this.family = { ...this.family };
+      this.user = { ...this.user };
       this.state.showEditInfoDialog = true;
     });
   }

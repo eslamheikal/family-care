@@ -1,9 +1,8 @@
 import { VisitStatus } from "../enums/visit-status.enum";
 import { VisitType } from "../enums/visit-type.enum";
 
-export interface FamilyVisits {
+export interface Visits {
   id: number;
-  familyId: number;
   date: string;
   time: string;
   type: VisitType;
@@ -11,6 +10,7 @@ export interface FamilyVisits {
   location: string; 
   notes: string;
   cost: number;
+  userId: number;
 
   memberName?: string;
   typeLabel?: string;

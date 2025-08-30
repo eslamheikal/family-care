@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FamiliesList } from './families-list';
+import { UserForm } from './user-form';
 
-describe('FamiliesList', () => {
-  let component: FamiliesList;
-  let fixture: ComponentFixture<FamiliesList>;
+describe('UserForm', () => {
+  let component: UserForm;
+  let fixture: ComponentFixture<UserForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FamiliesList]
+      imports: [UserForm]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FamiliesList);
+    fixture = TestBed.createComponent(UserForm);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

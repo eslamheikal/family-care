@@ -17,6 +17,13 @@ export class AppUrlGenerator {
         return params ? `${baseUrl}?${params.toString()}` : baseUrl;
     }
 
+    getEndPointWithActionQuery(resourceName: string, params?: HttpParams) : string{
+        const resource = this.removeSlashIfExist(resourceName);
+        const baseUrl = `${this.ApiURL}/${this.controller ? `${this.controller}?action=` : ''}${resource}`;
+        
+        return params ? `${baseUrl}?${params.toString()}` : baseUrl;
+    }
+
     getFullEndPoint(controller: string, resourceName: string, params?: HttpParams) : string{
         const resource = this.removeSlashIfExist(resourceName);
         const baseUrl = `${this.ApiURL}/${controller ? `${controller}/` : ''}${resource}`;

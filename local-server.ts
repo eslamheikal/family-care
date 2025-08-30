@@ -66,7 +66,7 @@ app.get('/', (req: Request, res: Response) => {
 app.listen(PORT, () => {
   console.log(`\n🚀 Local Express server is running at http://localhost:${PORT}`);
   console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
-  console.log(`📊 Family: http://localhost:${PORT}/api/family`);
+  console.log(`📊 Users: http://localhost:${PORT}/api/users`);
   console.log(`🏠 Root: http://localhost:${PORT}/`);
   console.log(`📝 Dynamic API routes loaded from api/ directory`);
 });

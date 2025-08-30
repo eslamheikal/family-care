@@ -1,0 +1,83 @@
+<!-- User Form Dialog -->
+<dialog-buttons [header]="'users.formTitle' | translate" [showDialog]="showDialog" [showSaveButton]="true"
+    (onSave)="hasId() ? update() : save()" (onCancel)="cancel()" [saveDisabled]="!(userForm!.valid)" [width]="'45rem'">
+
+    <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="hasId() ? update() : save()">
+
+        <!-- User Information Section -->
+        <div class="row">
+            <!-- User Name -->
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'shared.labels.name' | translate" [disabled]="!(permissionService.canEdit.user)"
+                    [required]="true" [formControl]="getFormControl('name')" />
+            </div>
+
+            <!-- Gender -->
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <dropdown [label]="'shared.labels.gender' | translate" [required]="true" [options]="genderOptions"
+                    [formControl]="getFormControl('gender')" [disabled]="!(permissionService.canEdit.user)" />
+            </div>
+
+            <!-- Relation -->
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <dropdown [label]="'familyRelations.one' | translate" [required]="true" [options]="relationOptions"
+                    [formControl]="getFormControl('relation')" [disabled]="!(permissionService.canEdit.user)" />
+            </div>
+        </div>
+
+        <!-- Contact Information Section -->
+        <div class="row">
+
+            <!-- Birth Date -->
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <label-date-picker [label]="'shared.labels.birthDate' | translate"
+                    [disabled]="!(permissionService.canEdit.user)" [formControl]="getFormControl('birthDate')" />
+            </div>
+
+            <!-- Role -->
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <dropdown [label]="'userRole.one' | translate" [required]="true" [options]="roleOptions"
+                    [formControl]="getFormControl('role')" [disabled]="!(permissionService.canAdd.user)" />
+            </div>
+        </div>
+
+        <!-- Personal Information Section -->
+        <div class="row">
+            <!-- Phone Number -->
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'shared.labels.phoneNumber' | translate" [disabled]="!(permissionService.canEdit.user)"
+                    [required]="true" [formControl]="getFormControl('phone')" />
+            </div>
+
+            <!-- Email -->
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'shared.labels.email' | translate" [disabled]="!(permissionService.canEdit.user)"
+                    [required]="true" [formControl]="getFormControl('email')" />
+            </div>
+        </div>
+
+        <!-- Security Information Section -->
+        <div class="row">
+            <!-- Password -->
+            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
+                <input-label [label]="'shared.labels.password' | translate" [required]="requiredPassword"
+                    [formControl]="getFormControl('password')" 
+                    [disabled]="!(permissionService.canEdit.user)" />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="col-md-6 col-12 flex flex-col gap-2 mb-2">
+                <input-label [label]="'shared.labels.confirmPassword' | translate" [required]="requiredPassword"
+                    [formControl]="getFormControl('confirmPassword')" 
+                    [disabled]="!(permissionService.canEdit.user)" />
+
+                <!-- Password Mismatch Error Message -->
+                <div *ngIf="passwordMismatch" class="text-danger text-sm mt-1">
+                    {{ 'shared.validation.passwordMismatch' | translate }}
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</dialog-buttons>

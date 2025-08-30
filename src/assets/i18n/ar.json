@@ -59,7 +59,7 @@
     },
     "familyRelations": {
         "all": "الصلة القرابة",
-        "one": "الصلة القرابة",
+        "one": "صلة القرابة",
         "father": "أب",
         "mother": "أم",
         "son": "ابن",
@@ -291,13 +291,14 @@
         "loginError": "فشل تسجيل الدخول. يرجى التحقق من بياناتك.",
         "forgetPasswordSuccess": "تم إرسال رابط تعديل كلمة المرور إلى بريدك الإلكتروني"
     },
-    "families": {
-        "all": "العائلات",
+    "users": {
+        "all": "المستخدمين",
         "one": "العائلة",
-        "formTitle": "بيانات العائلة",
-        "familyName": "اسم العائلة",
-        "membersNumber": "عدد أفراد العائلة",
+        "formTitle": "بيانات المستخدم",
+        "userName": "اسم المستخدم",
+        "membersNumber": "عدد أفراد المستخدم",
         "familyResponsible": "اسم مسئول العائلة",
-        "familyMembers": "أفراد العائلة"
+        "familyMembers": "أفراد العائلة",
+        "familyName": "اسم العائلة"
     }
 }

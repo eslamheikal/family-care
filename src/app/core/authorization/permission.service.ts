@@ -10,7 +10,7 @@ export class PermissionService {
 
     get canViewSideNav() {
         return {
-            families: this.authService.isAdmin || this.authService.isEmployee,
+            users: this.authService.isAdmin || this.authService.isEmployee,
         };
     }
 
@@ -22,43 +22,43 @@ export class PermissionService {
 
     get canView() {
         return {
-            familyProfile: this.authService.isAdmin || this.authService.isEmployee || this.authService.isFamilyParent,
+            userProfile: this.authService.isAdmin || this.authService.isEmployee || this.authService.isFamilyParent,
         };
     }
 
     get canViewPagedAdminColumns() {
         return {
-            family: this.authService.isAdmin || this.authService.isEmployee,
+            user: this.authService.isAdmin || this.authService.isEmployee,
         };
     }
 
     get canAdd() {
         return {
-            family: this.authService.isAdmin || this.authService.isEmployee,
+            user: this.authService.isAdmin || this.authService.isEmployee,
         };
     }
 
     get canEdit() {
         return {
-            family: this.authService.isAdmin || this.authService.isEmployee || this.authService.isFamilyParent,
+            user: this.authService.isAdmin || this.authService.isEmployee || this.authService.isFamilyParent,
         };
     }
 
     get canDelete() {
         return {
-            family: this.authService.isAdmin,
+            user: this.authService.isAdmin,
         };
     }
 
     get canActivate() {
         return {
-            family: this.authService.isAdmin,
+            user: this.authService.isAdmin,
         };
     }
 
     get canDeactivate() {
         return {
-            family: this.authService.isAdmin,
+            user: this.authService.isAdmin,
         };
     }
 

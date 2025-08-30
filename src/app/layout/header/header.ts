@@ -34,9 +34,9 @@ export class Header {
 
   goToProfile() {
     if(this.authService.isFamilyParent) {
-      this.router.navigate(['/families' , this.authService.getUser()?.id]);
+      this.router.navigate(['/users' , this.authService.getUser()?.id]);
     } else if(this.authService.isFamilyMember) {
-      this.router.navigate(['/families' , this.authService.getUser()?.id]);
+      this.router.navigate(['/users' , this.authService.getUser()?.id]);
     }
   }
 

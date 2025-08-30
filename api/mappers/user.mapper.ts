@@ -42,21 +42,34 @@ export class UserMapper {
 
 
   static toDbModel(user: User): any {
-    return {
+    const dbModel: any = {
       'id': user.id,
       'name': user.name,
       'email': user.email,
-      'phone': user.phone,
       'password': user.password,
-      'birth-date': user.birthDate ? DateTimeHelper.toTimestamp(user.birthDate) : null,
-
       'gender': user.gender,
       'relation': user.relation,
       'role': user.role,
-      
-      'parent-id': user.parentId,
-      'joined-date': user.joinedDate ? DateTimeHelper.toTimestamp(user.joinedDate) : null,
       'is-active': user.isActive
     };
+
+    // Only add fields that are not undefined
+    if (user.phone !== undefined) {
+      dbModel['phone'] = user.phone;
+    }
+    
+    if (user.birthDate !== undefined) {
+      dbModel['birth-date'] = user.birthDate ? DateTimeHelper.toTimestamp(user.birthDate) : null;
+    }
+    
+    if (user.joinedDate !== undefined) {
+      dbModel['joined-date'] = user.joinedDate ? DateTimeHelper.toTimestamp(user.joinedDate) : null;
+    }
+
+    if (user.parentId !== undefined) {
+      dbModel['parent-id'] = user.parentId;
+    }
+
+    return dbModel;
   }
 }

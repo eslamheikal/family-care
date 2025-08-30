@@ -6,15 +6,15 @@ export interface User {
     id: string;
     name: string;
     email: string;
-    phone: string;
+    phone?: string;
     password: string;
-    birthDate: string;
+    birthDate?: string;
     
     gender: GenderEnum;
     relation: RelationEnum;
     role: UserRoleEnum;
 
     parentId: number;
-    joinedDate: string | null;
+    joinedDate?: string | null;
     isActive: boolean;
 }

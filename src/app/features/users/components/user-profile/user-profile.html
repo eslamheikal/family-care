@@ -11,11 +11,11 @@
     <!-- Profile Content -->
     <p-card class="profile-tabs-card">
 
-        @if(activeTab === 'families.formTitle') {
+        @if(activeTab === 'users.formTitle') {
         <div class="d-flex justify-content-between header-title">
-            <h5>{{ 'families.formTitle' | translate }}</h5>
+            <h5>{{ 'users.formTitle' | translate }}</h5>
 
-            <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.family" (click)="onEditFamily()"
+            <edit-icon-button *ngIf="!disablePage && permissionService.canEdit.user" (click)="onEditUser()"
                 [showOutline]="true" />
         </div>
 
@@ -23,31 +23,41 @@
 
             <div class="personal-activity">
                 <div class="personal-icons">
-                    <i class="fas fa-solid fa-house-user"></i>
+                    <i class="fas fa-solid fa-user"></i>
                 </div>
                 <div class="views-personal">
-                    <h4>{{ 'families.familyName' | translate }}</h4>
-                    <h5>{{family.familyName}}</h5>
+                    <h4>{{ 'shared.labels.name' | translate }}</h4>
+                    <h5>{{user.name}}</h5>
                 </div>
             </div>
 
             <div class="personal-activity">
                 <div class="personal-icons">
-                    <i class="fas fa-solid fa-user"></i>
+                    <i class="fas fa-solid fa-venus-mars"></i>
                 </div>
                 <div class="views-personal">
-                    <h4>{{ 'families.familyResponsible' | translate }}</h4>
-                    <h5>{{family.familyResponsible.name}}</h5>
+                    <h4>{{ 'shared.labels.gender' | translate }}</h4>
+                    <h5>{{getGender(user.gender!)}}</h5>
                 </div>
             </div>
 
-            <div class="personal-activity" *ngIf="permissionService.canEdit.family">
+            <div class="personal-activity">
+                <div class="personal-icons">
+                    <i class="fas fa-solid fa-calendar-alt"></i>
+                </div>
+                <div class="views-personal">
+                    <h4>{{ 'shared.labels.birthDate' | translate }}</h4>
+                    <h5>{{getDate(user.birthDate!)}}</h5>
+                </div>
+            </div>
+
+            <div class="personal-activity" *ngIf="permissionService.canEdit.user">
                 <div class="personal-icons">
                     <i class="fas fa-solid fa-phone"></i>
                 </div>
                 <div class="views-personal">
                     <h4>{{ 'shared.labels.phoneNumber' | translate }}</h4>
-                    <h5>{{family.familyResponsible.phoneNumber}}</h5>
+                    <h5>{{user.phone}}</h5>
                 </div>
             </div>
 
@@ -57,67 +67,59 @@
                 </div>
                 <div class="views-personal">
                     <h4>{{ 'shared.labels.email' | translate }}</h4>
-                    <h5><a href="mailto:{{family.familyResponsible.email}}">{{family.familyResponsible.email}}</a></h5>
+                    <h5><a href="mailto:{{user.email}}">{{user.email}}</a></h5>
                 </div>
             </div>
 
-            <div class="personal-activity" *ngIf="permissionService.canEdit.family">
+            <div class="personal-activity" *ngIf="permissionService.canEdit.user">
                 <div class="personal-icons">
                     <i class="fas fa-solid fa-calendar-alt"></i>
                 </div>
                 <div class="views-personal">
                     <h4>{{ 'shared.labels.joinedDate' | translate }}</h4>
-                    <h5 *ngIf="!disablePage">{{getDate(family.joinedDate!)}}</h5>
+                    <h5 *ngIf="!disablePage">{{getDate(user.joinedDate!)}}</h5>
                 </div>
             </div>
 
             <div class="personal-activity">
                 <div class="personal-icons">
-                    <i class="fas fa-solid fa-users"></i>
+                    <i class="fas fa-solid fa-user-tag"></i>
                 </div>
                 <div class="views-personal">
-                    <h4>{{ 'families.membersNumber' | translate }}</h4>
-                    <h5>{{family.membersNumber}}</h5>
+                    <h4>{{ 'shared.labels.role' | translate }}</h4>
+                    <h5>{{user.role}}</h5>
                 </div>
             </div>
 
         </div>
-        }
-
-        @if(activeTab === 'families.familyMembers') {
-        <div class="d-flex justify-content-between header-title">
-            <h5 class="mb-2">{{ 'families.familyMembers' | translate }}</h5>
-        </div>
-
-        <div class="tab-section-container auto-hover-scroll">
-            <div class="tab-overflow-auto" *ngIf="family.familyResponsible">
-                <app-table [columns]="membersColumns" [rows]="family.familyMembers" />
-            </div>
-        </div>
-
-        <no-data [icon]="'fas fa-users'" *ngIf="!family.familyResponsible"
-            [text]="'shared.noData.noMembers' | translate" />
         }
 
         @if(activeTab === 'shared.tabs.comingVisits') {
-
         <div class="d-flex justify-content-between header-title">
             <h5 class="mb-2">{{ 'shared.tabs.comingVisits' | translate }}</h5>
         </div>
 
         <div class="tab-section-container auto-hover-scroll">
-            <div class="tab-overflow-auto" *ngIf="family.familyResponsible">
+            <div class="tab-overflow-auto" *ngIf="visits && visits.length > 0">
                 <app-table [columns]="visitsColumns" [rows]="visits" />
             </div>
         </div>
 
-        <no-data [icon]="'fas fa-calendar-alt'" 
-            [text]="'shared.noData.noComingVisits' | translate" />
+        <no-data [icon]="'fas fa-calendar-alt'" *ngIf="!visits || visits.length === 0"
+            [text]="'shared.noData.noVisits' | translate" />
         }
 
     </p-card>
 
 </div>
 
-<app-family-form [showDialog]="showEditInfoDialog" [family]="family" (onSave)="reloadFamily()"
+<!-- Edit User Dialog -->
+@if(showEditInfoDialog) {
+<app-user-form [showDialog]="showEditInfoDialog" [user]="user" (onSave)="reloadUser()"
     (onCancel)="onCloseEditDialog()" />
+}
+
+<!-- User Attachment Dialog -->
+@if(showUserAttachmentDialog) {
+<!-- Add user attachment dialog component here -->
+}

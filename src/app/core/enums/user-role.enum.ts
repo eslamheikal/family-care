@@ -20,7 +20,6 @@ export class UserRoleService {
 
   getOptions(): DropdownProps[] {
     return [
-      { value: UserRoleEnum.None, label: this.translateService.instant('userRole.none') },
       { value: UserRoleEnum.Admin, label: this.translateService.instant('userRole.admin') },
       { value: UserRoleEnum.Employee, label: this.translateService.instant('userRole.employee') },
       { value: UserRoleEnum.FamilyParent, label: this.translateService.instant('userRole.familyParent') },

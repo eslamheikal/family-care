@@ -1,15 +1,25 @@
 import { GenderEnum } from "../enums/gender.enum";
+import { Relation } from "../enums/relation.enum";
 import { UserRoleEnum } from "../enums/user-role.enum";
 
 export class User {
     id!: number;
     name!: string;
-    phoneNumber!: string;
     email!: string;
+    phone!: string;
     password!: string;
-    role!: UserRoleEnum;
+    birthDate?: string;
+
     gender?: GenderEnum;
-    joinedDate?: Date;
-    birthDate?: Date;
-    imagePath?: string;
+    relation?: Relation;
+    role!: UserRoleEnum;
+
+    parentId?: number;
+    joinedDate?: string;
+    isActive?: boolean;
+
+    membersNumber?: number;
+    familyName?: string;
+    relationName?: string;
+    age?: number;
 }

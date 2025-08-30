@@ -291,13 +291,14 @@
         "loginError": "Login failed. Please check your credentials.",
         "forgetPasswordSuccess": "Password reset link has been sent to your email"
     },
-    "families": {
-        "all": "Families",
+    "users": {
+        "all": "Users",
         "one": "Family",
-        "formTitle": "Family Data",
-        "familyName": "Family Name",
-        "membersNumber": "Number of Family Members",
+        "formTitle": "User Data",
+        "userName": "User Name",
+        "membersNumber": "Number of User Members",
         "familyResponsible": "Family Responsible",
-        "familyMembers": "Family Members"
+        "familyMembers": "Family Members",
+        "familyName": "Family Name"
     }
 }
