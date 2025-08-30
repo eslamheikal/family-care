@@ -1,4 +1,4 @@
-export enum FamilyRelationEnum {
+export enum RelationEnum {
     Father,
     Mother,
     Son,

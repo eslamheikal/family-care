@@ -1,17 +1,20 @@
-import { FamilyRelationEnum } from "../enums/family.relation.enum";
 import { GenderEnum } from "../enums/gender.enum";
+import { RelationEnum } from "../enums/relation.enum";
 import { UserRoleEnum } from "../enums/user-role.enum";
 
-export interface FamilyMember {
+export interface User {
     id: string;
     name: string;
     email: string;
     phone: string;
     password: string;
     birthDate: string;
+    
     gender: GenderEnum;
-    relation: FamilyRelationEnum;
+    relation: RelationEnum;
     role: UserRoleEnum;
 
-    familyId: number;
+    parentId: number;
+    joinedDate: string | null;
+    isActive: boolean;
 }

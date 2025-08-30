@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { FamilyService } from '../services/family.service';
 import { handleError } from '../helpers/handle-error.helper';
+import { UserService } from '../services/user.service';
 
-const familyService = new FamilyService();
+const userService = new UserService();
 
 export default async function handler(req: Request, res: Response) {
   try {
@@ -20,7 +20,7 @@ export default async function handler(req: Request, res: Response) {
         sortOrder: sortOrder as 'asc' | 'desc'
       };
 
-      const result = await familyService.getFamiliesPaged(options);
+      const result = await userService.getUsersPaged(options);
 
       return res.status(200).json({
         success: true,
