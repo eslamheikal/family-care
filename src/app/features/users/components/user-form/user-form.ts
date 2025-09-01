@@ -74,7 +74,7 @@ export class UserForm implements OnInit, OnChanges, OnDestroy {
   private readonly genderService = inject(GenderService);
   private readonly relationService = inject(RelationService);
   private readonly roleService = inject(UserRoleService);
-  private readonly authService = inject(AuthService);
+  public readonly authService = inject(AuthService);
   public readonly permissionService = inject(PermissionService);
   //#endregion
 

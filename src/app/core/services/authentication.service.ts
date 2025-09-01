@@ -15,21 +15,15 @@ export class AuthenticationService extends ApiService<any> {
 
   login(emailOrPhone: string, password: string): Observable<LoginResult> {
     return this.httpClient.post<LoginResult>(
-      this.appURLGenerator.getEndPoint(Endpoints.AUTH.Actions.Login), 
+      this.appURLGenerator.getEndPointWithActionQuery(Endpoints.AUTH.Actions.Login), 
       { emailOrPhone, password }
-    );
-  }
-
-  refreshToken(refreshToken: string): Observable<LoginResult> {
-    return this.httpClient.post<LoginResult>(
-      this.appURLGenerator.getEndPoint(Endpoints.AUTH.Actions.RefreshToken), 
-      { refreshToken }
     );
   }
 
   forgotPassword(email: string): Observable<boolean> {
     return this.httpClient.get<boolean>(
-      this.appURLGenerator.getEndPoint(Endpoints.AUTH.Actions.ForgetPassword(email))
+      this.appURLGenerator.getEndPointWithActionQuery(Endpoints.AUTH.Actions.ForgetPassword(email))
     );
   }
+  
 } 

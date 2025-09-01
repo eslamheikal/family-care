@@ -3,12 +3,12 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form-group flex items-center gap-2 mb-2">
-        <input-label [label]="'auth.username' | translate" [required]="true"
+        <input-label [label]="'shared.labels.username' | translate" [required]="true"
             [formControl]="getFormControl('username')" />
     </div>
 
     <div class="form-group flex items-center gap-2 mb-2">
-        <input-label [label]="'auth.password' | translate" [required]="true"
+        <input-label [label]="'shared.labels.password' | translate" [required]="true"
             [formControl]="getFormControl('password')" />
     </div>
 

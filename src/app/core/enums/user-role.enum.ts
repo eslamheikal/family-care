@@ -10,7 +10,6 @@ export enum UserRoleEnum {
   FamilyMember
 }
 
-
 @Injectable({
   providedIn: 'root'
 })

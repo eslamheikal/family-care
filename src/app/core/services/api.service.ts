@@ -15,32 +15,49 @@ export class ApiService<T> {
     }
 
     getAll(): Observable<T[]> {
-        return this.httpClient.get<T[]>(this.appURLGenerator.getEndPoint(Endpoints.Generic.Actions.GetAll))
+        return this.httpClient.get<T[]>(this.appURLGenerator.getEndPointWithActionQuery(Endpoints.Generic.Actions.GetAll))
             .pipe(catchError(this.handleError));
     }
 
     getPaged(queryParams: QueryParamsModel): Observable<PagedList<T>> {
-        return this.httpClient.post<PagedList<T>>(this.appURLGenerator.getEndPoint(Endpoints.Generic.Actions.GetPaged), queryParams)
+        const _queryParams = new HttpParams()
+            .set('page', queryParams.page?.toString() || '1')
+            .set('pageSize', queryParams.pageSize?.toString() || '10')
+            .set('sortBy', queryParams.sort?.columnName || 'id')
+            .set('sortOrder', queryParams.sort?.direction || 'desc');
+
+        return this.httpClient.get<PagedList<T>>(this.appURLGenerator.getEndPointWithActionQuery(Endpoints.Generic.Actions.GetPaged + '&' + _queryParams.toString()))
             .pipe(catchError(this.handleError));
     }
 
     get(id: string | number): Observable<T> {
-        return this.httpClient.get<T>(this.appURLGenerator.getEndPoint(Endpoints.Generic.Actions.Get(id)))
+        return this.httpClient.get<T>(this.appURLGenerator.getEndPointWithActionQuery(Endpoints.Generic.Actions.Get(id)))
             .pipe(catchError(this.handleError));
     }
 
     add(resource: T): Observable<boolean> {
-        return this.httpClient.post<boolean>(this.appURLGenerator.getEndPoint(Endpoints.Generic.Actions.Create), resource)
+        return this.httpClient.post<boolean>(this.appURLGenerator.getEndPointWithActionQuery(Endpoints.Generic.Actions.Create), resource)
             .pipe(catchError(this.handleError));
     }
 
     delete(id: string | number): Observable<boolean> {
-        return this.httpClient.delete<boolean>(this.appURLGenerator.getEndPoint(Endpoints.Generic.Actions.Delete(id)))
+        return this.httpClient.delete<boolean>(this.appURLGenerator.getEndPointWithActionQuery(Endpoints.Generic.Actions.Delete(id)))
             .pipe(catchError(this.handleError));
     }
 
     update(resource: T): Observable<boolean> {
-        return this.httpClient.put<boolean>(this.appURLGenerator.getEndPoint(Endpoints.Generic.Actions.Update), resource)
+        return this.httpClient.put<boolean>(this.appURLGenerator.getEndPointWithActionQuery(Endpoints.Generic.Actions.Update), resource)
+            .pipe(catchError(this.handleError));
+    }
+
+
+    activate(id: number): Observable<boolean> {
+        return this.httpClient.get<boolean>(this.appURLGenerator.getEndPointWithActionQuery(Endpoints.Generic.Actions.Activate(id)))
+            .pipe(catchError(this.handleError));
+    }
+
+    deactivate(id: number): Observable<boolean> {
+        return this.httpClient.get<boolean>(this.appURLGenerator.getEndPointWithActionQuery(Endpoints.Generic.Actions.Deactivate(id)))
             .pipe(catchError(this.handleError));
     }
 

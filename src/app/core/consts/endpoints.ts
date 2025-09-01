@@ -3,10 +3,12 @@ export class Endpoints {
         Actions: {
             GetAll: 'all',
             GetPaged: 'paged',
-            Get: (id: string | number) => `/${id}`,
+            Get: (id: string | number) => `id=${id}`,
             Create: 'create',
             Update: 'update',
-            Delete: (id: string | number) => `/${id}`,
+            Delete: (id: string | number) => `delete&id=${id}`,
+            Activate: (id: string | number) => `activate&id=${id}`,
+            Deactivate: (id: string | number) => `deactivate&id=${id}`,
         }
     };
 
@@ -15,25 +17,22 @@ export class Endpoints {
         Actions: {
             Login: 'login',
             RefreshToken: 'refresh-token',
-            ForgetPassword: (email: string) => `forget-password/${email}`,
+            ForgetPassword: (email: string) => `forget-password&email=${email}`,
         }
     };
 
     static readonly USERS = {
         Controller: 'users',
         Actions: {
-            Paged: `paged`,
-            Add: 'add',
-            Activate: (id: string | number) => `activate/${id}`,
-            Deactivate: (id: string | number) => `deactivate/${id}`,
+            
         }
     };
 
     static readonly ATTACHMENTS = {
         Controller: 'attachment',
         Actions: {
-            View: (fileName: string) => `view/${encodeURIComponent(fileName)}`,
-            Download: (fileName: string) => `download/${encodeURIComponent(fileName)}`,
+            View: (fileName: string) => `view&fileName=${encodeURIComponent(fileName)}`,
+            Download: (fileName: string) => `download&fileName=${encodeURIComponent(fileName)}`,
         }
     };
 

@@ -95,29 +95,35 @@ export class UsersList implements OnDestroy {
 
   onActivate(event: User) {
     this.confirmService.confirmActivate(() => {
-      // TODO: Implement user activation
-      // this.userService.activate(event.id)
-      //   .pipe(takeUntil(this.destroy$))
-      //   .subscribe(res => {
-      //     if (res) {
-      //       this.loadUsers(this.queryParams);
-      //       this.toaster.showSuccess(this.translate.instant('users.activateSuccess'));
-      //     }
-      //   }, _ => { }, () => this.loader.hide());
+
+      this.loader.show();
+
+      this.userService.activate(event.id)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(res => {
+          if (res) {
+            this.loadUsers(this.queryParams);
+            this.toaster.showSuccess(this.translate.instant('shared.messages.activatedSuccessfully'));
+          }
+        }, _ => { }, () => this.loader.hide());
+
     });
   }
 
   onDeactivate(event: User) {
     this.confirmService.confirmDeactivate(() => {
-      // TODO: Implement user deactivation
-      // this.userService.deactivate(event.id)
-      //   .pipe(takeUntil(this.destroy$))
-      //   .subscribe(res => {
-      //     if (res) {
-      //       this.loadUsers(this.queryParams);
-      //       this.toaster.showSuccess(this.translate.instant('users.deactivateSuccess'));
-      //     }
-      //   }, _ => { }, () => this.loader.hide());
+
+      this.loader.show();
+      
+      this.userService.deactivate(event.id)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(res => {
+          if (res) {
+            this.loadUsers(this.queryParams);
+            this.toaster.showSuccess(this.translate.instant('shared.messages.deactivatedSuccessfully'));
+          }
+        }, _ => { }, () => this.loader.hide());
+
     });
   }
 
@@ -143,7 +149,7 @@ export class UsersList implements OnDestroy {
         next: (res: boolean) => {
           if (res) {
             this.loadUsers(this.queryParams);
-            this.toaster.showSuccess(this.translate.instant('users.deleteSuccess'));
+            this.toaster.showSuccess(this.translate.instant('shared.messages.deletedSuccessfully'));
           }
           this.userToDelete = {} as User;
         },

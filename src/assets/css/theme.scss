@@ -60,3 +60,31 @@ body {
     border-left: unset !important;
     border-radius: 0.275rem;
 }
+
+
+// disalbe sidenav
+
+.main-wrapper {
+    
+    .page-wrapper {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    .header .header-left .logo {
+        display: inline-block !important;
+    }
+
+    #mobile_btn,
+    .menu-toggle,
+    .sidebar,
+    .header-left .logo.logo-small {
+        display: none !important;
+    }
+
+    @media (max-width: 767.98px) {
+        .header-left .logo h3{
+            display: none !important;
+        }
+    }
+}

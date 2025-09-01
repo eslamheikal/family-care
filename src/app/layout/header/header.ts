@@ -23,9 +23,17 @@ export class Header {
 
   ngOnInit() {
     this.authService.currentUser$.subscribe((user) => {
-      this.userName = user?.name || '';
+      this.userName = this.getUserName(user?.name || '');      
       this.role = user?.role || UserRoleEnum.Admin;
     });
+  }
+
+  getUserName(userName: string) : string {
+    if(userName.split(' ').length > 3) {
+      return userName.split(' ')[0] + ' ' + userName.split(' ')[userName.split(' ').length - 1];
+    }
+    
+    return userName;
   }
 
   getUserRole(): string {
