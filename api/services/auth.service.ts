@@ -4,12 +4,13 @@ import { UserMapper } from "../mappers/user.mapper";
 import { Result } from "../utils/result";
 import jwt from 'jsonwebtoken';
 import { DbBuilder } from "../lib/db-builder";
+import { UserRoleEnum } from "../enums/user-role.enum";
 
 // JWT payload interface
 interface JWTPayload {                                                                                                                  
   userId: string;
   email?: string;
-  role?: string;
+  role?: UserRoleEnum;
   iat?: number;
   exp?: number;
 }
@@ -175,7 +176,7 @@ export class AuthService {
     }
   }
 
-  async getUserIdFromToken(token: string): Promise<Result<string>> {
+  async getUserIdFromToken(token: string): Promise<Result<number>> {
     try {
       const tokenResult = await this.validateToken(token);
       
@@ -183,10 +184,20 @@ export class AuthService {
         return Result.failure(tokenResult.errors || ['Token validation failed']);
       }
 
-      return Result.success(tokenResult.value!.userId);
+      return Result.success(parseInt(tokenResult.value!.userId));
     } catch (error) {
       console.error('Get user ID from token error:', error);
       return Result.failure(['Failed to get user ID from token']);
+    }
+  }
+
+  async getUserRoleFromToken(token: string): Promise<Result<UserRoleEnum>> {
+    try {
+      const tokenResult = await this.validateToken(token);
+      return Result.success(tokenResult.value!.role as UserRoleEnum);
+    } catch (error) {
+      console.error('Get user role from token error:', error);
+      return Result.failure(['Failed to get user role from token']);
     }
   }
 }

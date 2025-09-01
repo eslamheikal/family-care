@@ -7,15 +7,27 @@ import { PagedList } from "../utils/paged-list.model";
 import { QueryParamsModel } from "../utils/query-params.model";
 import { DbCommands } from "../lib/db-commands";
 import { DB_TABLES } from "../lib/db-tables.const";
+import { DbBuilder } from "../lib/db-builder";
 
 const userCommands = new DbCommands('users', 'id');
 const userQueries = new DbQueries('users', 'id');
 
 export class UserService {
 
-  async getAllParents(): Promise<User[]> {
-    const users = await userQueries.getAll();
-    return users.map(user => UserMapper.toModel(user)).filter(user => user.role === UserRoleEnum.Parent);
+  async getFamilyParents(): Promise<Result<User[]>> {
+    const users = await userQueries.query({ where: { role: UserRoleEnum.Parent } });
+    return Result.success(users.map(user => UserMapper.toModel(user)));
+  }
+
+  async getFamilyMembers(userId: number): Promise<Result<User[]>> {
+
+    const whereClause = DbBuilder.or(
+      DbBuilder.and(DbBuilder.condition(DB_TABLES.USERS.PARENT_ID, '==', userId)), 
+      DbBuilder.and(DbBuilder.condition(DB_TABLES.USERS.ID, '==', userId))
+    );
+
+    const users = await userQueries.query({ where: whereClause });
+    return Result.success(users.map(user => UserMapper.toModel(user)));
   }
 
   async getUsersPaged(options: QueryParamsModel): Promise<PagedList<User>> {
@@ -37,7 +49,7 @@ export class UserService {
   async addUser(user: User): Promise<Result<User>> {
 
     // check if user already exists by email or phone
-    const hasDuplicate = await this.hasDuplicate(user.email, user.phone!);
+    const hasDuplicate = await this.hasDuplicate(user);
     if (!hasDuplicate.isSuccess) {
       return hasDuplicate;
     }
@@ -48,7 +60,7 @@ export class UserService {
 
   async updateUser(updateData: User): Promise<Result<User>> {
     // check if user already exists by email or phone
-    const hasDuplicate = await this.hasDuplicate(updateData.email, updateData.phone!);
+    const hasDuplicate = await this.hasDuplicate(updateData);
     if (!hasDuplicate.isSuccess) {
       return hasDuplicate;
     }
@@ -72,16 +84,16 @@ export class UserService {
     return result ? Result.success(true) : Result.failure(['User not found']);
   }
 
-  async hasDuplicate(email: string, phone: string): Promise<Result<User>> {
+  async hasDuplicate(user: User): Promise<Result<User>> {
 
     // check if user already exists by email or phone
-    const userExists = await userQueries.query({ where: { email: email, phone: phone } });
+    const userExists = await userQueries.query({ where: { email: user.email, phone: user.phone } });
 
-    if (userExists.length > 0 && userExists[0].email === email) {
+    if (userExists.length > 0 && userExists[0].email === user.email && +userExists[0].id !== user.id) {
       return Result.failure(['User already exists with this email']);
     }
 
-    if (userExists.length > 0 && userExists[0].phone === phone) {
+    if (userExists.length > 0 && userExists[0].phone === user.phone && +userExists[0].id !== user.id) {
       return Result.failure(['User already exists with this phone']);
     }
 

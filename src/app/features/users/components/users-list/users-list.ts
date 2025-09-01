@@ -19,6 +19,8 @@ import { ColumnFilterTypeEnum } from '../../../shared/enums/column.filter.type.e
 import { FilterOperators } from '../../../shared/models/query-filter-params.model';
 import { UserForm } from "../user-form/user-form";
 import { PermissionService } from '../../../../core/authorization/permission.service';
+import { AuthService } from '../../../../core/authorization/auth.service';
+import { Relation, RelationService } from '../../../../core/enums/relation.enum';
 
 @Component({
   selector: 'app-users-list',
@@ -51,15 +53,17 @@ export class UsersList implements OnDestroy {
   private router = inject(Router);
   private translate = inject(TranslateService);
   private confirmService = inject(ConfirmService);
+  private authService = inject(AuthService);
+  private relationService = inject(RelationService);
   public permissionService = inject(PermissionService);
   //#endregion
 
   //#region Columns
   columns: GridColumn[] = [
-    { field: 'name', apiField: 'name', title: this.translate.instant('shared.labels.name'), columnType: ColumnTypeEnum.text, sortable: true, filterType: ColumnFilterTypeEnum.text },
-    { field: 'email', apiField: 'email', title: this.translate.instant('shared.labels.email'), columnType: ColumnTypeEnum.text, sortable: true, filterType: ColumnFilterTypeEnum.text },
-    { field: 'phone', apiField: 'phone', title: this.translate.instant('shared.labels.phoneNumber'), columnType: ColumnTypeEnum.text, sortable: true, filterType: ColumnFilterTypeEnum.text },
-    { field: 'joinedDate', apiField: 'joinedDate', title: this.translate.instant('shared.labels.joinedDate'), columnType: ColumnTypeEnum.date, sortable: true, filterType: ColumnFilterTypeEnum.date, filterOperator: FilterOperators.equal },
+    { field: 'name', apiField: 'name', title: this.translate.instant('shared.labels.name'), columnType: ColumnTypeEnum.text, filterType: ColumnFilterTypeEnum.text },
+    { field: 'email', apiField: 'email', title: this.translate.instant('shared.labels.email'), columnType: ColumnTypeEnum.text, filterType: ColumnFilterTypeEnum.text },
+    { field: 'phone', apiField: 'phone', title: this.translate.instant('shared.labels.phoneNumber'), columnType: ColumnTypeEnum.text, filterType: ColumnFilterTypeEnum.text },
+    { field: 'relationName', apiField: 'relationName', title: this.translate.instant('familyRelations.one'), columnType: ColumnTypeEnum.text, filterType: ColumnFilterTypeEnum.text },
     { field: 'isActive', apiField: 'isActive', title: this.translate.instant('shared.labels.status'), columnType: ColumnTypeEnum.badge, badgeConfig: { getValue: (item: User) => item.isActive ? this.translate.instant('shared.badges.active') : this.translate.instant('shared.badges.inactive'), getColor: (item: User) => item.isActive ? 'green' : 'red' }   },
   ];
   //#endregion
@@ -72,9 +76,18 @@ export class UsersList implements OnDestroy {
     this.queryParams = params;
 
     this.loader.show();
-    this.userService.getPaged(params).pipe(takeUntil(this.destroy$)).subscribe({
-      next: (users: PagedList<User>) => {
-        this.users = users;
+
+    let parentId = this.authService.isFamilyParent ? this.authService.getUser()?.id : null;
+    parentId = this.authService.isFamilyMember ? this.authService.getUser()?.parentId : parentId;
+
+    this.userService.loadUsers(parentId).pipe(takeUntil(this.destroy$)).subscribe({
+      next: (users: User[]) => {
+        users = users.map(user => {
+          user.relationName = this.relationService.getRelation(user.relation as Relation);
+          return user;
+        });
+        users = users.sort((a, b) => a.name.localeCompare(b.name));
+        this.users = { items: users, totalCount: users.length, pageCount: 1 };
       },
       error: () => { },
       complete: () => this.loader.hide()
@@ -129,7 +142,7 @@ export class UsersList implements OnDestroy {
 
   onView(event: User) {
     this.confirmService.confirmView(() => {
-      this.router.navigate(['/users', event.id]);
+      this.router.navigate(['/', event.id]);
     });
   }
 
@@ -156,6 +169,12 @@ export class UsersList implements OnDestroy {
         error: () => { },
         complete: () => this.loader.hide()
       });
+  }
+
+  getTitle() {
+    return this.authService.isFamilyParent || this.authService.isFamilyMember ? 
+    this.translate.instant('users.all') :
+    this.translate.instant('users.families') ;
   }
   
   ngOnDestroy() {

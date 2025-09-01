@@ -84,8 +84,9 @@ export class UserForm implements OnInit, OnChanges, OnDestroy {
   requiredPassword = false;
   passwordMismatch = false;
   genderOptions: DropdownProps[] = this.genderService.getOptions();
-  relationOptions: DropdownProps[] = this.relationService.getOptions();
-  roleOptions: DropdownProps[] = this.roleService.getOptions();
+  relationOptions: DropdownProps[] = this.authService.isFamilyParent ? 
+    this.relationService.getParentOptions(this.authService.getUser()?.relation as Relation) : this.relationService.getOptions();
+  roleOptions: DropdownProps[] = this.authService.isFamilyParent ? this.roleService.getParentOptions() : this.roleService.getOptions();
   //#endregion
 
 
@@ -95,9 +96,17 @@ export class UserForm implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.userForm) {
+
+    this.initializeForm();
+
+    if (changes['user'] && this.user.id > 0) {
       this.handleFormChanges(changes);
     }
+   
+    if (this.authService.isFamilyParent) {
+      this.userForm.get('role')?.setValue(UserRoleEnum.FamilyMember);
+    }
+    
   }
 
   ngOnDestroy(): void {
@@ -108,17 +117,17 @@ export class UserForm implements OnInit, OnChanges, OnDestroy {
 
   //#region Form Initialization
   private initializeForm(): void {
-    this.userForm = this.createFormGroup();
+    this.userForm = this.userForm || this.createFormGroup();
   }
 
   private createFormGroup(): FormGroup {
     return this.fb.group({
       id: [0],
       name: ['', [Validators.required, Validators.minLength(FORM_CONFIG.NAME_MIN_LENGTH)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.minLength(FORM_CONFIG.PHONE_MIN_LENGTH)]],
-      password: ['', [Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)]],
-      confirmPassword: ['', [Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)]],
+      email: [''],
+      phone: [''],
+      password: [''],
+      confirmPassword: [''],
 
       birthDate: ['', [Validators.required]],
       gender: ['', [Validators.required]],
@@ -168,16 +177,16 @@ export class UserForm implements OnInit, OnChanges, OnDestroy {
   }
 
   private setPasswordValidators(required: boolean): void {
-    const passwordValidators = required
-      ? [Validators.required, Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)]
-      : [Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)];
+    // const passwordValidators = required
+    //   ? [Validators.required, Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)]
+    //   : [Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)];
 
-    const confirmPasswordValidators = required
-      ? [Validators.required, Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)]
-      : [Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)];
+    // const confirmPasswordValidators = required
+    //   ? [Validators.required, Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)]
+    //   : [Validators.minLength(FORM_CONFIG.PASSWORD_MIN_LENGTH)];
 
-    this.userForm?.get('password')?.setValidators(passwordValidators);
-    this.userForm?.get('confirmPassword')?.setValidators(confirmPasswordValidators);
+    // this.userForm?.get('password')?.setValidators(passwordValidators);
+    // this.userForm?.get('confirmPassword')?.setValidators(confirmPasswordValidators);
 
     this.userForm?.get('password')?.updateValueAndValidity();
     this.userForm?.get('confirmPassword')?.updateValueAndValidity();

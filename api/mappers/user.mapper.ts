@@ -15,7 +15,7 @@ export class UserMapper {
     const email = user[DB_TABLES.USERS.EMAIL] || user.email;
     const phone = user[DB_TABLES.USERS.PHONE] || user.phone;
     const password = user[DB_TABLES.USERS.PASSWORD] || user.password;
-    const birthDate = user[DB_TABLES.USERS.BIRTH_DATE] || user.birthDate;
+    const birthDate = DateTimeHelper.toISOString(user[DB_TABLES.USERS.BIRTH_DATE]) || user.birthDate;
 
     const gender = user[DB_TABLES.USERS.GENDER] || user.gender;
     const relation = user[DB_TABLES.USERS.RELATION] || user.relation;
@@ -31,7 +31,7 @@ export class UserMapper {
       email,  
       phone,
       password: '********',
-      birthDate,
+      birthDate: birthDate,
       gender,
       relation,
       role,

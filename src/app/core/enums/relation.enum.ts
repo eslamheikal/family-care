@@ -29,6 +29,10 @@ export class RelationService {
         ];
     }
 
+    getParentOptions(userRelation: Relation): DropdownProps[] {
+        return this.getOptions().filter(r => r.value !== userRelation);
+    }
+
     getRelation(relation: Relation): string {
         return this.getOptions().find(r => r.value === relation)?.label || '';
     }

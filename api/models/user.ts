@@ -3,12 +3,12 @@ import { RelationEnum } from "../enums/relation.enum";
 import { UserRoleEnum } from "../enums/user-role.enum";
 
 export interface User {
-    id: string;
+    id: number;
     name: string;
     email: string;
     phone?: string;
     password: string;
-    birthDate?: string;
+    birthDate?: string | null;
     
     gender: GenderEnum;
     relation: RelationEnum;

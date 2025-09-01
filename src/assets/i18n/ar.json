@@ -60,8 +60,8 @@
     "familyRelations": {
         "all": "الصلة القرابة",
         "one": "صلة القرابة",
-        "father": "أب",
-        "mother": "أم",
+        "father": "زوج",
+        "mother": "زوجة",
         "son": "ابن",
         "daughter": "ابنة",
         "grandFather": "جد",
@@ -216,10 +216,9 @@
             }
         },
         "tabs": {
-            "schedule": "المواعيد",
             "personalInfo": "المعلومات الشخصية",
-            "attendance": "الحضور",
-            "comingVisits": "الفحوصات القادمة"
+            "comingVisits": "الفحوصات القادمة",
+            "attachments": "المرفقات"
         },
         "calendar": {
             "month": "شهر",
@@ -292,13 +291,13 @@
         "forgetPasswordSuccess": "تم إرسال رابط تعديل كلمة المرور إلى بريدك الإلكتروني"
     },
     "users": {
-        "all": "المستخدمين",
+        "all": "أفراد العائلة",
         "one": "العائلة",
-        "formTitle": "بيانات المستخدم",
-        "userName": "اسم المستخدم",
-        "membersNumber": "عدد أفراد المستخدم",
+        "families": "العائلات",
+        "formTitle": "البيانات الشخصية",
+        "userName": "اسم العائلة",
+        "membersNumber": "عدد أفراد العائلة",
         "familyResponsible": "اسم مسئول العائلة",
-        "familyMembers": "أفراد العائلة",
         "familyName": "اسم العائلة"
     }
 }

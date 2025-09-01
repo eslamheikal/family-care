@@ -1,0 +1,26 @@
+::ng-deep {
+    .p-datatable-table-container {
+        // box-shadow: 0 .25rem .5rem #19191926 !important;
+        border-radius: 0.375rem;
+        border: 1px solid #e9ecef;
+
+        table {
+
+            thead {
+                background: #f8f9fa;
+                border-bottom: 1px solid #e9ecef;
+
+                th {
+                    padding: 0.5rem 0.75rem;
+                    text-align: left;
+                    font-weight: 600;
+                    color: #495057;
+                    text-align: start;
+                    white-space: nowrap;
+
+                }
+            }
+
+        }
+    }
+}

@@ -15,7 +15,7 @@ export class DateTimeHelper {
   }
 
   static toISOString(timestamp: Timestamp): string {
-    return timestamp.toDate().toISOString();
+    return timestamp ? timestamp.toDate().toISOString() : '';
   }
 
 }

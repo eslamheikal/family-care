@@ -216,10 +216,9 @@
             }
         },
         "tabs": {
-            "schedule": "Schedule",
             "personalInfo": "Personal Info",
-            "attendance": "Attendance",
-            "comingVisits": "Upcoming Visits"
+            "comingVisits": "Upcoming Visits",
+            "attachments": "Attachments"
         },
         "calendar": {
             "month": "Month",
@@ -292,13 +291,13 @@
         "forgetPasswordSuccess": "Password reset link has been sent to your email"
     },
     "users": {
-        "all": "Users",
+        "all": "Family Members",
         "one": "Family",
-        "formTitle": "User Data",
-        "userName": "User Name",
-        "membersNumber": "Number of User Members",
+        "families": "Families",
+        "formTitle": "Personal Data",
+        "userName": "Family Name",
+        "membersNumber": "Number of Family Members",
         "familyResponsible": "Family Responsible",
-        "familyMembers": "Family Members",
         "familyName": "Family Name"
     }
 }

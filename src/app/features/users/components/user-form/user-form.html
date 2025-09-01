@@ -21,45 +21,20 @@
 
         </div>
 
-        <!-- Contact Information Section -->
-        <div class="row">
-
-            <!-- Birth Date -->
-            <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
-                <label-date-picker [label]="'shared.labels.birthDate' | translate"
-                    [disabled]="!(permissionService.canEdit.user)" [formControl]="getFormControl('birthDate')" />
-            </div>
-
-
-            <!-- Role -->
-            <div class="col-md-6 col-12 flex items-center gap-2 mb-2" *ngIf="permissionService.canAdd.user">
-                <dropdown [label]="'userRole.one' | translate" [required]="true" [options]="roleOptions"
-                    [formControl]="getFormControl('role')" [disabled]="!(permissionService.canAdd.user)" />
-            </div>
-
-            <!-- Relation -->
-            <div class="col-md-6 col-12 flex items-center gap-2 mb-2" *ngIf="permissionService.canAdd.user">
-                <dropdown [label]="'familyRelations.one' | translate" [required]="true" [options]="relationOptions"
-                    [formControl]="getFormControl('relation')" [disabled]="!(permissionService.canEdit.user)" />
-            </div>
-
-        </div>
-
-        <hr />
 
         <!-- Personal Information Section -->
         <div class="row">
             <!-- Phone Number -->
             <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
                 <input-label [label]="'shared.labels.phoneNumber' | translate"
-                    [disabled]="!(permissionService.canEdit.user)" [required]="true"
+                    [disabled]="!(permissionService.canEdit.user)" 
                     [formControl]="getFormControl('phone')" />
             </div>
 
             <!-- Email -->
             <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
                 <input-label [label]="'shared.labels.email' | translate" [disabled]="!(permissionService.canEdit.user)"
-                    [required]="true" [formControl]="getFormControl('email')" />
+                     [formControl]="getFormControl('email')" />
             </div>
         </div>
 
@@ -67,13 +42,13 @@
         <div class="row">
             <!-- Password -->
             <div class="col-md-6 col-12 flex items-center gap-2 mb-2">
-                <input-label [label]="'shared.labels.password' | translate" [required]="requiredPassword"
+                <input-label [label]="'shared.labels.password' | translate" 
                     [formControl]="getFormControl('password')" [disabled]="!(permissionService.canEdit.user)" />
             </div>
 
             <!-- Confirm Password -->
             <div class="col-md-6 col-12 flex flex-col gap-2 mb-2">
-                <input-label [label]="'shared.labels.confirmPassword' | translate" [required]="requiredPassword"
+                <input-label [label]="'shared.labels.confirmPassword' | translate" 
                     [formControl]="getFormControl('confirmPassword')" [disabled]="!(permissionService.canEdit.user)" />
 
                 <!-- Password Mismatch Error Message -->
@@ -81,6 +56,32 @@
                     {{ 'shared.validation.passwordMismatch' | translate }}
                 </div>
             </div>
+        </div>
+
+        <hr />
+
+        <!-- Contact Information Section -->
+        <div class="row">
+
+            <!-- Birth Date -->
+            <div class="col-md-4 col-12 flex items-center gap-2 mb-2">
+                <label-date-picker [label]="'shared.labels.birthDate' | translate"
+                    [disabled]="!(permissionService.canEdit.user)" [formControl]="getFormControl('birthDate')" />
+            </div>
+
+
+            <!-- Role -->
+            <div class="col-md-4 col-12 flex items-center gap-2 mb-2" *ngIf="permissionService.canAdd.user">
+                <dropdown [label]="'userRole.one' | translate" [required]="true" [options]="roleOptions"
+                    [formControl]="getFormControl('role')" [disabled]="!(permissionService.canAdd.user) || this.authService.isFamilyParent" />
+            </div>
+
+            <!-- Relation -->
+            <div class="col-md-4 col-12 flex items-center gap-2 mb-2" *ngIf="permissionService.canAdd.user">
+                <dropdown [label]="'familyRelations.one' | translate" [required]="true" [options]="relationOptions"
+                    [formControl]="getFormControl('relation')" [disabled]="!(permissionService.canEdit.user)" />
+            </div>
+
         </div>
 
     </form>

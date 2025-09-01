@@ -1,6 +1,6 @@
-<card-container [title]="'users.all' | translate" [addBtn]="permissionService.canAdd.user" (onAdd)="onAdd()">
+<card-container [title]="getTitle()" [addBtn]="permissionService.canAdd.user" (onAdd)="onAdd()">
     <grid [pagedRows]="users" (onLazyLoad)="loadUsers($event)" 
-          [columns]="columns" [pageSize]="10" [paginator]="true" [showFilters]="true"
+          [columns]="columns" [pageSize]="100000" [paginator]="false" 
           [allowDelete]="permissionService.canDelete.user" (onDelete)="onDelete($event)"
           [allowActivate]="permissionService.canActivate.user" (onActivate)="onActivate($event)"
           [allowDeactivate]="permissionService.canDeactivate.user"  (onDeactivate)="onDeactivate($event)"
@@ -10,5 +10,5 @@
 
 
 <app-user-form [showDialog]="showDialog && permissionService.canEdit.user" 
-[user]="user" (onSave)="loadUsers(queryParams)" 
+[user]="user" (onSave)="loadUsers(queryParams)"
 (onCancel)="showDialog = false" />

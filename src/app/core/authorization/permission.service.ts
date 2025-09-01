@@ -22,7 +22,7 @@ export class PermissionService {
 
     get canView() {
         return {
-            userProfile: this.authService.isAdmin || this.authService.isEmployee || this.authService.isFamilyParent,
+            userProfile: this.authService.isAdmin || this.authService.isEmployee || this.authService.isFamilyParent || this.authService.isFamilyMember,
         };
     }
 
@@ -34,7 +34,7 @@ export class PermissionService {
 
     get canAdd() {
         return {
-            user: this.authService.isAdmin || this.authService.isEmployee,
+            user: this.authService.isAdmin || this.authService.isEmployee || this.authService.isFamilyParent,
         };
     }
 

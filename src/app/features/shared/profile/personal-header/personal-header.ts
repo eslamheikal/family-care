@@ -15,6 +15,7 @@ export class PersonalHeader {
 
   @Input() profileHeader: ProfileHeader = {} as ProfileHeader;
 
+  @Input() showCode: boolean = false;
   @Input() isEditing: boolean = false;
   @Output() uploadImage = new EventEmitter<Event>();
 

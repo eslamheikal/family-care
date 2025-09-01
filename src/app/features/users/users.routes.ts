@@ -14,14 +14,6 @@ export const USERS_ROUTES: Routes = [
         }
     },
     {
-        path: 'form',
-        component: UserForm,
-        resolve: { title: TitleResolver },
-        data: {
-          subtitle: 'users.formTitle'
-        }
-    },
-    {
         path: ':id',
         component: UserProfile,
         resolve: { title: TitleResolver },

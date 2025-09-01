@@ -51,6 +51,7 @@ import { TableColumn } from '../../../shared/props/table-column.props';
 import { Visits } from '../../../../core/models/visits.model';
 import { PermissionService } from '../../../../core/authorization/permission.service';
 import { UserForm } from '../user-form/user-form';
+import { Relation, RelationService } from '../../../../core/enums/relation.enum';
 
 // Interfaces
 interface UserProfileState {
@@ -113,6 +114,7 @@ export class UserProfile implements OnInit, OnDestroy {
   private readonly router = inject(Router);
   private readonly authService = inject(AuthService);
   private readonly genderService = inject(GenderService);
+  private readonly relationService = inject(RelationService);
   public readonly permissionService = inject(PermissionService);
   //#endregion
 
@@ -120,6 +122,7 @@ export class UserProfile implements OnInit, OnDestroy {
   readonly tabs: PersonalTab[] = [
     { label: 'users.formTitle', icon: 'fas fa-user' },
     { label: 'shared.tabs.comingVisits', icon: 'fas fa-calendar-alt' },
+    { label: 'shared.tabs.attachments', icon: 'fas fa-paperclip' },
   ];
 
   // Table configuration
@@ -203,7 +206,7 @@ export class UserProfile implements OnInit, OnDestroy {
   private updateProfileHeader(user: User): void {
     this.profileHeader = {
       fullName: user.name,
-      code: user.id?.toString() || '',
+      code: this.getRelation(user.relation!) || '',
       image: 'assets/icons/avatar-student.svg',
       dateOfBirth: user.birthDate || null
     };
@@ -251,6 +254,10 @@ export class UserProfile implements OnInit, OnDestroy {
 
   getGender(gender: GenderEnum): string {
     return this.genderService.getGender(gender);
+  }
+
+  getRelation(relation: Relation): string {
+    return this.relationService.getRelation(relation);
   }
 
   onEditUser(): void {

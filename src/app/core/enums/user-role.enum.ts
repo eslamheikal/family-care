@@ -26,6 +26,12 @@ export class UserRoleService {
     ];
   }
 
+  getParentOptions(): DropdownProps[] {
+    return [
+      { value: UserRoleEnum.FamilyMember, label: this.translateService.instant('userRole.familyMember') }
+    ];
+  }
+
   getRole(role: UserRoleEnum): string {
     return this.getOptions().find(r => r.value === role)?.label || '';
   }

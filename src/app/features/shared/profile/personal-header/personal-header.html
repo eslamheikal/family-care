@@ -18,9 +18,9 @@
         </div>
 
         <div class="profile-basic-info">
-            <h1 class="profile-name">{{ profileHeader.fullName || '-'}}</h1>
-            <p class="profile-info">
-                <span class="profile-value">{{ profileHeader.code || 'T_000000'}}</span>
+            <h1 class="profile-name">{{ profileHeader.fullName || ''}}</h1>
+            <p class="profile-info" *ngIf="showCode">
+                <span class="profile-value">{{ profileHeader.code || ''}}</span>
             </p>
             <p class="profile-info" *ngIf="profileHeader.dateOfBirth">
                 <span class="profile-value">{{ getAge(profileHeader.dateOfBirth) || '-'}}</span>

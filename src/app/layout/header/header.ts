@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [SelectLanguage, Notification, TranslateModule],
+  imports: [SelectLanguage, TranslateModule],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
@@ -41,11 +41,7 @@ export class Header {
   }
 
   goToProfile() {
-    if(this.authService.isFamilyParent) {
-      this.router.navigate(['/users' , this.authService.getUser()?.id]);
-    } else if(this.authService.isFamilyMember) {
-      this.router.navigate(['/users' , this.authService.getUser()?.id]);
-    }
+    this.router.navigate(['/' , this.authService.getUser()?.id]);
   }
 
   logout() {
