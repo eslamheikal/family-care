@@ -22,7 +22,7 @@ export class UserService {
   async getFamilyMembers(userId: number): Promise<Result<User[]>> {
 
     const whereClause = DbBuilder.or(
-      DbBuilder.and(DbBuilder.condition(DB_TABLES.USERS.PARENT_ID, '==', userId)), 
+      DbBuilder.and(DbBuilder.condition(DB_TABLES.USERS.PARENT_ID, '==', userId)),
       DbBuilder.and(DbBuilder.condition(DB_TABLES.USERS.ID, '==', userId))
     );
 
@@ -40,10 +40,21 @@ export class UserService {
     };
   }
 
-  async getUser(userId: number): Promise<Result<User>> {
+  async getUser(userId: number, currentUserId: number, currentUserRole: UserRoleEnum, currentParentId: number): Promise<Result<User>> {
     const user = await userQueries.getById(userId);
 
-    return user ? Result.success(UserMapper.toModel(user)) : Result.failure(['User not found']);
+    if (!user) {
+      return Result.failure(['User not found']);
+    }
+
+    const mappedUser = UserMapper.toModel(user);
+
+    const canAccessUser = await this.canAccessUser(mappedUser, currentUserId, currentUserRole, currentParentId);
+    if (!canAccessUser.isSuccess) {
+      return Result.failure(canAccessUser.errors!);
+    }
+
+    return Result.success(mappedUser);
   }
 
   async addUser(user: User): Promise<Result<User>> {
@@ -64,7 +75,7 @@ export class UserService {
     if (!hasDuplicate.isSuccess) {
       return hasDuplicate;
     }
-    
+
     const updatedUser = await userCommands.update(updateData.id, UserMapper.toDbModel(updateData));
     return updatedUser ? Result.success(UserMapper.toModel(updatedUser)) : Result.failure(['User not found']);
   }
@@ -100,4 +111,28 @@ export class UserService {
     return Result.success(userExists[0]);
   }
 
+  async canAccessUser(user: User, currentUserId: number, currentUserRole: UserRoleEnum, currentParentId: number): Promise<Result<boolean>> {
+    
+    if (currentUserRole === UserRoleEnum.Parent) {
+      const isSelf = user.id === currentUserId;
+      const isChild = user.parentId === currentUserId;
+
+      if (!isSelf && !isChild) {
+        return Result.failure(['You are not allowed to access this user']);
+      }
+    }
+
+    if (currentUserRole === UserRoleEnum.Member) {
+      const isSelf = user.id === currentUserId;
+      const isSibling = user.parentId === currentParentId;
+      const isParent = user.id === currentParentId;
+
+      if (!isSelf && !isSibling && !isParent) {
+        return Result.failure(['You are not allowed to access this user']);
+      }
+
+    }
+
+    return Result.success(true);
+  }
 }

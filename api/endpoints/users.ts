@@ -25,6 +25,9 @@ export default async function handler(req: Request, res: Response) {
         error: userId.errors
       });
     }
+
+    const userRole = await authService.getUserRoleFromToken(token!);
+    const parentId = await authService.getParentIdFromToken(token!);
     
     const { method } = req;
     const { action } = req.query;
@@ -51,7 +54,7 @@ export default async function handler(req: Request, res: Response) {
 
       const { id } = req.query;
 
-      const result = await userService.getUser(+id!);
+      const result = await userService.getUser(+id!, +userId.value!, userRole.value!, +parentId.value!);
       return res.status(200).json({
         success: true,
         ...result

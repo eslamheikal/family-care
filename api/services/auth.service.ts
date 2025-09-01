@@ -8,9 +8,10 @@ import { UserRoleEnum } from "../enums/user-role.enum";
 
 // JWT payload interface
 interface JWTPayload {                                                                                                                  
-  userId: string;
+  userId: number;
   email?: string;
   role?: UserRoleEnum;
+  parentId?: number | null;
   iat?: number;
   exp?: number;
 }
@@ -53,9 +54,10 @@ export class AuthService {
 
       // Generate token with user information
       const tokenPayload: JWTPayload = {
-        userId: user.id,
-        email: user.email,
-        role: user.role
+        userId: mappedUser.id,
+        email: mappedUser.email,
+        role: mappedUser.role,
+        parentId: mappedUser.parentId || null
       };
 
       const token = jwt.sign(tokenPayload, process.env['JWT_SECRET']);
@@ -184,7 +186,7 @@ export class AuthService {
         return Result.failure(tokenResult.errors || ['Token validation failed']);
       }
 
-      return Result.success(parseInt(tokenResult.value!.userId));
+      return Result.success(tokenResult.value!.userId);
     } catch (error) {
       console.error('Get user ID from token error:', error);
       return Result.failure(['Failed to get user ID from token']);
@@ -198,6 +200,16 @@ export class AuthService {
     } catch (error) {
       console.error('Get user role from token error:', error);
       return Result.failure(['Failed to get user role from token']);
+    }
+  }
+
+  async getParentIdFromToken(token: string): Promise<Result<number>> {
+    try {
+      const tokenResult = await this.validateToken(token);
+      return Result.success(tokenResult.value!.parentId as number);
+    } catch (error) {
+      console.error('Get parent ID from token error:', error);
+      return Result.failure(['Failed to get parent ID from token']);
     }
   }
 }
